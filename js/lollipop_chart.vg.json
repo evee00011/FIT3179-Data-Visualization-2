@@ -1,0 +1,81 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Australian Campsite Facility Provision",
+    "subtitle": "Percentage of surveyed sites offering key amenities (N = 9,930)",
+    "anchor": "start",
+    "fontSize": 15
+  },
+  "width": 460,
+  "height": 280,
+  "data": {
+    "values": [
+      {"category": "Tent Camping Allowed", "count": 2083, "percentage": 21.0},
+      {"category": "Toilets Available", "count": 1650, "percentage": 16.6},
+      {"category": "Caravan Accessible", "count": 1595, "percentage": 16.1},
+      {"category": "Power Supply Available", "count": 884, "percentage": 8.9},
+      {"category": "Showers Available", "count": 745, "percentage": 7.5},
+      {"category": "Sanitary Dump Station", "count": 475, "percentage": 4.8},
+      {"category": "Drinking Water", "count": 254, "percentage": 2.6}
+    ]
+  },
+  "encoding": {
+    "y": {
+      "field": "category",
+      "type": "nominal",
+      "sort": "-x",
+      "axis": {
+        "title": null,
+        "labelFontSize": 11,
+        "domain": false,
+        "ticks": false
+      }
+    },
+    "x": {
+      "field": "percentage",
+      "type": "quantitative",
+      "scale": {"domain": [0, 25]},
+      "axis": {
+        "title": "Provision Rate (%)",
+        "grid": true,
+        "format": ".0f"
+      }
+    }
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "rule",
+        "color": "#0c6244",
+        "strokeWidth": 2
+      }
+    },
+    {
+      "mark": {
+        "type": "circle",
+        "size": 160,
+        "color": "#056a42"
+      },
+      "encoding": {
+        "tooltip": [
+          {"field": "category", "type": "nominal", "title": "Facility"},
+          {"field": "percentage", "type": "quantitative", "title": "Availability (%)", "format": ".1f"},
+          {"field": "count", "type": "quantitative", "title": "Total Sites", "format": ","}
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 10,
+        "fontSize": 11,
+        "fontWeight": 600,
+        "color": "#0f172a"
+      },
+      "encoding": {
+        "text": {"field": "percentage", "type": "quantitative", "format": ".1f"}
+      }
+    }
+  ]
+}

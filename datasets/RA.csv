@@ -1,0 +1,55 @@
+﻿objectid,ra_code_2021,ra_name_2021,state_code_2021,state_name_2021,aus_code_2021,aus_name_2021,area_albers_sqkm,asgs_loci_uri_2021,shape_Length,shape_Area
+1,10,Major Cities of Australia,1,New South Wales,AUS,Australia,5521.9056,https://linked.data.gov.au/dataset/asgsed3/RA/10,3341932.56256907,7969287394.53099
+2,11,Inner Regional Australia,1,New South Wales,AUS,Australia,93342.3571,https://linked.data.gov.au/dataset/asgsed3/RA/11,12898581.7153654,134458238371.468
+3,12,Outer Regional Australia,1,New South Wales,AUS,Australia,291314.6887,https://linked.data.gov.au/dataset/asgsed3/RA/12,14244660.9561847,414093787594.866
+4,13,Remote Australia,1,New South Wales,AUS,Australia,219865.5978,https://linked.data.gov.au/dataset/asgsed3/RA/13,6862450.94623842,307570182626.284
+5,14,Very Remote Australia,1,New South Wales,AUS,Australia,190753.1099,https://linked.data.gov.au/dataset/asgsed3/RA/14,3721024.08872241,258762950849.506
+6,15,Migratory - Offshore - Shipping (NSW),1,New South Wales,AUS,Australia,,https://linked.data.gov.au/dataset/asgsed3/RA/15,0,0
+7,19,No usual address (NSW),1,New South Wales,AUS,Australia,,https://linked.data.gov.au/dataset/asgsed3/RA/19,0,0
+8,20,Major Cities of Australia,2,Victoria,AUS,Australia,5055.2214,https://linked.data.gov.au/dataset/asgsed3/RA/20,1270840.89209236,8130552829.41122
+9,21,Inner Regional Australia,2,Victoria,AUS,Australia,74228.4321,https://linked.data.gov.au/dataset/asgsed3/RA/21,5935003.75851837,117623650174.004
+10,22,Outer Regional Australia,2,Victoria,AUS,Australia,128080.1336,https://linked.data.gov.au/dataset/asgsed3/RA/22,8000577.04287681,199378263786.363
+11,23,Remote Australia,2,Victoria,AUS,Australia,20132.4608,https://linked.data.gov.au/dataset/asgsed3/RA/23,1929868.75352679,31006294935.8249
+12,25,Migratory - Offshore - Shipping (Vic.),2,Victoria,AUS,Australia,,https://linked.data.gov.au/dataset/asgsed3/RA/25,0,0
+13,29,No usual address (Vic.),2,Victoria,AUS,Australia,,https://linked.data.gov.au/dataset/asgsed3/RA/29,0,0
+14,30,Major Cities of Australia,3,Queensland,AUS,Australia,4854.0819,https://linked.data.gov.au/dataset/asgsed3/RA/30,1452718.8957252,6184143562.04209
+15,31,Inner Regional Australia,3,Queensland,AUS,Australia,46086.4927,https://linked.data.gov.au/dataset/asgsed3/RA/31,5287142.19021199,57857982343.4103
+16,32,Outer Regional Australia,3,Queensland,AUS,Australia,157390.7378,https://linked.data.gov.au/dataset/asgsed3/RA/32,11773068.8825961,190963091101.079
+17,33,Remote Australia,3,Queensland,AUS,Australia,265322.3642,https://linked.data.gov.au/dataset/asgsed3/RA/33,11139753.3918426,317007167454.247
+18,34,Very Remote Australia,3,Queensland,AUS,Australia,1256517.5442,https://linked.data.gov.au/dataset/asgsed3/RA/34,12744618.8274075,1478532299369.21
+19,35,Migratory - Offshore - Shipping (Qld),3,Queensland,AUS,Australia,,https://linked.data.gov.au/dataset/asgsed3/RA/35,0,0
+20,39,No usual address (Qld),3,Queensland,AUS,Australia,,https://linked.data.gov.au/dataset/asgsed3/RA/39,0,0
+21,40,Major Cities of Australia,4,South Australia,AUS,Australia,1533.5446,https://linked.data.gov.au/dataset/asgsed3/RA/40,560478.998216159,2285318327.06748
+22,41,Inner Regional Australia,4,South Australia,AUS,Australia,15567.8145,https://linked.data.gov.au/dataset/asgsed3/RA/41,1325052.51700938,23134810621.3276
+23,42,Outer Regional Australia,4,South Australia,AUS,Australia,81381.0791,https://linked.data.gov.au/dataset/asgsed3/RA/42,4589819.41161334,120512681347.053
+24,43,Remote Australia,4,South Australia,AUS,Australia,122334.7565,https://linked.data.gov.au/dataset/asgsed3/RA/43,6787374.21796012,174896723696.799
+25,44,Very Remote Australia,4,South Australia,AUS,Australia,763414.2255,https://linked.data.gov.au/dataset/asgsed3/RA/44,6406738.36127468,1002659762055.23
+26,45,Migratory - Offshore - Shipping (SA),4,South Australia,AUS,Australia,,https://linked.data.gov.au/dataset/asgsed3/RA/45,0,0
+27,49,No usual address (SA),4,South Australia,AUS,Australia,,https://linked.data.gov.au/dataset/asgsed3/RA/49,0,0
+28,50,Major Cities of Australia,5,Western Australia,AUS,Australia,2861.008,https://linked.data.gov.au/dataset/asgsed3/RA/50,880029.065230658,3993226343.42097
+29,51,Inner Regional Australia,5,Western Australia,AUS,Australia,22501.7828,https://linked.data.gov.au/dataset/asgsed3/RA/51,2311704.92925046,31887474839.4312
+30,52,Outer Regional Australia,5,Western Australia,AUS,Australia,89656.3165,https://linked.data.gov.au/dataset/asgsed3/RA/52,5040654.86961499,126529589162.618
+31,53,Remote Australia,5,Western Australia,AUS,Australia,167348.9479,https://linked.data.gov.au/dataset/asgsed3/RA/53,7598093.72444978,229199077377.329
+32,54,Very Remote Australia,5,Western Australia,AUS,Australia,2244264.4273,https://linked.data.gov.au/dataset/asgsed3/RA/54,25084996.3098327,2749329767468.5
+33,55,Migratory - Offshore - Shipping (WA),5,Western Australia,AUS,Australia,,https://linked.data.gov.au/dataset/asgsed3/RA/55,0,0
+34,59,No usual address (WA),5,Western Australia,AUS,Australia,,https://linked.data.gov.au/dataset/asgsed3/RA/59,0,0
+35,61,Inner Regional Australia,6,Tasmania,AUS,Australia,2283.0965,https://linked.data.gov.au/dataset/asgsed3/RA/61,1386455.78702658,4183688759.25662
+36,62,Outer Regional Australia,6,Tasmania,AUS,Australia,37283.2022,https://linked.data.gov.au/dataset/asgsed3/RA/62,6289109.99921848,67184349530.4743
+37,63,Remote Australia,6,Tasmania,AUS,Australia,25358.8755,https://linked.data.gov.au/dataset/asgsed3/RA/63,5420334.18499713,46401045631.9873
+38,64,Very Remote Australia,6,Tasmania,AUS,Australia,3092.3651,https://linked.data.gov.au/dataset/asgsed3/RA/64,1600027.14968275,5280480979.13502
+39,65,Migratory - Offshore - Shipping (Tas.),6,Tasmania,AUS,Australia,,https://linked.data.gov.au/dataset/asgsed3/RA/65,0,0
+40,69,No usual address (Tas.),6,Tasmania,AUS,Australia,,https://linked.data.gov.au/dataset/asgsed3/RA/69,0,0
+41,72,Outer Regional Australia,7,Northern Territory,AUS,Australia,3167.7034,https://linked.data.gov.au/dataset/asgsed3/RA/72,631023.606837852,3344315097.70669
+42,73,Remote Australia,7,Northern Territory,AUS,Australia,95379.9038,https://linked.data.gov.au/dataset/asgsed3/RA/73,3742996.05256295,107394149435.75
+43,74,Very Remote Australia,7,Northern Territory,AUS,Australia,1249586.8859,https://linked.data.gov.au/dataset/asgsed3/RA/74,14935444.6296963,1420812803778.23
+44,75,Migratory - Offshore - Shipping (NT),7,Northern Territory,AUS,Australia,,https://linked.data.gov.au/dataset/asgsed3/RA/75,0,0
+45,79,No usual address (NT),7,Northern Territory,AUS,Australia,,https://linked.data.gov.au/dataset/asgsed3/RA/79,0,0
+46,80,Major Cities of Australia,8,Australian Capital Territory,AUS,Australia,586.062,https://linked.data.gov.au/dataset/asgsed3/RA/80,161690.289143182,881535721.1661
+47,81,Inner Regional Australia,8,Australian Capital Territory,AUS,Australia,1772.071,https://linked.data.gov.au/dataset/asgsed3/RA/81,382821.728156718,2683282114.21635
+48,85,Migratory - Offshore - Shipping (ACT),8,Australian Capital Territory,AUS,Australia,,https://linked.data.gov.au/dataset/asgsed3/RA/85,0,0
+49,89,No usual address (ACT),8,Australian Capital Territory,AUS,Australia,,https://linked.data.gov.au/dataset/asgsed3/RA/89,0,0
+50,91,Inner Regional Australia,9,Other Territories,AUS,Australia,67.2296,https://linked.data.gov.au/dataset/asgsed3/RA/91,81343.6427573299,100795459.045486
+51,94,Very Remote Australia,9,Other Territories,AUS,Australia,188.5124,https://linked.data.gov.au/dataset/asgsed3/RA/94,282834.337393869,206877926.80006
+52,95,Migratory - Offshore - Shipping (OT),9,Other Territories,AUS,Australia,,https://linked.data.gov.au/dataset/asgsed3/RA/95,0,0
+53,99,No usual address (OT),9,Other Territories,AUS,Australia,,https://linked.data.gov.au/dataset/asgsed3/RA/99,0,0
+54,ZZ,Outside Australia,Z,Outside Australia,ZZZ,Outside Australia,,https://linked.data.gov.au/dataset/asgsed3/RA/ZZ,0,0
