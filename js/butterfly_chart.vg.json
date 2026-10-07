@@ -1,0 +1,74 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Australian Campsite Landscape: Bush Camps vs. Commercial Resort Parks",
+    "subtitle": [
+      "Comparison of rustic bushcamping versus serviced holiday/caravan parks across states (N = 9,930)",
+      "Source: OpenStreetMap Australia (OSM), extracted via Overpass Turbo"
+    ],
+    "anchor": "start",
+    "fontSize": 15,
+    "subtitleFontSize": 11,
+    "subtitleColor": "#64748b",
+    "subtitleFontStyle": "italic"
+  },
+  "width": 520,
+  "height": 300,
+  "data": {
+    "url": "../data/campsites_by_state_type.csv"
+  },
+  "transform": [
+    {
+      "calculate": "datum.type === 'Hardcore Bushcamps' ? -datum.count : datum.count",
+      "as": "signed_count"
+    }
+  ],
+  "mark": {
+    "type": "bar",
+    "cornerRadius": 2
+  },
+  "encoding": {
+    "y": {
+      "field": "state",
+      "type": "nominal",
+      "sort": ["NSW", "VIC", "QLD", "WA", "SA", "TAS", "NT", "ACT"],
+      "axis": {
+        "title": null,
+        "domain": false,
+        "ticks": false,
+        "labelFontSize": 12,
+        "labelFontWeight": "bold"
+      }
+    },
+    "x": {
+      "field": "signed_count",
+      "type": "quantitative",
+      "axis": {
+        "title": "← Hardcore Bushcamps (Count) | Fancy / Resort Parks (Count) →",
+        "labelExpr": "abs(datum.value)",
+        "grid": true
+      }
+    },
+    "color": {
+  "field": "type",
+  "type": "nominal",
+  "scale": {
+    "domain": ["Hardcore Bushcamps", "Fancy / Resort Parks"],
+    "range": ["#20381B", "#62AC53"]
+  },
+  "legend": {
+    "orient": "top",
+    "title": null,
+    "labelFontSize": 11
+  }
+},
+    "tooltip": [
+      {"field": "state", "type": "nominal", "title": "State / Territory"},
+      {"field": "type", "type": "nominal", "title": "Campsite Class"},
+      {"field": "count", "type": "quantitative", "title": "Total Sites", "format": ","}
+    ]
+  },
+  "config": {
+    "view": {"stroke": null}
+  }
+}
