@@ -4,7 +4,7 @@
     "text": "Australian Campsite Landscape: Bush Camps vs. Commercial Resort Parks",
     "subtitle": [
       "Comparison of rustic bushcamping versus serviced holiday/caravan parks across states (N = 9,930)",
-      "Source: OpenStreetMap Australia (OSM), extracted via Overpass Turbo"
+      "Source: OpenStreetMap Australia (OSM) joined with GitHub geojson data of Australian state territories and borders"
     ],
     "anchor": "start",
     "fontSize": 15,
