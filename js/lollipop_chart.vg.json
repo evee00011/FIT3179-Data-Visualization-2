@@ -2,7 +2,13 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
     "text": "Australian Campsite Facility Provision",
-    "subtitle": "Percentage of surveyed sites offering key amenities (N = 9,930)",
+    "subtitle": [
+      "Percentage of surveyed sites offering key amenities (N = 9,930)",
+      "Source: OpenStreetMap Australia (OSM), extracted via Overpass Turbo"
+    ],
+    "subtitleColor": "#868f9c",
+    "subtitleFontStyle": "italic",
+    "subtitleFontSize": 10.5,
     "anchor": "start",
     "fontSize": 15
   },
