@@ -95,7 +95,7 @@
           "type": "nominal",
           "scale": {
             "domain": ["Free Bushcamp ($0)", "Commercial Park ($25–$50+)"],
-            "range": ["#16a34a", "#e11d48"]
+            "range": ["#10450C", "#32D926"]
           },
           "legend": {
             "title": "Tariff Type",
