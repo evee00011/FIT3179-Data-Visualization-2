@@ -1,0 +1,15 @@
+age_group,gender,share
+18-24,Female,1.11
+18-24,Male,0.99
+25-34,Female,4.40
+25-34,Male,3.90
+35-44,Female,12.10
+35-44,Male,10.70
+45-54,Female,13.85
+45-54,Male,12.25
+55-64,Female,13.05
+55-64,Male,11.55
+65-74,Female,7.37
+65-74,Male,6.53
+75+,Female,1.17
+75+,Male,1.03

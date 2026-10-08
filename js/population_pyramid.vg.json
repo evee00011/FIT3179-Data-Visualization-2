@@ -1,0 +1,77 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Demographic Profile of Australian Campers",
+    "subtitle": [
+      "Age cohort and gender breakdown of park campers (N = 892)",
+      "Source: DBCA WA Camping Experience Study (2025, Page 13)"
+    ],
+    "anchor": "start",
+    "fontSize": 15,
+    "subtitleFontSize": 11,
+    "subtitleColor": "#64748b",
+    "subtitleFontStyle": "italic"
+  },
+  "width": 500,
+  "height": 320,
+  "data": {
+    "url": "../datasets/scripts/age_group_gender_share.csv"
+  },
+  "transform": [
+    {
+      "calculate": "datum.gender === 'Female' ? -datum.share : datum.share",
+      "as": "signed_share"
+    }
+  ],
+  "mark": {
+    "type": "bar",
+    "cornerRadius": 2
+  },
+  "encoding": {
+    "y": {
+      "field": "age_group",
+      "type": "nominal",
+      "sort": ["18-24", "25-34", "35-44", "45-54", "55-64", "65-74", "75+"],
+      "axis": {
+        "title": "Age Cohort",
+        "domain": false,
+        "ticks": false,
+        "labelFontSize": 11,
+        "titleFontSize": 12
+      }
+    },
+    "x": {
+      "field": "signed_share",
+      "type": "quantitative",
+      "scale": {
+        "domain": [-16, 16]
+      },
+      "axis": {
+        "title": "← Female (%)          Male (%) →",
+        "labelExpr": "abs(datum.value) + '%'",
+        "grid": true
+      }
+    },
+    "color": {
+      "field": "gender",
+      "type": "nominal",
+      "scale": {
+        "domain": ["Female", "Male"],
+        "range": ["#0284c7", "#0f766e"]
+      },
+      "legend": {
+        "orient": "top",
+        "title": null,
+        "labelFontSize": 11
+      }
+    },
+    "tooltip": [
+      {"field": "age_group", "type": "nominal", "title": "Age Cohort"},
+      {"field": "gender", "type": "nominal", "title": "Gender"},
+      {"field": "share", "type": "quantitative", "title": "Share of Campers", "format": ".2f"}
+    ]
+  },
+  "config": {
+    "view": {"stroke": null}
+  }
+}
