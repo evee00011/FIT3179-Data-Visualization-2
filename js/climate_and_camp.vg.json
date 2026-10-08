@@ -1,0 +1,165 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Climate Hazards & Seasonal Campground Closures in Australia",
+    "subtitle": [
+      "Peak summer fire ban zones in temperate south vs. monsoonal wet season washouts across the Top End",
+      "Source: OpenStreetMap Australia & Bureau of Meteorology (BOM) Climatological Baselines"
+    ],
+    "anchor": "start",
+    "fontSize": 15,
+    "subtitleFontSize": 11,
+    "subtitleColor": "#64748b",
+    "subtitleFontStyle": "italic"
+  },
+  "width": 750,
+  "height": 500,
+  "autosize": {
+    "type": "fit-x",
+    "contains": "padding"
+  },
+  "projection": {
+    "type": "equirectangular",
+    "center": [133.7751, -27.5],
+    "scale": 670
+  },
+  "params": [
+    {
+      "name": "season_select",
+      "value": "Summer (Dec - Feb)",
+      "bind": {
+        "input": "radio",
+        "options": ["Summer (Dec - Feb)", "Winter / Dry Season (Jun - Aug)"],
+        "name": "Active Season: "
+      }
+    },
+    {
+      "name": "state_filter",
+      "value": "All",
+      "bind": {
+        "input": "select",
+        "options": ["All", "NSW", "VIC", "QLD", "WA", "SA", "TAS", "NT", "ACT"],
+        "labels": ["All Australia", "NSW", "VIC", "QLD", "WA", "SA", "TAS", "NT", "ACT"],
+        "name": "Filter State: "
+      }
+    }
+  ],
+  "layer": [
+    {
+      "description": "Base Australia State Boundaries",
+      "data": {
+        "url": "https://raw.githubusercontent.com/tonywr71/GeoJson-Data/master/australian-states.json",
+        "format": {"type": "json", "property": "features"}
+      },
+      "mark": {
+        "type": "geoshape",
+        "fill": "#f8fafc",
+        "stroke": "#cbd5e1",
+        "strokeWidth": 0.8
+      }
+    },
+    {
+      "description": "Campsites Hazard Layer",
+      "data": {
+        "url": "../datasets/campsites_climate_risk.csv"
+      },
+      "transform": [
+        {
+          "filter": "state_filter === 'All' || datum.state === state_filter"
+        },
+        {
+          "calculate": "season_select === 'Summer (Dec - Feb)' ? datum.summer_hazard : datum.winter_hazard",
+          "as": "active_hazard"
+        },
+        {
+          "calculate": "season_select === 'Summer (Dec - Feb)' ? datum.summer_status : datum.winter_status",
+          "as": "active_status"
+        }
+      ],
+      "mark": {
+        "type": "circle",
+        "size": 16,
+        "opacity": 0.65
+      },
+      "encoding": {
+        "longitude": {"field": "lon", "type": "quantitative"},
+        "latitude": {"field": "lat", "type": "quantitative"},
+        "color": {
+          "field": "active_hazard",
+          "type": "nominal",
+          "scale": {
+            "domain": [
+              "Total Fire Ban & Wildfire Risk",
+              "Monsoon Flooding & River Swells",
+              "Extreme Heat (>42°C) & Flash Aridity",
+              "Severe Summer Storms & Humid Swells",
+              "Optimal Dry Season",
+              "Optimal Touring",
+              "Mild & Sunny",
+              "Cold & Rainy / Frost Risk"
+            ],
+            "range": [
+              "#dc2626",
+              "#0284c7",
+              "#ea580c",
+              "#d97706",
+              "#16a34a",
+              "#059669",
+              "#65a30d",
+              "#64748b"
+            ]
+          },
+          "legend": {
+            "title": "Observed Climate Risk",
+            "orient": "bottom-left",
+            "symbolSize": 45,
+            "labelFontSize": 10,
+            "titleFontSize": 11,
+            "columns": 2,
+            "offset": 5
+          }
+        },
+        "tooltip": [
+          {"field": "name", "type": "nominal", "title": "Campground"},
+          {"field": "state", "type": "nominal", "title": "State"},
+          {"field": "climate_zone", "type": "nominal", "title": "Climate Zone"},
+          {"field": "campsite_type", "type": "nominal", "title": "Class"},
+          {"field": "active_hazard", "type": "nominal", "title": "Current Hazard"},
+          {"field": "active_status", "type": "nominal", "title": "Access Status"}
+        ]
+      }
+    },
+    {
+      "description": "Geographic Annotations",
+      "data": {
+        "values": [
+          {
+            "lon": 133.0,
+            "lat": -13.5,
+            "label": "Top End Monsoonal Inundation Zone"
+          },
+          {
+            "lon": 147.0,
+            "lat": -37.8,
+            "label": "Southern Temperate Fire Belt"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "fontWeight": "bold",
+        "fontSize": 11,
+        "color": "#1e293b",
+        "dy": -10
+      },
+      "encoding": {
+        "longitude": {"field": "lon", "type": "quantitative"},
+        "latitude": {"field": "lat", "type": "quantitative"},
+        "text": {"field": "label", "type": "nominal"}
+      }
+    }
+  ],
+  "config": {
+    "view": {"stroke": null}
+  }
+}

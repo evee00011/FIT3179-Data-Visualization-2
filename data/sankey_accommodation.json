@@ -1,0 +1,20 @@
+{
+  "nodes": [
+    {"name": "Solo Travellers", "stack": 1},
+    {"name": "Family Groups", "stack": 1},
+    {"name": "Swag / Small Tent", "stack": 2},
+    {"name": "Campervan / 4WD Rooftop", "stack": 2},
+    {"name": "Caravan / Camper-Trailer", "stack": 2},
+    {"name": "Large Family Tent", "stack": 2}
+  ],
+  "links": [
+    {"source": "Solo Travellers", "target": "Swag / Small Tent", "value": 52.4},
+    {"source": "Solo Travellers", "target": "Campervan / 4WD Rooftop", "value": 23.8},
+    {"source": "Solo Travellers", "target": "Caravan / Camper-Trailer", "value": 14.3},
+    {"source": "Solo Travellers", "target": "Large Family Tent", "value": 0.1},
+    {"source": "Family Groups", "target": "Caravan / Camper-Trailer", "value": 54.2},
+    {"source": "Family Groups", "target": "Large Family Tent", "value": 31.3},
+    {"source": "Family Groups", "target": "Campervan / 4WD Rooftop", "value": 10.4},
+    {"source": "Family Groups", "target": "Swag / Small Tent", "value": 4.1}
+  ]
+}

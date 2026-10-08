@@ -1,0 +1,108 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Accommodation Choices: Solo Campers vs. Family Groups",
+    "subtitle": [
+      "Comparison of shelter & vehicle choices between individual travellers and family groups",
+      "Source: DBCA WA Camping Experience Study & TRA NVS Cross-Tabulations"
+    ],
+    "anchor": "start",
+    "fontSize": 15,
+    "subtitleFontSize": 11,
+    "subtitleColor": "#64748b",
+    "subtitleFontStyle": "italic"
+  },
+  "width": 550,
+  "height": 260,
+  "data": {
+    "url": "../data/solo_vs_family_accommodation.csv"
+  },
+  "layer": [
+    {
+      "description": "Connecting Rule Encoding Divergence Gap",
+      "mark": {
+        "type": "line",
+        "color": "#cbd5e1",
+        "strokeWidth": 3
+      },
+      "encoding": {
+        "y": {
+          "field": "accommodation",
+          "type": "nominal",
+          "sort": [
+            "Caravan / Camper-Trailer",
+            "Large Family Tent",
+            "Campervan / 4WD Rooftop",
+            "Swag / Small Ground Tent"
+          ],
+          "axis": {
+            "title": "Accommodation / Setup Style",
+            "labelFontSize": 11,
+            "titleFontSize": 12,
+            "domain": false,
+            "ticks": false
+          }
+        },
+        "x": {
+          "field": "share",
+          "type": "quantitative"
+        },
+        "detail": {
+          "field": "accommodation"
+        }
+      }
+    },
+    {
+      "description": "Endpoint Circles for Each Traveler Group",
+      "mark": {
+        "type": "circle",
+        "size": 140,
+        "opacity": 1
+      },
+      "encoding": {
+        "y": {
+          "field": "accommodation",
+          "type": "nominal",
+          "sort": [
+            "Caravan / Camper-Trailer",
+            "Large Family Tent",
+            "Campervan / 4WD Rooftop",
+            "Swag / Small Ground Tent"
+          ]
+        },
+        "x": {
+          "field": "share",
+          "type": "quantitative",
+          "scale": {"domain": [0, 60]},
+          "axis": {
+            "title": "Share of Traveler Cohort (%)",
+            "labelExpr": "datum.value + '%'",
+            "grid": true
+          }
+        },
+        "color": {
+          "field": "group",
+          "type": "nominal",
+          "scale": {
+            "domain": ["Solo Travellers", "Family Groups"],
+            "range": ["#d97706", "#0f766e"]
+          },
+          "legend": {
+            "title": "Traveler Group",
+            "orient": "bottom-right",
+            "labelFontSize": 11,
+            "titleFontSize": 11
+          }
+        },
+        "tooltip": [
+          {"field": "group", "type": "nominal", "title": "Cohort"},
+          {"field": "accommodation", "type": "nominal", "title": "Setup Style"},
+          {"field": "share", "type": "quantitative", "title": "Proportion (%)", "format": ".1f"}
+        ]
+      }
+    }
+  ],
+  "config": {
+    "view": {"stroke": null}
+  }
+}

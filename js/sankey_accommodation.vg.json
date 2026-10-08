@@ -1,0 +1,159 @@
+{
+  "$schema": "https://vega.github.io/schema/vega/v5.json",
+  "title": {
+    "text": "Camper Cohort to Accommodation Flow (Alluvial / Sankey)",
+    "subtitle": "Flow of setup choices between solo travellers and family groups (% within cohort)",
+    "anchor": "start",
+    "fontSize": 15,
+    "subtitleFontSize": 11,
+    "subtitleColor": "#64748b",
+    "subtitleFontStyle": "italic"
+  },
+  "width": 640,
+  "height": 380,
+  "padding": {"top": 15, "left": 10, "right": 30, "bottom": 15},
+
+  "data": [
+    {
+      "name": "nodes",
+      "values": [
+        {"name": "Solo Travellers", "side": "left", "x": 160, "y0": 40, "y1": 185, "color": "#d97706"},
+        {"name": "Family Groups", "side": "left", "x": 160, "y0": 215, "y1": 360, "color": "#0f766e"},
+        {"name": "Caravan / Camper-Trailer", "side": "right", "x": 480, "y0": 40, "y1": 140, "color": "#475569"},
+        {"name": "Swag / Small Tent", "side": "right", "x": 480, "y0": 155, "y1": 240, "color": "#475569"},
+        {"name": "Large Family Tent", "side": "right", "x": 480, "y0": 255, "y1": 305, "color": "#475569"},
+        {"name": "Campervan / 4WD Rooftop", "side": "right", "x": 480, "y0": 320, "y1": 370, "color": "#475569"}
+      ]
+    },
+    {
+      "name": "ribbons",
+      "values": [
+        {
+          "source": "Solo Travellers",
+          "target": "Swag / Small Tent",
+          "value": "52.4%",
+          "color": "#d97706",
+          "y0a": 40, "y0b": 115,
+          "y1a": 155, "y1b": 230
+        },
+        {
+          "source": "Solo Travellers",
+          "target": "Campervan / 4WD Rooftop",
+          "value": "23.8%",
+          "color": "#d97706",
+          "y0a": 115, "y0b": 155,
+          "y1a": 320, "y1b": 355
+        },
+        {
+          "source": "Solo Travellers",
+          "target": "Caravan / Camper-Trailer",
+          "value": "14.3%",
+          "color": "#d97706",
+          "y0a": 155, "y0b": 185,
+          "y1a": 40, "y1b": 60
+        },
+        {
+          "source": "Family Groups",
+          "target": "Caravan / Camper-Trailer",
+          "value": "54.2%",
+          "color": "#0f766e",
+          "y0a": 215, "y0b": 295,
+          "y1a": 60, "y1b": 140
+        },
+        {
+          "source": "Family Groups",
+          "target": "Large Family Tent",
+          "value": "31.3%",
+          "color": "#0f766e",
+          "y0a": 295, "y0b": 340,
+          "y1a": 255, "y1b": 305
+        },
+        {
+          "source": "Family Groups",
+          "target": "Campervan / 4WD Rooftop",
+          "value": "10.4%",
+          "color": "#0f766e",
+          "y0a": 340, "y0b": 355,
+          "y1a": 355, "y1b": 370
+        },
+        {
+          "source": "Family Groups",
+          "target": "Swag / Small Tent",
+          "value": "4.1%",
+          "color": "#0f766e",
+          "y0a": 355, "y0b": 360,
+          "y1a": 230, "y1b": 240
+        }
+      ],
+      "transform": [
+        {
+          "type": "formula",
+          "expr": "'M ' + 180 + ' ' + datum.y0a + ' C ' + 330 + ' ' + datum.y0a + ', ' + 330 + ' ' + datum.y1a + ', ' + 480 + ' ' + datum.y1a + ' L ' + 480 + ' ' + datum.y1b + ' C ' + 330 + ' ' + datum.y1b + ', ' + 330 + ' ' + datum.y0b + ', ' + 180 + ' ' + datum.y0b + ' Z'",
+          "as": "pathStr"
+        }
+      ]
+    }
+  ],
+
+  "marks": [
+    {
+      "type": "path",
+      "from": {"data": "ribbons"},
+      "encode": {
+        "enter": {
+          "path": {"field": "pathStr"},
+          "fill": {"field": "color"},
+          "fillOpacity": {"value": 0.38},
+          "stroke": {"field": "color"},
+          "strokeWidth": {"value": 0.5},
+          "strokeOpacity": {"value": 0.6}
+        },
+        "update": {
+          "fillOpacity": {"value": 0.38},
+          "tooltip": {
+            "signal": "{'Cohort': datum.source, 'Accommodation': datum.target, 'Share': datum.value}"
+          }
+        },
+        "hover": {
+          "fillOpacity": {"value": 0.75}
+        }
+      }
+    },
+    {
+      "type": "rect",
+      "from": {"data": "nodes"},
+      "encode": {
+        "enter": {
+          "x": {"field": "x"},
+          "width": {"value": 20},
+          "y": {"field": "y0"},
+          "y2": {"field": "y1"},
+          "fill": {"field": "color"},
+          "cornerRadius": {"value": 3}
+        }
+      }
+    },
+    {
+      "type": "text",
+      "from": {
+        "data": "nodes"
+      },
+      "encode": {
+        "enter": {
+          "x": {
+            "signal": "datum.side === 'left' ? datum.x - 12 : datum.x + 28"
+          },
+          "y": {"signal": "(datum.y0 + datum.y1) / 2"},
+          "text": {"field": "name"},
+          "align": {
+            "signal": "datum.side === 'left' ? 'right' : 'left'"
+          },
+          "baseline": {"value": "middle"},
+          "fontWeight": {"value": "bold"},
+          "fontSize": {"value": 11.5},
+          "fill": {"value": "#1e293b"}
+        }
+      }
+    }
+  ]
+}
