@@ -1,0 +1,143 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Coastal Gravitation of Australian Campsites vs. Outback Outliers",
+    "subtitle": [
+      "Spatial clustering of campgrounds along the coastal perimeter versus sparse remote interior sites",
+      "Source: OpenStreetMap Australia (OSM), extracted via Overpass Turbo (N = 9,930)"
+    ],
+    "anchor": "start",
+    "fontSize": 15,
+    "subtitleFontSize": 11,
+    "subtitleColor": "#64748b",
+    "subtitleFontStyle": "italic"
+  },
+  "width": 750,
+  "height": 520,
+  "projection": {
+    "type": "equirectangular",
+    "center": [133.7751, -26.5],
+    "scale": 780
+  },
+  "layer": [
+    {
+      "description": "Base Landmass Polygons",
+      "data": {
+        "url": "https://raw.githubusercontent.com/tonywr71/GeoJson-Data/master/australian-states.json",
+        "format": {"type": "json", "property": "features"}
+      },
+      "mark": {
+        "type": "geoshape",
+        "fill": "#f1f5f9",
+        "stroke": "#94a3b8",
+        "strokeWidth": 0.8
+      }
+    },
+    {
+      "description": "Campsite Points",
+      "data": {
+        "url": "../datasets/campsites_coastal_distribution.csv"
+      },
+      "params": [
+        {
+          "name": "type_select",
+          "select": {"type": "point", "fields": ["type"]},
+          "bind": {
+            "input": "select",
+            "options": [null, "Commercial / Resort", "Hardcore Bushcamp"],
+            "labels": ["All Styles", "Commercial / Resort Parks", "Hardcore Bushcamps"],
+            "name": "Camping Class: "
+          }
+        }
+      ],
+      "transform": [
+        {"filter": {"param": "type_select"}}
+      ],
+      "mark": {
+        "type": "circle",
+        "opacity": 0.55,
+        "size": 18
+      },
+      "encoding": {
+        "longitude": {"field": "lon", "type": "quantitative"},
+        "latitude": {"field": "lat", "type": "quantitative"},
+        "color": {
+          "field": "type",
+          "type": "nominal",
+          "scale": {
+            "domain": ["Commercial / Resort", "Hardcore Bushcamp"],
+            "range": ["#d97706", "#047857"]
+          },
+          "legend": {
+            "title": "Campsite Style",
+            "orient": "bottom-left",
+            "symbolSize": 60,
+            "labelFontSize": 11
+          }
+        },
+        "tooltip": [
+          {"field": "name", "type": "nominal", "title": "Campsite Name"},
+          {"field": "type", "type": "nominal", "title": "Classification"},
+          {"field": "lat", "type": "quantitative", "title": "Latitude", "format": ".3f"},
+          {"field": "lon", "type": "quantitative", "title": "Longitude", "format": ".3f"}
+        ]
+      }
+    },
+    {
+      "description": "Outback Outlier Annotation Callout",
+      "data": {
+        "values": [
+          {
+            "lon": 133.88,
+            "lat": -23.70,
+            "label": "Central Outliers: Alice Springs & Red Centre",
+            "sub": "Isolated desert oasis cluster"
+          },
+          {
+            "lon": 138.60,
+            "lat": -31.50,
+            "label": "Flinders Ranges Corridor",
+            "sub": "Rugged outback bushcamps"
+          }
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "fontSize": 11,
+        "fontWeight": "bold",
+        "color": "#7c2d12",
+        "align": "left",
+        "dx": 8,
+        "dy": -4
+      },
+      "encoding": {
+        "longitude": {"field": "lon", "type": "quantitative"},
+        "latitude": {"field": "lat", "type": "quantitative"},
+        "text": {"field": "label", "type": "nominal"}
+      }
+    },
+    {
+      "description": "Callout Marker Pin",
+      "data": {
+        "values": [
+          {"lon": 133.88, "lat": -23.70},
+          {"lon": 138.60, "lat": -31.50}
+        ]
+      },
+      "mark": {
+        "type": "point",
+        "shape": "cross",
+        "size": 70,
+        "stroke": "#7c2d12",
+        "strokeWidth": 2
+      },
+      "encoding": {
+        "longitude": {"field": "lon", "type": "quantitative"},
+        "latitude": {"field": "lat", "type": "quantitative"}
+      }
+    }
+  ],
+  "config": {
+    "view": {"stroke": null}
+  }
+}
