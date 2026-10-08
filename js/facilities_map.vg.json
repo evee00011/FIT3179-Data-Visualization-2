@@ -1,0 +1,119 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "What You Pay vs. What You Get: Campground Facilities Across Australia",
+    "subtitle": [
+      "Bubble size denotes facility score (0–5: power, water, toilets, showers, dump station).",
+      "Colour encodes fee tier (Free bushcamp vs Paid commercial). Filter by state or price tier below."
+    ],
+    "anchor": "start",
+    "fontSize": 15,
+    "subtitleFontSize": 11,
+    "subtitleColor": "#64748b",
+    "subtitleFontStyle": "italic"
+  },
+  "width": 750,
+  "height": 480,
+  "projection": {
+    "type": "equirectangular",
+    "center": [133.7751, -27.5],
+    "scale": 700
+  },
+  "params": [
+    {
+      "name": "state_filter",
+      "value": "All",
+      "bind": {
+        "input": "select",
+        "options": ["All", "NSW", "VIC", "QLD", "WA", "SA", "TAS", "NT"],
+        "labels": ["All States", "New South Wales", "Victoria", "Queensland", "Western Australia", "South Australia", "Tasmania", "Northern Territory"],
+        "name": "Filter State: "
+      }
+    },
+    {
+      "name": "fee_filter",
+      "value": "All",
+      "bind": {
+        "input": "select",
+        "options": ["All", "Free Bushcamp ($0)", "Commercial Park ($25–$50+)"],
+        "labels": ["All Campsites", "Free Bushcamps ($0)", "Commercial Parks ($25–$50+)"],
+        "name": "Price Status: "
+      }
+    }
+  ],
+  "layer": [
+    {
+      "description": "Base Australia Outline Map",
+      "data": {
+        "url": "https://raw.githubusercontent.com/tonywr71/GeoJson-Data/master/australian-states.json",
+        "format": {"type": "json", "property": "features"}
+      },
+      "mark": {
+        "type": "geoshape",
+        "fill": "#f8fafc",
+        "stroke": "#cbd5e1",
+        "strokeWidth": 0.8
+      }
+    },
+    {
+      "description": "Campsites Layer",
+      "data": {
+        "url": "../data/campsites_price_facilities.csv"
+      },
+      "transform": [
+        {
+          "filter": "state_filter === 'All' || datum.state === state_filter"
+        },
+        {
+          "filter": "fee_filter === 'All' || datum.fee_tier === fee_filter"
+        }
+      ],
+      "mark": {
+        "type": "circle",
+        "opacity": 0.75,
+        "stroke": "#1e293b",
+        "strokeWidth": 0.8
+      },
+      "encoding": {
+        "longitude": {"field": "lon", "type": "quantitative"},
+        "latitude": {"field": "lat", "type": "quantitative"},
+        "size": {
+          "field": "facility_score",
+          "type": "quantitative",
+          "scale": {
+            "domain": [0, 5],
+            "range": [25, 320]
+          },
+          "legend": {
+            "title": "Facility Score (0–5)",
+            "values": [0, 2, 4, 5],
+            "orient": "bottom-left"
+          }
+        },
+        "color": {
+          "field": "fee_tier",
+          "type": "nominal",
+          "scale": {
+            "domain": ["Free Bushcamp ($0)", "Commercial Park ($25–$50+)"],
+            "range": ["#16a34a", "#e11d48"]
+          },
+          "legend": {
+            "title": "Tariff Type",
+            "orient": "bottom-right",
+            "symbolSize": 90
+          }
+        },
+        "tooltip": [
+          {"field": "name", "type": "nominal", "title": "Campground / Park"},
+          {"field": "state", "type": "nominal", "title": "State"},
+          {"field": "fee_tier", "type": "nominal", "title": "Tariff"},
+          {"field": "facility_score", "type": "quantitative", "title": "Facility Score (Max 5)"},
+          {"field": "amenities", "type": "nominal", "title": "Available Facilities"}
+        ]
+      }
+    }
+  ],
+  "config": {
+    "view": {"stroke": null}
+  }
+}
