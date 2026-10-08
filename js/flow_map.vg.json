@@ -1,0 +1,148 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Interstate Camper Flows into Western Australia",
+    "subtitle": [
+      "Origin-to-destination volume of interstate campers travelling to WA National & Conservation Parks (n = 886)",
+      "Source: DBCA WA Camping Experience Study (2025, Page 14)"
+    ],
+    "anchor": "start",
+    "fontSize": 15,
+    "subtitleFontSize": 11,
+    "subtitleColor": "#64748b",
+    "subtitleFontStyle": "italic"
+  },
+  "width": 700,
+  "height": 480,
+  "projection": {
+    "type": "equirectangular",
+    "center": [133.7751, -27.0],
+    "scale": 700
+  },
+  "layer": [
+    {
+      "description": "Base Australia State Boundaries",
+      "data": {
+        "url": "https://raw.githubusercontent.com/tonywr71/GeoJson-Data/master/australian-states.json",
+        "format": {"type": "json", "property": "features"}
+      },
+      "mark": {
+        "type": "geoshape",
+        "fill": "#f8fafc",
+        "stroke": "#cbd5e1",
+        "strokeWidth": 0.9
+      }
+    },
+    {
+      "description": "Flow Trajectory Lines",
+      "data": {
+        "url": "../datasets/scripts/campers_to_WA.csv"
+      },
+      "mark": {
+        "type": "rule",
+        "opacity": 0.75,
+        "strokeCap": "round"
+      },
+      "encoding": {
+        "longitude": {"field": "o_lon", "type": "quantitative"},
+        "latitude": {"field": "o_lat", "type": "quantitative"},
+        "longitude2": {"field": "d_lon"},
+        "latitude2": {"field": "d_lat"},
+        "strokeWidth": {
+          "field": "camper_share",
+          "type": "quantitative",
+          "scale": {
+            "type": "linear",
+            "range": [1.5, 9]
+          },
+          "legend": {
+            "title": "Interstate Share (%)",
+            "orient": "bottom-left"
+          }
+        },
+        "color": {
+          "field": "origin",
+          "type": "nominal",
+          "scale": {
+            "domain": ["VIC", "NSW", "QLD", "SA", "TAS", "NT", "ACT"],
+            "range": ["#2563eb", "#0284c7", "#0d9488", "#16a34a", "#e11d48", "#d97706", "#9333ea"]
+          },
+          "legend": {
+            "title": "Origin State",
+            "orient": "bottom-right"
+          }
+        },
+        "tooltip": [
+          {"field": "origin", "type": "nominal", "title": "Origin State"},
+          {"field": "dest", "type": "nominal", "title": "Destination"},
+          {"field": "camper_share", "type": "quantitative", "title": "Share of Campers (%)", "format": ".1f"},
+          {"field": "sample_count", "type": "quantitative", "title": "Sampled Campers (n)", "format": ","}
+        ]
+      }
+    },
+    {
+      "description": "Origin State Nodes",
+      "data": {
+        "url": "../datasets/scripts/campers_to_WA.csv"
+      },
+      "mark": {
+        "type": "circle",
+        "size": 60,
+        "opacity": 0.9
+      },
+      "encoding": {
+        "longitude": {"field": "o_lon", "type": "quantitative"},
+        "latitude": {"field": "o_lat", "type": "quantitative"},
+        "color": {
+          "field": "origin",
+          "type": "nominal",
+          "legend": null
+        }
+      }
+    },
+    {
+      "description": "Destination Node: Western Australia Parks Hub",
+      "data": {
+        "values": [
+          {"dest": "WA Parks Hub", "lon": 115.86, "lat": -31.95}
+        ]
+      },
+      "mark": {
+        "type": "circle",
+        "size": 180,
+        "color": "#0f172a",
+        "stroke": "#ffffff",
+        "strokeWidth": 2
+      },
+      "encoding": {
+        "longitude": {"field": "lon", "type": "quantitative"},
+        "latitude": {"field": "lat", "type": "quantitative"},
+        "tooltip": [
+          {"field": "dest", "type": "nominal", "title": "Destination Hub"},
+          {"value": "Primary destination for 886 surveyed park campers", "title": "Note"}
+        ]
+      }
+    },
+    {
+      "description": "Origin Labels",
+      "data": {
+        "url": "../datasets/scripts/campers_to_WA.csv"
+      },
+      "mark": {
+        "type": "text",
+        "fontWeight": "bold",
+        "fontSize": 10,
+        "dy": -10,
+        "color": "#1e293b"
+      },
+      "encoding": {
+        "longitude": {"field": "o_lon", "type": "quantitative"},
+        "latitude": {"field": "o_lat", "type": "quantitative"},
+        "text": {"field": "origin", "type": "nominal"}
+      }
+    }
+  ],
+  "config": {
+    "view": {"stroke": null}
+  }
+}
