@@ -1,0 +1,29 @@
+region,lat_order,macro_zone,season,season_order,avg_temp_c,rainfall_mm,camper_preference_pct,preference_tier,why_they_camp_there
+Darwin & Kakadu,1,Tropical Top End,Summer,1,32.2,425,5,Avoid / High Risk Hazard,Monsoonal wet season; river flooding; unsealed park tracks cut off
+Darwin & Kakadu,1,Tropical Top End,Autumn,2,32.0,105,30,Moderate / Shoulder,Floodwaters receding; waterfalls accessible; shoulder season touring
+Darwin & Kakadu,1,Tropical Top End,Winter,3,30.6,3,95,Optimal / Peak Season,Prime dry season; warm sunny days; ideal escape from southern cold
+Darwin & Kakadu,1,Tropical Top End,Spring,4,33.1,70,15,Low / Unfavourable,Pre-monsoon build-up; high humidity and storm activity
+Cairns & Daintree,2,Tropical Coast,Summer,1,31.4,390,10,Avoid / High Risk Hazard,Cyclone alerts; heavy monsoonal rain and marine stingers
+Cairns & Daintree,2,Tropical Coast,Autumn,2,29.2,195,40,Moderate / Shoulder,Trade winds reduce humidity; green rainforest conditions
+Cairns & Daintree,2,Tropical Coast,Winter,3,26.0,35,90,Optimal / Peak Season,Mild tropical winter; dry weather for reef and tableland camping
+Cairns & Daintree,2,Tropical Coast,Spring,4,29.5,45,50,Moderate / Shoulder,Pleasant weather prior to summer wet season
+Red Centre & Uluru,3,Arid Outback,Summer,1,36.4,40,10,Avoid / High Risk Hazard,Extreme desert heat (>40°C); heat stress and fly season
+Red Centre & Uluru,3,Arid Outback,Autumn,2,28.2,18,65,Moderate / Shoulder,Mild autumn conditions; stable sunny outback touring
+Red Centre & Uluru,3,Arid Outback,Winter,3,20.0,15,85,Optimal / Peak Season,Crisp desert days and clear campfire nights
+Red Centre & Uluru,3,Arid Outback,Spring,4,30.8,20,55,Moderate / Shoulder,Spring desert blooms; warm conditions before severe summer heat
+Brisbane & Gold Coast,4,Subtropical,Summer,1,30.2,140,60,Moderate / Shoulder,Coastal surf breaks; warm humid ocean camping
+Brisbane & Gold Coast,4,Subtropical,Autumn,2,27.1,85,80,Optimal / Peak Season,Mild temperatures; low rainfall; peak Easter family camping
+Brisbane & Gold Coast,4,Subtropical,Winter,3,22.0,40,70,Optimal / Peak Season,Pleasant winter sun; major destination for southern nomads
+Brisbane & Gold Coast,4,Subtropical,Spring,4,26.5,60,65,Moderate / Shoulder,Warm spring beach weather before summer thunderstorms
+Sydney & South Coast,5,Temperate Coast,Summer,1,26.5,100,85,Optimal / Peak Season,Peak school holiday camping; beach and lake holiday parks
+Sydney & South Coast,5,Temperate Coast,Autumn,2,22.8,115,65,Moderate / Shoulder,Comfortable conditions for Blue Mountains and coastal national parks
+Sydney & South Coast,5,Temperate Coast,Winter,3,17.2,70,25,Low / Unfavourable,Cold coastal nights and winter rain fronts
+Sydney & South Coast,5,Temperate Coast,Spring,4,22.1,75,60,Moderate / Shoulder,Spring wildflower season; mild hiking weather
+Melbourne & Great Ocean Rd,6,Cool Temperate,Summer,1,26.0,50,90,Optimal / Peak Season,Warmest weather; beach and Great Ocean Road touring peak
+Melbourne & Great Ocean Rd,6,Cool Temperate,Autumn,2,20.5,55,60,Moderate / Shoulder,Stable autumn days; foliage camping in High Country
+Melbourne & Great Ocean Rd,6,Cool Temperate,Winter,3,14.1,45,15,Avoid / High Risk Hazard,Cold wet winter weather; alpine snow and seasonal park closures
+Melbourne & Great Ocean Rd,6,Cool Temperate,Spring,4,19.8,60,50,Moderate / Shoulder,Warming spring conditions; weekend escapes into regional parks
+Hobart & Cradle Mtn,7,Southern Maritime,Summer,1,21.8,45,95,Optimal / Peak Season,Long daylight hours; prime conditions for wilderness and alpine hiking
+Hobart & Cradle Mtn,7,Southern Maritime,Autumn,2,17.5,50,45,Moderate / Shoulder,Crisp calm days; autumn foliage camping
+Hobart & Cradle Mtn,7,Southern Maritime,Winter,3,12.0,52,5,Avoid / High Risk Hazard,Near-freezing alpine conditions; frost and snow on high ground
+Hobart & Cradle Mtn,7,Southern Maritime,Spring,4,17.0,58,40,Moderate / Shoulder,Variable maritime weather; spring alpine blooms

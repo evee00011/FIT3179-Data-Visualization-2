@@ -1,0 +1,167 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Urban Escapes vs. Wilderness Isolation: Where Australians Camp",
+    "subtitle": [
+      "Examining whether campers cluster near capital cities (<100 km) or seek off-grid wilderness isolation.",
+      "Filter by territory or tariff tier to examine infrastructure distribution."
+    ],
+    "anchor": "start",
+    "fontSize": 15,
+    "subtitleFontSize": 11,
+    "subtitleColor": "#64748b",
+    "subtitleFontStyle": "italic"
+  },
+  "width": 760,
+  "height": 500,
+  "projection": {
+    "type": "equirectangular",
+    "center": [133.7751, -27.5],
+    "scale": 700
+  },
+  "params": [
+    {
+      "name": "state_filter",
+      "value": "All",
+      "bind": {
+        "input": "select",
+        "options": ["All", "NSW", "VIC", "QLD", "WA", "SA", "TAS", "NT"],
+        "labels": ["All Regions", "New South Wales", "Victoria", "Queensland", "Western Australia", "South Australia", "Tasmania", "Northern Territory"],
+        "name": "Focus Area: "
+      }
+    },
+    {
+      "name": "fee_filter",
+      "value": "All",
+      "bind": {
+        "input": "select",
+        "options": ["All", "Free Bushcamp ($0)", "Commercial Park ($25–$50+)"],
+        "labels": ["All Campsites", "Free Bushcamps ($0)", "Paid Commercial Parks ($25–$50+)"],
+        "name": "Tariff Class: "
+      }
+    }
+  ],
+  "layer": [
+    {
+      "description": "Base Australia Outline Map",
+      "data": {
+        "url": "https://raw.githubusercontent.com/tonywr71/GeoJson-Data/master/australian-states.json",
+        "format": {"type": "json", "property": "features"}
+      },
+      "mark": {
+        "type": "geoshape",
+        "fill": "#f8fafc",
+        "stroke": "#cbd5e1",
+        "strokeWidth": 0.8
+      }
+    },
+    {
+      "description": "100 km Urban Buffer Zone around Capitals",
+      "data": {
+        "url": "../data/major_cities.csv"
+      },
+      "mark": {
+        "type": "circle",
+        "color": "#94a3b8",
+        "opacity": 0.18,
+        "size": 3200
+      },
+      "encoding": {
+        "longitude": {"field": "lon", "type": "quantitative"},
+        "latitude": {"field": "lat", "type": "quantitative"}
+      }
+    },
+    {
+      "description": "Campsite Points",
+      "data": {
+        "url": "../data/campsites_price_facilities.csv"
+      },
+      "transform": [
+        {
+          "filter": "state_filter === 'All' || datum.state === state_filter"
+        },
+        {
+          "filter": "fee_filter === 'All' || datum.fee_tier === fee_filter"
+        }
+      ],
+      "mark": {
+        "type": "circle",
+        "opacity": 0.7,
+        "stroke": "#0f172a",
+        "strokeWidth": 0.5
+      },
+      "encoding": {
+        "longitude": {"field": "lon", "type": "quantitative"},
+        "latitude": {"field": "lat", "type": "quantitative"},
+        "size": {
+          "field": "facility_score",
+          "type": "quantitative",
+          "scale": {"domain": [0, 5], "range": [18, 220]},
+          "legend": {"title": "Facilities (0-5)", "orient": "bottom-left"}
+        },
+        "color": {
+          "field": "fee_tier",
+          "type": "nominal",
+          "scale": {
+            "domain": ["Free Bushcamp ($0)", "Commercial Park ($25–$50+)"],
+            "range": ["#16a34a", "#e11d48"]
+          },
+          "legend": {"title": "Campground Type", "orient": "bottom-right"}
+        },
+        "tooltip": [
+          {"field": "name", "type": "nominal", "title": "Campground"},
+          {"field": "state", "type": "nominal", "title": "State"},
+          {"field": "fee_tier", "type": "nominal", "title": "Tariff"},
+          {"field": "facility_score", "type": "quantitative", "title": "Facility Score"},
+          {"field": "amenities", "type": "nominal", "title": "Included Amenities"}
+        ]
+      }
+    },
+    {
+      "description": "Major Capital City Markers",
+      "data": {
+        "url": "../data/major_cities.csv"
+      },
+      "mark": {
+        "type": "point",
+        "shape": "diamond",
+        "size": 110,
+        "fill": "#1e293b",
+        "stroke": "#ffffff",
+        "strokeWidth": 1.5
+      },
+      "encoding": {
+        "longitude": {"field": "lon", "type": "quantitative"},
+        "latitude": {"field": "lat", "type": "quantitative"},
+        "tooltip": [
+          {"field": "city", "type": "nominal", "title": "Capital City"},
+          {"field": "summer_temp", "type": "quantitative", "title": "Summer Avg (°C)"},
+          {"field": "winter_temp", "type": "quantitative", "title": "Winter Avg (°C)"},
+          {"field": "peak_season", "type": "nominal", "title": "Peak Camping Window"},
+          {"field": "camping_driver", "type": "nominal", "title": "Why Campers Travel"}
+        ]
+      }
+    },
+    {
+      "description": "City Label Text",
+      "data": {
+        "url": "../data/major_cities.csv"
+      },
+      "mark": {
+        "type": "text",
+        "fontWeight": "bold",
+        "fontSize": 11,
+        "dy": -14,
+        "color": "#0f172a"
+      },
+      "encoding": {
+        "longitude": {"field": "lon", "type": "quantitative"},
+        "latitude": {"field": "lat", "type": "quantitative"},
+        "text": {"field": "city", "type": "nominal"}
+      }
+    }
+  ],
+  "config": {
+    "view": {"stroke": null}
+  }
+}

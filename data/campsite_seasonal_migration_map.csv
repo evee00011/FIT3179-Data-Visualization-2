@@ -1,0 +1,41 @@
+region,state,lon,lat,season,avg_day_temp_c,rainfall_mm,camper_preference_pct,suitability_tier,why_they_camp_here
+Darwin & Kakadu,NT,130.8456,-12.4634,Summer,32.2,425,5,Avoid: Monsoonal Inundation,Monsoonal wet season; river flooding; unsealed park tracks cut off
+Darwin & Kakadu,NT,130.8456,-12.4634,Autumn,32.0,105,30,Moderate / Shoulder,Floodwaters receding; waterfalls accessible; shoulder season touring
+Darwin & Kakadu,NT,130.8456,-12.4634,Winter,30.6,3,95,Optimal / Peak Season,Prime dry season; warm sunny days; ideal escape from southern cold
+Darwin & Kakadu,NT,130.8456,-12.4634,Spring,33.1,70,15,Low / Poor Weather,Pre-monsoon build-up; oppressive heat and severe storm activity
+Cairns & Daintree,QLD,145.7781,-16.9186,Summer,31.4,390,10,Avoid: Monsoonal Inundation,Cyclone alerts; heavy tropical rainfall and marine stingers
+Cairns & Daintree,QLD,145.7781,-16.9186,Autumn,29.2,195,40,Moderate / Shoulder,Trade winds reduce humidity; green rainforest conditions
+Cairns & Daintree,QLD,145.7781,-16.9186,Winter,26.0,35,90,Optimal / Peak Season,Mild tropical winter; dry weather for reef and tableland camping
+Cairns & Daintree,QLD,145.7781,-16.9186,Spring,29.5,45,50,Moderate / Shoulder,Pleasant weather prior to summer wet season
+Kimberley & Broome,WA,122.2304,-17.9614,Summer,34.3,210,10,Avoid: Monsoonal Inundation,Wet season heat and cyclones; Gibb River Road inaccessible
+Kimberley & Broome,WA,122.2304,-17.9614,Autumn,33.8,40,45,Moderate / Shoulder,Opening of 4WD gorges; roaring waterfalls
+Kimberley & Broome,WA,122.2304,-17.9614,Winter,29.2,2,95,Optimal / Peak Season,Flawless dry season days; prime Gibb River Road touring
+Kimberley & Broome,WA,122.2304,-17.9614,Spring,33.0,15,35,Moderate / Shoulder,Warming conditions before monsoons arrive
+Red Centre & Uluru,NT,131.0369,-25.3444,Summer,38.4,35,10,Avoid: Extreme Heat (>38°C),Dangerous desert heat; flies; heat exhaustion warnings
+Red Centre & Uluru,NT,131.0369,-25.3444,Autumn,28.2,18,65,Moderate / Shoulder,Mild autumn conditions; stable sunny outback touring
+Red Centre & Uluru,NT,131.0369,-25.3444,Winter,20.0,12,85,Optimal / Peak Season,Crisp clear desert days and cold starry campfire nights
+Red Centre & Uluru,NT,131.0369,-25.3444,Spring,30.8,15,55,Moderate / Shoulder,Spring desert blooms; warm conditions before severe summer heat
+Brisbane & Moreton Bay,QLD,153.0251,-27.4698,Summer,30.2,140,60,Moderate / Shoulder,Coastal surf beaches; warm humid ocean camping
+Brisbane & Moreton Bay,QLD,153.0251,-27.4698,Autumn,27.1,85,80,Optimal / Peak Season,Mild temperatures; low rainfall; peak Easter family camping
+Brisbane & Moreton Bay,QLD,153.0251,-27.4698,Winter,22.0,40,70,Optimal / Peak Season,Pleasant winter sun; major destination for southern nomads
+Brisbane & Moreton Bay,QLD,153.0251,-27.4698,Spring,26.5,60,65,Moderate / Shoulder,Warm spring beach weather before summer thunderstorms
+Sydney & South Coast,NSW,150.8000,-34.5000,Summer,26.5,100,85,Optimal / Peak Season,Peak school holiday camping; beach and coastal national parks
+Sydney & South Coast,NSW,150.8000,-34.5000,Autumn,22.8,115,65,Moderate / Shoulder,Comfortable conditions for Blue Mountains and coastal touring
+Sydney & South Coast,NSW,150.8000,-34.5000,Winter,17.2,70,25,Low / Cold Weather,Cold coastal nights and winter rain fronts
+Sydney & South Coast,NSW,150.8000,-34.5000,Spring,22.1,75,60,Moderate / Shoulder,Spring wildflower season; mild hiking weather
+Melbourne & Great Ocean Rd,VIC,143.8000,-38.6000,Summer,26.0,50,90,Optimal / Peak Season,Warmest weather; beach and Great Ocean Road touring peak
+Melbourne & Great Ocean Rd,VIC,143.8000,-38.6000,Autumn,20.5,55,60,Moderate / Shoulder,Stable autumn days; foliage camping in High Country
+Melbourne & Great Ocean Rd,VIC,143.8000,-38.6000,Winter,14.1,45,15,Avoid: Cold Rain & Alpine Frost,Cold wet winter weather; alpine snow and seasonal park closures
+Melbourne & Great Ocean Rd,VIC,143.8000,-38.6000,Spring,19.8,60,50,Moderate / Shoulder,Warming spring conditions; weekend escapes into regional parks
+Hobart & Cradle Mountain,TAS,146.5000,-42.0000,Summer,21.8,45,95,Optimal / Peak Season,Long daylight hours; prime conditions for wilderness & alpine hiking
+Hobart & Cradle Mountain,TAS,146.5000,-42.0000,Autumn,17.5,50,45,Moderate / Shoulder,Crisp calm days; autumn foliage camping
+Hobart & Cradle Mountain,TAS,146.5000,-42.0000,Winter,12.0,52,5,Avoid: Cold Rain & Alpine Frost,Sub-zero alpine frost; snow blankets high ground; off-grid freeze
+Hobart & Cradle Mountain,TAS,146.5000,-42.0000,Spring,17.0,58,40,Moderate / Shoulder,Variable brisk maritime weather; spring alpine blooms
+Adelaide & Eyre Peninsula,SA,136.0000,-34.0000,Summer,29.6,20,85,Optimal / Peak Season,Coastal getaways on Yorke and Eyre Peninsulas; beach camps
+Adelaide & Eyre Peninsula,SA,136.0000,-34.0000,Autumn,22.5,38,75,Optimal / Peak Season,Pleasant touring weather; Barossa and Flinders Ranges
+Adelaide & Eyre Peninsula,SA,136.0000,-34.0000,Winter,15.4,65,20,Low / Cold Weather,Cold wet winter fronts; low camping participation
+Adelaide & Eyre Peninsula,SA,136.0000,-34.0000,Spring,22.0,42,65,Moderate / Shoulder,Green hills and mild desert outback conditions
+Southwest & Margaret River,WA,115.5000,-33.8000,Summer,30.5,15,85,Optimal / Peak Season,Summer coastal breezes; forest shade and beach retreats
+Southwest & Margaret River,WA,115.5000,-33.8000,Autumn,25.0,45,80,Optimal / Peak Season,Calm mild weather; prime wine region and national park camping
+Southwest & Margaret River,WA,115.5000,-33.8000,Winter,17.5,140,20,Low / Cold Weather,High rainfall winter; campers migrate north towards Ningaloo
+Southwest & Margaret River,WA,115.5000,-33.8000,Spring,22.5,50,75,Optimal / Peak Season,Wildflower blooming season across regional WA parks

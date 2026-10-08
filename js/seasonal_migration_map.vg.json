@@ -1,0 +1,147 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "The Great Australian Sun-Chaser Migration: When & Where Campers Prefer to Camp",
+    "subtitle": [
+      "Bubble size denotes camper preference share (%); colour highlights climate suitability and travel drivers.",
+      "Toggle between Winter and Summer to see the continental migration flip between the Tropical North and Temperate South."
+    ],
+    "anchor": "start",
+    "fontSize": 15,
+    "subtitleFontSize": 11,
+    "subtitleColor": "#64748b",
+    "subtitleFontStyle": "italic"
+  },
+  "width": 750,
+  "height": 500,
+  "projection": {
+    "type": "equirectangular",
+    "center": [133.7751, -27.5],
+    "scale": 700
+  },
+  "params": [
+    {
+      "name": "season_filter",
+      "value": "Winter",
+      "bind": {
+        "input": "select",
+        "options": ["Summer", "Autumn", "Winter", "Spring"],
+        "labels": ["Summer (Dec–Feb)", "Autumn (Mar–May)", "Winter (Jun–Aug)", "Spring (Sep–Nov)"],
+        "name": "Select Season: "
+      }
+    }
+  ],
+  "layer": [
+    {
+      "description": "Base Australia Outline Map",
+      "data": {
+        "url": "https://raw.githubusercontent.com/tonywr71/GeoJson-Data/master/australian-states.json",
+        "format": {"type": "json", "property": "features"}
+      },
+      "mark": {
+        "type": "geoshape",
+        "fill": "#f8fafc",
+        "stroke": "#cbd5e1",
+        "strokeWidth": 0.8
+      }
+    },
+    {
+      "description": "Regional Camping Demand & Climate Bubbles",
+      "data": {
+        "url": "../data/campsite_seasonal_migration_map.csv"
+      },
+      "transform": [
+        {
+          "filter": "datum.season === season_filter"
+        }
+      ],
+      "mark": {
+        "type": "circle",
+        "opacity": 0.82,
+        "stroke": "#0f172a",
+        "strokeWidth": 1.2
+      },
+      "encoding": {
+        "longitude": {"field": "lon", "type": "quantitative"},
+        "latitude": {"field": "lat", "type": "quantitative"},
+        "size": {
+          "field": "camper_preference_pct",
+          "type": "quantitative",
+          "scale": {
+            "domain": [5, 100],
+            "range": [80, 1100]
+          },
+          "legend": {
+            "title": "Camper Preference Share (%)",
+            "values": [10, 50, 95],
+            "orient": "bottom-left"
+          }
+        },
+        "color": {
+          "field": "suitability_tier",
+          "type": "nominal",
+          "scale": {
+            "domain": [
+              "Optimal / Peak Season",
+              "Moderate / Shoulder",
+              "Low / Cold Weather",
+              "Low / Poor Weather",
+              "Avoid: Monsoonal Inundation",
+              "Avoid: Extreme Heat (>38°C)",
+              "Avoid: Cold Rain & Alpine Frost"
+            ],
+            "range": [
+              "#15803d",
+              "#38bdf8",
+              "#94a3b8",
+              "#94a3b8",
+              "#0284c7",
+              "#dc2626",
+              "#475569"
+            ]
+          },
+          "legend": {
+            "title": "Climate Condition / Driver",
+            "orient": "bottom-right",
+            "symbolSize": 85
+          }
+        },
+        "tooltip": [
+          {"field": "region", "type": "nominal", "title": "Destination Hub"},
+          {"field": "season", "type": "nominal", "title": "Selected Season"},
+          {"field": "camper_preference_pct", "type": "quantitative", "title": "Preference Share (%)"},
+          {"field": "suitability_tier", "type": "nominal", "title": "Climate Rating"},
+          {"field": "avg_day_temp_c", "type": "quantitative", "title": "Avg Day Temp (°C)"},
+          {"field": "rainfall_mm", "type": "quantitative", "title": "Seasonal Rainfall (mm)"},
+          {"field": "why_they_camp_here", "type": "nominal", "title": "Why They Choose / Avoid This Season"}
+        ]
+      }
+    },
+    {
+      "description": "Region Label Text",
+      "data": {
+        "url": "../data/campsite_seasonal_migration_map.csv"
+      },
+      "transform": [
+        {
+          "filter": "datum.season === season_filter"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "fontWeight": "bold",
+        "fontSize": 10.5,
+        "dy": -16,
+        "color": "#0f172a"
+      },
+      "encoding": {
+        "longitude": {"field": "lon", "type": "quantitative"},
+        "latitude": {"field": "lat", "type": "quantitative"},
+        "text": {"field": "region", "type": "nominal"}
+      }
+    }
+  ],
+  "config": {
+    "view": {"stroke": null}
+  }
+}

@@ -1,0 +1,33 @@
+city,lon,lat,state,season,avg_max_temp_c,avg_min_temp_c,rainfall_mm,suitability,camping_driver
+Darwin,130.8456,-12.4634,NT,Summer,32.0,25.1,425,Avoid,Monsoonal wet season; heavy downpours and flooded park roads
+Darwin,130.8456,-12.4634,NT,Autumn,32.0,24.0,105,Fair,Rains easing; waterfalls and national parks reopen
+Darwin,130.8456,-12.4634,NT,Winter,30.6,19.3,3,Peak,Prime dry season; warm sunny days; ideal for escaping southern cold
+Darwin,130.8456,-12.4634,NT,Spring,33.1,25.0,70,Fair,High humidity 'build-up' before the wet season starts
+Cairns,145.7781,-16.9186,QLD,Summer,31.7,24.0,390,Avoid,Cyclone season; heavy tropical downpours and marine stingers
+Cairns,145.7781,-16.9186,QLD,Autumn,29.2,21.5,195,Good,Trade winds reduce humidity; lush rainforest conditions
+Cairns,145.7781,-16.9186,QLD,Winter,26.0,17.2,35,Peak,Dry and warm winter sun; ideal reef and tablelands touring
+Cairns,145.7781,-16.9186,QLD,Spring,29.5,20.5,45,Good,Clear skies and comfortable water temperatures
+Brisbane,153.0251,-27.4698,QLD,Summer,30.4,21.6,140,Good,Subtropical beach and coastal holiday park getaways
+Brisbane,153.0251,-27.4698,QLD,Autumn,27.1,17.5,85,Peak,Mild temperatures and lower humidity; peak Easter camping
+Brisbane,153.0251,-27.4698,QLD,Winter,22.0,10.5,40,Good,Crisp clear winter days; popular winter base for grey nomads
+Brisbane,153.0251,-27.4698,QLD,Spring,26.5,15.8,60,Good,Warm spring weather in coastal and mountain national parks
+Sydney,151.2093,-33.8688,NSW,Summer,26.5,20.0,100,Peak,School holiday coastal surge; beach and lake camping
+Sydney,151.2093,-33.8688,NSW,Autumn,22.8,14.5,115,Good,Mild touring in Blue Mountains and South Coast
+Sydney,151.2093,-33.8688,NSW,Winter,17.2,8.6,70,Low,Cold coastal nights; reduced campground activity
+Sydney,151.2093,-33.8688,NSW,Spring,22.1,13.6,75,Good,Wildflower season and comfortable bushwalking weather
+Melbourne,144.9631,-37.8136,VIC,Summer,26.0,15.0,50,Peak,Warmest weather; beach and Great Ocean Road getaways
+Melbourne,144.9631,-37.8136,VIC,Autumn,20.5,11.0,55,Good,Stable autumn days; foliage camping in High Country
+Melbourne,144.9631,-37.8136,VIC,Winter,14.1,6.5,45,Avoid,Cold damp weather; sub-alpine frost and winter closures
+Melbourne,144.9631,-37.8136,VIC,Spring,19.8,9.8,60,Good,Warming spring; popular for Grampians and river camps
+Hobart,147.3272,-42.8821,TAS,Summer,21.8,12.0,45,Peak,Long daylight hours; prime wilderness hiking and coastal camps
+Hobart,147.3272,-42.8821,TAS,Autumn,17.5,8.8,50,Good,Crisp calm conditions and autumn foliage
+Hobart,147.3272,-42.8821,TAS,Winter,12.0,4.5,52,Avoid,Near-freezing alpine conditions; short days; off-grid freeze
+Hobart,147.3272,-42.8821,TAS,Spring,17.0,8.0,58,Fair,Variable maritime winds and refreshing spring blooms
+Adelaide,138.6007,-34.9285,SA,Summer,29.6,17.3,20,Peak,Coastal getaways on Yorke and Fleurieu Peninsulas
+Adelaide,138.6007,-34.9285,SA,Autumn,22.5,13.0,38,Peak,Pleasant touring weather; Barossa and Flinders Ranges
+Adelaide,138.6007,-34.9285,SA,Winter,15.4,7.6,65,Low,Cold wet winter fronts; low camping participation
+Adelaide,138.6007,-34.9285,SA,Spring,22.0,11.5,42,Good,Green hills and mild desert outback conditions
+Perth,115.8605,-31.9505,WA,Summer,31.5,18.0,15,Good,Coastal breeze camps; hot inland conditions
+Perth,115.8605,-31.9505,WA,Autumn,26.0,13.5,45,Peak,Calm warm weather; Margaret River touring
+Perth,115.8605,-31.9505,WA,Winter,18.5,8.5,120,Low,Southern wet season; campers travel north towards Ningaloo
+Perth,115.8605,-31.9505,WA,Spring,23.0,10.5,50,Peak,Wildflower blooming season across regional WA parks
