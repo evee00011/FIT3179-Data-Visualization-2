@@ -120,7 +120,7 @@
     {
       "description": "Region Label Text",
       "data": {
-        "url": "../data/campsite_seasonal_migration_map.csv"
+        "url": "data/campsite_seasonal_migration_map.csv"
       },
       "transform": [
         {
