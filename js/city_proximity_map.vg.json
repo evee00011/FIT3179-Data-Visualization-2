@@ -62,7 +62,7 @@
       },
       "mark": {
         "type": "circle",
-        "color": "#94a3b8",
+        "color": "#d3ce7c",
         "opacity": 0.18,
         "size": 3200
       },
@@ -152,7 +152,7 @@
         "fontWeight": "bold",
         "fontSize": 11,
         "dy": -14,
-        "color": "#0f172a"
+        "color": "#ee9105"
       },
       "encoding": {
         "longitude": {"field": "lon", "type": "quantitative"},
