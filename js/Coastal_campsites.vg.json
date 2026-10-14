@@ -1,10 +1,11 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "background": "transparent",
   "title": {
-    "text": "Coastal Gravitation of Australian Campsites vs. Outback Outliers",
+    "text": "Where Are Most Campsites Located?",
     "subtitle": [
-      "Spatial clustering of campgrounds along the coastal perimeter versus sparse remote interior sites",
-      "Source: OpenStreetMap Australia (OSM), extracted via Overpass Turbo (N = 9,930)"
+      "Dot density map: each dot represents a spatial cluster of 3 campsites.",
+      "Source: OpenStreetMap Australia (OSM), N = 9,930"
     ],
     "anchor": "start",
     "fontSize": 15,
@@ -21,119 +22,64 @@
   },
   "layer": [
     {
-      "description": "Base Landmass Polygons",
+      "description": "Base Australia map",
       "data": {
         "url": "https://raw.githubusercontent.com/tonywr71/GeoJson-Data/master/australian-states.json",
         "format": {"type": "json", "property": "features"}
       },
       "mark": {
         "type": "geoshape",
-        "fill": "#f1f5f9",
-        "stroke": "#94a3b8",
+        "fill": "#f5f2e6",
+        "stroke": "#afb7c2",
         "strokeWidth": 0.8
       }
     },
     {
-      "description": "Campsite Points",
+      "description": "Dot map (1 dot = 3 campsites)",
       "data": {
         "url": "data/campsites_coastal_distribution.csv"
       },
-      "params": [
-        {
-          "name": "type_select",
-          "select": {"type": "point", "fields": ["type"]},
-          "bind": {
-            "input": "select",
-            "options": [null, "Commercial / Resort", "Hardcore Bushcamp"],
-            "labels": ["All Styles", "Commercial / Resort Parks", "Hardcore Bushcamps"],
-            "name": "Camping Class: "
-          }
-        }
-      ],
       "transform": [
-        {"filter": {"param": "type_select"}}
+        {
+          "bin": {"step": 0.35},
+          "field": "lon",
+          "as": ["binned_lon", "binned_lon_end"]
+        },
+        {
+          "bin": {"step": 0.35},
+          "field": "lat",
+          "as": ["binned_lat", "binned_lat_end"]
+        },
+        {
+          "calculate": "(datum.binned_lon + datum.binned_lon_end) / 2",
+          "as": "center_lon"
+        },
+        {
+          "calculate": "(datum.binned_lat + datum.binned_lat_end) / 2",
+          "as": "center_lat"
+        },
+        {
+          "aggregate": [{"op": "count", "as": "campsite_count"}],
+          "groupby": ["center_lon", "center_lat"]
+        },
+        {
+          "filter": "datum.campsite_count >= 3"
+        }
       ],
       "mark": {
         "type": "circle",
-        "opacity": 0.55,
-        "size": 18
+        "opacity": 0.8,
+        "size": 22,
+        "color": "#7b2e01"
       },
       "encoding": {
-        "longitude": {"field": "lon", "type": "quantitative"},
-        "latitude": {"field": "lat", "type": "quantitative"},
-        "color": {
-          "field": "type",
-          "type": "nominal",
-          "scale": {
-            "domain": ["Commercial / Resort", "Hardcore Bushcamp"],
-            "range": ["#d97706", "#047857"]
-          },
-          "legend": {
-            "title": "Campsite Style",
-            "orient": "bottom-left",
-            "symbolSize": 60,
-            "labelFontSize": 11
-          }
-        },
+        "longitude": {"field": "center_lon", "type": "quantitative"},
+        "latitude": {"field": "center_lat", "type": "quantitative"},
         "tooltip": [
-          {"field": "name", "type": "nominal", "title": "Campsite Name"},
-          {"field": "type", "type": "nominal", "title": "Classification"},
-          {"field": "lat", "type": "quantitative", "title": "Latitude", "format": ".3f"},
-          {"field": "lon", "type": "quantitative", "title": "Longitude", "format": ".3f"}
+          {"field": "campsite_count", "type": "quantitative", "title": "Recorded Campsites in Zone"},
+          {"field": "center_lat", "type": "quantitative", "title": "Latitude", "format": ".2f"},
+          {"field": "center_lon", "type": "quantitative", "title": "Longitude", "format": ".2f"}
         ]
-      }
-    },
-    {
-      "description": "Outback Outlier Annotation Callout",
-      "data": {
-        "values": [
-          {
-            "lon": 133.88,
-            "lat": -23.70,
-            "label": "Central Outliers: Alice Springs & Red Centre",
-            "sub": "Isolated desert oasis cluster"
-          },
-          {
-            "lon": 138.60,
-            "lat": -31.50,
-            "label": "Flinders Ranges Corridor",
-            "sub": "Rugged outback bushcamps"
-          }
-        ]
-      },
-      "mark": {
-        "type": "text",
-        "fontSize": 11,
-        "fontWeight": "bold",
-        "color": "#7c2d12",
-        "align": "left",
-        "dx": 8,
-        "dy": -4
-      },
-      "encoding": {
-        "longitude": {"field": "lon", "type": "quantitative"},
-        "latitude": {"field": "lat", "type": "quantitative"},
-        "text": {"field": "label", "type": "nominal"}
-      }
-    },
-    {
-      "description": "Callout Marker Pin",
-      "data": {
-        "values": [
-          {"lon": 133.88, "lat": -23.70},
-          {"lon": 138.60, "lat": -31.50}
-        ]
-      },
-      "mark": {
-        "type": "point",
-        "shape": "cross",
-        "size": 70,
-        "stroke": "#7c2d12",
-        "strokeWidth": 2
-      },
-      "encoding": {
-        "longitude": {"field": "lon", "type": "quantitative"},
-        "latitude": {"field": "lat", "type": "quantitative"}
       }
     }
   ],
