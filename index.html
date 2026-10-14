@@ -5,94 +5,154 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>FIT3179 Data Visualisation 2</title>
 
-  <!-- Vega, Vega-Lite, and Vega-Embed Libraries -->
+  <!-- Vega & Vega-Lite CDNs -->
   <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
 
-  <!-- Google Fonts for Layout & Typography -->
+  <!-- Google Fonts & Styling -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
-
-  <!-- Link your custom stylesheet if you have one in the css folder -->
-  <!-- <link rel="stylesheet" href="css/style.css"> -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
 
   <style>
     body {
-      font-family: 'Open Sans', sans-serif;
-      background-color: #f8f9fa;
+      font-family: 'Roboto', sans-serif;
+      background-color: #f4f6f9;
       color: #333333;
       margin: 0;
-      padding: 20px;
+      padding: 30px 15px;
     }
 
-    .container {
-      max-width: 1000px;
+    .dashboard-container {
+      max-width: 1200px;
       margin: 0 auto;
-      background: #ffffff;
-      padding: 30px;
-      border-radius: 8px;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
     }
 
-    h1, h2 {
-      color: #1a1a1a;
+    header {
       text-align: center;
-    }
-
-    .description {
-      margin-bottom: 25px;
-      line-height: 1.6;
-      text-align: center;
-    }
-
-    .vis-section {
       margin-bottom: 40px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
     }
 
-    .vis-container {
+    h1 {
+      font-size: 2.2rem;
+      margin-bottom: 8px;
+      color: #1f2937;
+    }
+
+    p.subtitle {
+      font-size: 1.1rem;
+      color: #4b5563;
+      margin-top: 0;
+    }
+
+    .grid-layout {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 30px;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 10px;
+      padding: 24px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    }
+
+    .card h2 {
+      font-size: 1.25rem;
+      margin-top: 0;
+      margin-bottom: 15px;
+      color: #111827;
+      border-bottom: 2px solid #e5e7eb;
+      padding-bottom: 8px;
+    }
+
+    .chart-container {
       width: 100%;
       display: flex;
       justify-content: center;
+      overflow-x: auto;
     }
   </style>
 </head>
 <body>
 
-  <div class="container">
+  <div class="dashboard-container">
     <header>
-      <h1>Campsite & Travel Visualisation</h1>
-      <p class="description">
-        An interactive exploration of Australian campsite migration, seasonal preferences, and facilities.
-      </p>
+      <h1>Australian Campsites & Travel Dynamics</h1>
+      <p class="subtitle">Data Visualisation 2 Dashboard</p>
     </header>
 
-    <!-- Visualisation 1: Coastal Campsites / Map -->
-    <section class="vis-section">
-      <h2>Coastal Campsites</h2>
-      <div id="vis-coastal" class="vis-container"></div>
-    </section>
+    <main class="grid-layout">
+      <!-- 1. Coastal Campsites -->
+      <section class="card">
+        <h2>Coastal Campsites</h2>
+        <div id="vis-coastal" class="chart-container"></div>
+      </section>
 
-    <!-- Visualisation 2: Butterfly Chart -->
-    <section class="vis-section">
-      <h2>Demographics / Comparison</h2>
-      <div id="vis-butterfly" class="vis-container"></div>
-    </section>
+      <!-- 2. City Proximity Map -->
+      <section class="card">
+        <h2>City Proximity Map</h2>
+        <div id="vis-city-proximity" class="chart-container"></div>
+      </section>
 
-    <!-- Visualisation 3: Facilities Map -->
-    <section class="vis-section">
-      <h2>Facilities Distribution</h2>
-      <div id="vis-facilities" class="vis-container"></div>
-    </section>
+      <!-- 3. Facilities Map -->
+      <section class="card">
+        <h2>Facilities Map</h2>
+        <div id="vis-facilities" class="chart-container"></div>
+      </section>
 
-    <!-- Add additional <div> containers for your other charts as needed -->
+      <!-- 4. Flow Map -->
+      <section class="card">
+        <h2>Travel Flow Map</h2>
+        <div id="vis-flow-map" class="chart-container"></div>
+      </section>
+
+      <!-- 5. Seasonal Migration Map -->
+      <section class="card">
+        <h2>Seasonal Migration Map</h2>
+        <div id="vis-seasonal-migration" class="chart-container"></div>
+      </section>
+
+      <!-- 6. Climate and Camp -->
+      <section class="card">
+        <h2>Climate and Camping Trends</h2>
+        <div id="vis-climate" class="chart-container"></div>
+      </section>
+
+      <!-- 7. Butterfly Chart -->
+      <section class="card">
+        <h2>Butterfly Chart Comparison</h2>
+        <div id="vis-butterfly" class="chart-container"></div>
+      </section>
+
+      <!-- 8. Lollipop Chart -->
+      <section class="card">
+        <h2>Price & Facilities (Lollipop Chart)</h2>
+        <div id="vis-lollipop" class="chart-container"></div>
+      </section>
+
+      <!-- 9. Population Pyramid -->
+      <section class="card">
+        <h2>Demographic Distribution (Population Pyramid)</h2>
+        <div id="vis-pyramid" class="chart-container"></div>
+      </section>
+
+      <!-- 10. Sankey Accommodation -->
+      <section class="card">
+        <h2>Sankey Accommodation Flows</h2>
+        <div id="vis-sankey" class="chart-container"></div>
+      </section>
+
+      <!-- 11. Solo vs Family Accommodation -->
+      <section class="card">
+        <h2>Solo vs Family Accommodation</h2>
+        <div id="vis-solo-family" class="chart-container"></div>
+      </section>
+    </main>
   </div>
 
-  <!-- Embed Visualisation Script -->
   <script src="js/vega_lite_vis.js"></script>
 </body>
 </html>
