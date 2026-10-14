@@ -74,48 +74,43 @@
         {
           "calculate": "season_select === 'Summer (Dec - Feb)' ? datum.summer_status : datum.winter_status",
           "as": "active_status"
+        },
+        {
+          "calculate": "datum.active_hazard === 'Total Fire Ban & Wildfire Risk' || datum.active_hazard === 'Extreme Heat (>42°C) & Flash Aridity' ? 'Fire Bans & Extreme Heat' : datum.active_hazard === 'Monsoon Flooding & River Swells' || datum.active_hazard === 'Severe Summer Storms & Humid Swells' ? 'Monsoon Flooding & Storms' : datum.active_hazard === 'Cold & Rainy / Frost Risk' ? 'Cold, Rain & Frost' : 'Optimal / Favourable Conditions'",
+          "as": "hazard_category"
         }
       ],
       "mark": {
         "type": "circle",
-        "size": 16,
+        "size": 18,
         "opacity": 0.65
       },
       "encoding": {
         "longitude": {"field": "lon", "type": "quantitative"},
         "latitude": {"field": "lat", "type": "quantitative"},
         "color": {
-          "field": "active_hazard",
+          "field": "hazard_category",
           "type": "nominal",
           "scale": {
             "domain": [
-              "Total Fire Ban & Wildfire Risk",
-              "Monsoon Flooding & River Swells",
-              "Extreme Heat (>42°C) & Flash Aridity",
-              "Severe Summer Storms & Humid Swells",
-              "Optimal Dry Season",
-              "Optimal Touring",
-              "Mild & Sunny",
-              "Cold & Rainy / Frost Risk"
+              "Fire Bans & Extreme Heat",
+              "Monsoon Flooding & Storms",
+              "Cold, Rain & Frost",
+              "Optimal / Favourable Conditions"
             ],
             "range": [
               "#dc2626",
               "#0284c7",
-              "#ea580c",
-              "#d97706",
-              "#16a34a",
-              "#059669",
-              "#65a30d",
-              "#64748b"
+              "#64748b",
+              "#16a34a"
             ]
           },
           "legend": {
-            "title": "Observed Climate Risk",
+            "title": "Seasonal Risk Category",
             "orient": "bottom-left",
-            "symbolSize": 45,
-            "labelFontSize": 10,
-            "titleFontSize": 11,
-            "columns": 2,
+            "symbolSize": 50,
+            "labelFontSize": 11,
+            "titleFontSize": 12,
             "offset": 5
           }
         },
@@ -124,7 +119,8 @@
           {"field": "state", "type": "nominal", "title": "State"},
           {"field": "climate_zone", "type": "nominal", "title": "Climate Zone"},
           {"field": "campsite_type", "type": "nominal", "title": "Class"},
-          {"field": "active_hazard", "type": "nominal", "title": "Current Hazard"},
+          {"field": "hazard_category", "type": "nominal", "title": "Risk Category"},
+          {"field": "active_hazard", "type": "nominal", "title": "Detailed Hazard"},
           {"field": "active_status", "type": "nominal", "title": "Access Status"}
         ]
       }
