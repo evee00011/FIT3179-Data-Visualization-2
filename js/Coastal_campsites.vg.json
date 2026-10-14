@@ -36,7 +36,7 @@
     {
       "description": "Campsite Points",
       "data": {
-        "url": "../datasets/campsites_coastal_distribution.csv"
+        "url": "data/campsites_coastal_distribution.csv"
       },
       "params": [
         {
