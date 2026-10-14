@@ -11,11 +11,12 @@
 
 
 body {
-  font-family: 'Roboto', sans-serif;
-  background-color: var(--bg-sand);
-  color: #333333;
   margin: 0;
-  padding: 30px 15px;
+  padding: 0 0 60px 0;
+  background-color: var(--bg-sand);
+  font-family: 'Roboto', sans-serif;
+  color: var(--text-main);
+  -webkit-font-smoothing: antialiased;
 }
 
 .dashboard-container {
@@ -51,6 +52,7 @@ h2{
 /* Full-bleed banner background */
 .hero-header {
   position: relative;
+  margin: 0 auto;
   width: 100%;
   min-height: 500px;
   display: flex;
@@ -121,4 +123,12 @@ h2{
 .hero-author .divider {
   margin: 0 8px;
   opacity: 0.6;
+}
+
+.dashboard-container {
+  max-width: 1200px;         /* Caps max width so charts don't overstretch on wide monitors */
+  margin: 0 auto;            /* Centers the entire dashboard */
+  padding-left: 100px;        /* Left page margin */
+  padding-right: 100px;       /* Right page margin */
+  box-sizing: border-box;    /* Ensures padding doesn't cause horizontal scrollbars */
 }
