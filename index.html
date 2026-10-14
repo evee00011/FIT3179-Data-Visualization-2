@@ -10,22 +10,33 @@
   <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
 
-  <!-- Google Fonts -->
+  <!-- Google Fonts: Roboto & Playfair Display -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
 
   <!-- External Stylesheet -->
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-  <div class="dashboard-container">
-    <header>
-      <h1>Australian Campsites & Travel Dynamics</h1>
-      <p class="subtitle">by Esha Veerayya. 35395117</p>
-    </header>
+  <!-- 1. Full-Bleed Editorial Hero Header -->
+  <header class="hero-header">
+    <div class="hero-card">
+      <h1 class="hero-title">Australian Campsites &amp; Travel Dynamics</h1>
+      <p class="hero-desc">
+        There are countless ways to camp in Australia — plan your trip well and you'll be rewarded with sun-soaked coastlines and staggering Outback landscapes, from city escapes to the country's most isolated national parks.
+      </p>
+      <div class="hero-author">
+        <span>By <strong>Esha Veerayya</strong></span>
+        <span class="divider">•</span>
+        <span>Student ID: 35395117</span>
+      </div>
+    </div>
+  </header>
 
+  <!-- 2. Dashboard Content -->
+  <div class="dashboard-container">
     <main class="grid-layout">
       <!-- 1. Coastal Campsites -->
       <section class="card">
@@ -39,7 +50,7 @@
         <div id="vis-city-proximity" class="chart-container"></div>
       </section>
 
-      <!-- 3. Travel Flow Map -->
+      <!-- 3. Flow Map -->
       <section class="card">
         <h2>Travel Flow Map</h2>
         <div id="vis-flow-map" class="chart-container"></div>
@@ -65,7 +76,7 @@
 
       <!-- 7. Lollipop Chart -->
       <section class="card">
-        <h2>Price & Facilities (Lollipop Chart)</h2>
+        <h2>Price &amp; Facilities (Lollipop Chart)</h2>
         <div id="vis-lollipop" class="chart-container"></div>
       </section>
 

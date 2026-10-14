@@ -56,3 +56,77 @@ p.subtitle {
   justify-content: center;
   overflow-x: auto;
 }
+/* Full-bleed banner background */
+.hero-header {
+  position: relative;
+  width: 100%;
+  min-height: 1000px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  box-sizing: border-box;
+  margin-bottom: 40px;
+  background: 
+    linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.35)),
+    url('https://i.natgeofe.com/n/b8604459-e40a-41bb-89e5-dfd033675f90/AusOutbackaerial1300683277_3x4.jpg') center/cover no-repeat;
+}
+
+/* Centred dark translucent card */
+.hero-card {
+  max-width: 720px;
+  width: 100%;
+  background: rgba(18, 14, 11, 0.82);
+  backdrop-filter: blur(4px);
+  border-radius: 4px;
+  padding: 42px 36px 36px;
+  text-align: center;
+  color: #ffffff;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
+}
+
+.hero-tag {
+  display: inline-block;
+  padding: 4px 14px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 0.72rem;
+  letter-spacing: 2.2px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #f3f4f6;
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  margin-bottom: 20px;
+}
+
+.hero-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 2.6rem;
+  font-weight: 700;
+  line-height: 1.18;
+  margin: 0 0 16px 0;
+  color: #ffffff;
+}
+
+.hero-desc {
+  font-family: 'Roboto', sans-serif;
+  font-size: 0.98rem;
+  line-height: 1.6;
+  color: #e5e7eb;
+  font-weight: 300;
+  margin: 0 auto 20px;
+  max-width: 620px;
+}
+
+.hero-author {
+  font-family: 'Roboto', sans-serif;
+  font-size: 0.85rem;
+  color: #d1d5db;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  padding-top: 14px;
+  margin-top: 10px;
+}
+
+.hero-author .divider {
+  margin: 0 8px;
+  opacity: 0.6;
+}
