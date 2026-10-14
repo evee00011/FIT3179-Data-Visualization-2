@@ -40,7 +40,8 @@
       },
       "mark": {
         "type": "rule",
-        "opacity": 0.75,
+        "color": "#0284c7",
+        "opacity": 0.55,
         "strokeCap": "round"
       },
       "encoding": {
@@ -55,22 +56,7 @@
             "type": "linear",
             "range": [1.5, 9]
           },
-          "legend": {
-            "title": "Interstate Share (%)",
-            "orient": "bottom-left"
-          }
-        },
-        "color": {
-          "field": "origin",
-          "type": "nominal",
-          "scale": {
-            "domain": ["VIC", "NSW", "QLD", "SA", "TAS", "NT", "ACT"],
-            "range": ["#2563eb", "#0284c7", "#0d9488", "#16a34a", "#e11d48", "#d97706", "#9333ea"]
-          },
-          "legend": {
-            "title": "Origin State",
-            "orient": "bottom-right"
-          }
+          "legend": null
         },
         "tooltip": [
           {"field": "origin", "type": "nominal", "title": "Origin State"},
@@ -81,23 +67,67 @@
       }
     },
     {
+      "description": "Directional Flow Arrowheads",
+      "data": {
+        "values": [
+          {"origin": "VIC", "lon": 129.83, "lat": -34.76, "angle": 281.4, "people": 64, "camper_share": 7.2},
+          {"origin": "NSW", "lon": 132.83, "lat": -32.87, "angle": 273.1, "people": 38, "camper_share": 4.3},
+          {"origin": "QLD", "lon": 133.70, "lat": -29.80, "angle": 263.1, "people": 34, "camper_share": 3.8},
+          {"origin": "SA",  "lon": 126.78, "lat": -33.38, "angle": 277.5, "people": 24, "camper_share": 2.7},
+          {"origin": "TAS", "lon": 130.97, "lat": -37.20, "angle": 289.2, "people": 8,  "camper_share": 0.9},
+          {"origin": "NT",  "lon": 123.05, "lat": -22.59, "angle": 217.5, "people": 8,  "camper_share": 0.9},
+          {"origin": "ACT", "lon": 131.83, "lat": -33.55, "angle": 275.7, "people": 2,  "camper_share": 0.2}
+        ]
+      },
+      "mark": {
+        "type": "point",
+        "shape": "triangle",
+        "filled": true,
+        "color": "#0284c7",
+        "stroke": "#ffffff",
+        "strokeWidth": 0.8
+      },
+      "encoding": {
+        "longitude": {"field": "lon", "type": "quantitative"},
+        "latitude": {"field": "lat", "type": "quantitative"},
+        "angle": {
+          "field": "angle",
+          "type": "quantitative",
+          "scale": null
+        },
+        "size": {
+          "field": "people",
+          "type": "quantitative",
+          "scale": {
+            "type": "linear",
+            "range": [50, 420]
+          },
+          "legend": {
+            "title": "Campers (Sampled n)",
+            "orient": "bottom-left"
+          }
+        },
+        "tooltip": [
+          {"field": "origin", "type": "nominal", "title": "Origin State"},
+          {"field": "people", "type": "quantitative", "title": "Campers (n)", "format": ","},
+          {"field": "camper_share", "type": "quantitative", "title": "Share of Campers (%)", "format": ".1f"}
+        ]
+      }
+    },
+    {
       "description": "Origin State Nodes",
       "data": {
         "url": "datasets/scripts/campers_to_WA.csv"
       },
       "mark": {
         "type": "circle",
-        "size": 60,
+        "size": 55,
+        "color": "#0284c7",
         "opacity": 0.9
       },
       "encoding": {
         "longitude": {"field": "o_lon", "type": "quantitative"},
-        "latitude": {"field": "o_lat", "type": "quantitative"},
-        "color": {
-          "field": "origin",
-          "type": "nominal",
-          "legend": null
-        }
+        "latitude": {"field": "o_lat", "type": "quantitative"}
       }
     },
     {
