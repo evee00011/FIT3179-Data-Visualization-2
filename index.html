@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FIT3179 Data Visualisation 2</title>
+
+  <!-- Vega, Vega-Lite, and Vega-Embed Libraries -->
+  <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+
+  <!-- Google Fonts for Layout & Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Link your custom stylesheet if you have one in the css folder -->
+  <!-- <link rel="stylesheet" href="css/style.css"> -->
+
+  <style>
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background-color: #f8f9fa;
+      color: #333333;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      background: #ffffff;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    h1, h2 {
+      color: #1a1a1a;
+      text-align: center;
+    }
+
+    .description {
+      margin-bottom: 25px;
+      line-height: 1.6;
+      text-align: center;
+    }
+
+    .vis-section {
+      margin-bottom: 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .vis-container {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <header>
+      <h1>Campsite & Travel Visualisation</h1>
+      <p class="description">
+        An interactive exploration of Australian campsite migration, seasonal preferences, and facilities.
+      </p>
+    </header>
+
+    <!-- Visualisation 1: Coastal Campsites / Map -->
+    <section class="vis-section">
+      <h2>Coastal Campsites</h2>
+      <div id="vis-coastal" class="vis-container"></div>
+    </section>
+
+    <!-- Visualisation 2: Butterfly Chart -->
+    <section class="vis-section">
+      <h2>Demographics / Comparison</h2>
+      <div id="vis-butterfly" class="vis-container"></div>
+    </section>
+
+    <!-- Visualisation 3: Facilities Map -->
+    <section class="vis-section">
+      <h2>Facilities Distribution</h2>
+      <div id="vis-facilities" class="vis-container"></div>
+    </section>
+
+    <!-- Add additional <div> containers for your other charts as needed -->
+  </div>
+
+  <!-- Embed Visualisation Script -->
+  <script src="js/vega_lite_vis.js"></script>
+</body>
+</html>
