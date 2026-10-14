@@ -1,6 +1,18 @@
+:root {
+ 
+  --bg-sand: #fffcf1;       
+  --card-bg: #f4e2d4;
+  --text-main: #1f2421;
+  --text-muted: #5c6460;
+  --accent-ochre: #b45309;
+  --accent-dark: #1b1613;
+  --border-subtle: #e7e2d9;
+}
+
+
 body {
   font-family: 'Roboto', sans-serif;
-  background-color: #f4f6f9;
+  background-color: var(--bg-sand);
   color: #333333;
   margin: 0;
   padding: 30px 15px;
@@ -28,34 +40,14 @@ p.subtitle {
   margin-top: 0;
 }
 
-.grid-layout {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 30px;
+
+h2{
+    font-size:20 rem;
+    color:#7b2e01;
+    padding-bottom: 10px;
 }
 
-.card {
-  background: #ffffff;
-  border-radius: 10px;
-  padding: 24px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
-}
 
-.card h2 {
-  font-size: 1.25rem;
-  margin-top: 0;
-  margin-bottom: 15px;
-  color: #111827;
-  border-bottom: 2px solid #e5e7eb;
-  padding-bottom: 8px;
-}
-
-.chart-container {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  overflow-x: auto;
-}
 /* Full-bleed banner background */
 .hero-header {
   position: relative;
