@@ -3,8 +3,8 @@
   "title": {
     "text": "Urban Escapes vs. Wilderness Isolation: Where Australians Camp",
     "subtitle": [
-      "Examining whether campers cluster near capital cities (<100 km) or seek off-grid wilderness isolation.",
-      "Filter by territory or tariff tier to examine infrastructure distribution."
+      "Spatially binned campground distribution (dots scale by number of campsites in area).",
+      "Filter by state or tariff tier to examine infrastructure density."
     ],
     "anchor": "start",
     "fontSize": 15,
@@ -72,7 +72,7 @@
       }
     },
     {
-      "description": "Campsite Points",
+      "description": "Aggregated Campsite Clusters (1 Dot = Binned Cluster)",
       "data": {
         "url": "data/campsites_price_facilities.csv"
       },
@@ -82,22 +82,43 @@
         },
         {
           "filter": "fee_filter === 'All' || datum.fee_tier === fee_filter"
+        },
+        {
+          "bin": {"step": 0.6},
+          "field": "lon",
+          "as": "binned_lon"
+        },
+        {
+          "bin": {"step": 0.6},
+          "field": "lat",
+          "as": "binned_lat"
+        },
+        {
+          "aggregate": [{"op": "count", "as": "site_count"}],
+          "groupby": ["binned_lon", "binned_lat", "fee_tier"]
         }
       ],
       "mark": {
         "type": "circle",
-        "opacity": 0.7,
+        "opacity": 0.75,
         "stroke": "#0f172a",
         "strokeWidth": 0.5
       },
       "encoding": {
-        "longitude": {"field": "lon", "type": "quantitative"},
-        "latitude": {"field": "lat", "type": "quantitative"},
+        "longitude": {"field": "binned_lon", "type": "quantitative"},
+        "latitude": {"field": "binned_lat", "type": "quantitative"},
         "size": {
-          "field": "facility_score",
+          "field": "site_count",
           "type": "quantitative",
-          "scale": {"domain": [0, 5], "range": [18, 220]},
-          "legend": {"title": "Facilities (0-5)", "orient": "bottom-left"}
+          "scale": {
+            "type": "threshold",
+            "domain": [5, 20, 50],
+            "range": [25, 70, 140, 260]
+          },
+          "legend": {
+            "title": "Campsites per Zone",
+            "orient": "bottom-left"
+          }
         },
         "color": {
           "field": "fee_tier",
@@ -109,11 +130,8 @@
           "legend": {"title": "Campground Type", "orient": "bottom-right"}
         },
         "tooltip": [
-          {"field": "name", "type": "nominal", "title": "Campground"},
-          {"field": "state", "type": "nominal", "title": "State"},
-          {"field": "fee_tier", "type": "nominal", "title": "Tariff"},
-          {"field": "facility_score", "type": "quantitative", "title": "Facility Score"},
-          {"field": "amenities", "type": "nominal", "title": "Included Amenities"}
+          {"field": "site_count", "type": "quantitative", "title": "Campsites in Zone"},
+          {"field": "fee_tier", "type": "nominal", "title": "Tariff Class"}
         ]
       }
     },
@@ -135,9 +153,6 @@
         "latitude": {"field": "lat", "type": "quantitative"},
         "tooltip": [
           {"field": "city", "type": "nominal", "title": "Capital City"},
-          {"field": "summer_temp", "type": "quantitative", "title": "Summer Avg (°C)"},
-          {"field": "winter_temp", "type": "quantitative", "title": "Winter Avg (°C)"},
-          {"field": "peak_season", "type": "nominal", "title": "Peak Camping Window"},
           {"field": "camping_driver", "type": "nominal", "title": "Why Campers Travel"}
         ]
       }
