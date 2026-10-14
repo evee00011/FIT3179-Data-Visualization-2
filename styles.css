@@ -1,6 +1,6 @@
 :root {
  
-  --bg-sand: #fffcf1;       
+  --bg-sand: #fffef8;       
   --card-bg: #f4e2d4;
   --text-main: #1f2421;
   --text-muted: #5c6460;
@@ -20,8 +20,11 @@ body {
 }
 
 .dashboard-container {
-  max-width: 1200px;
-  margin: 0 auto;
+  max-width: 1200px;         /* Caps max width so charts don't overstretch on wide monitors */
+  margin: 0 auto;            /* Centers the entire dashboard */
+  padding-left: 40px;        /* Left page margin */
+  padding-right: 40px;       /* Right page margin */
+  box-sizing: border-box;    /* Ensures padding doesn't cause horizontal scrollbars */
 }
 
 header {
@@ -36,16 +39,25 @@ h1 {
 }
 
 p.subtitle {
-  font-size: 1.1rem;
+  font-size: 1.5rem;
   color: #4b5563;
-  margin-top: 0;
+  margin: 4px 0 0 0;
+}
+
+.theme-header {
+  margin-top: 30px;
+  margin-bottom: 25px;
 }
 
 
 h2{
-    font-size:20 rem;
+    font-size: 4rem;
+    font-family: 'Playfair Display', Georgia, serif;
     color:#7b2e01;
-    padding-bottom: 10px;
+    padding-bottom: 5px;
+    line-height: 1.15;
+    margin: 0;
+    padding-bottom: 7px;
 }
 
 
@@ -125,10 +137,3 @@ h2{
   opacity: 0.6;
 }
 
-.dashboard-container {
-  max-width: 1200px;         /* Caps max width so charts don't overstretch on wide monitors */
-  margin: 0 auto;            /* Centers the entire dashboard */
-  padding-left: 100px;        /* Left page margin */
-  padding-right: 100px;       /* Right page margin */
-  box-sizing: border-box;    /* Ensures padding doesn't cause horizontal scrollbars */
-}
