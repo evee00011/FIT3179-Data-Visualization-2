@@ -58,7 +58,7 @@
     {
       "description": "100 km Urban Buffer Zone around Capitals",
       "data": {
-        "url": "../data/major_cities.csv"
+        "url": "data/major_cities.csv"
       },
       "mark": {
         "type": "circle",
@@ -74,7 +74,7 @@
     {
       "description": "Campsite Points",
       "data": {
-        "url": "../data/campsites_price_facilities.csv"
+        "url": "data/campsites_price_facilities.csv"
       },
       "transform": [
         {
@@ -120,7 +120,7 @@
     {
       "description": "Major Capital City Markers",
       "data": {
-        "url": "../data/major_cities.csv"
+        "url": "data/major_cities.csv"
       },
       "mark": {
         "type": "point",
@@ -145,7 +145,7 @@
     {
       "description": "City Label Text",
       "data": {
-        "url": "../data/major_cities.csv"
+        "url": "data/major_cities.csv"
       },
       "mark": {
         "type": "text",

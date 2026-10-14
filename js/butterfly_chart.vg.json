@@ -15,7 +15,7 @@
   "width": 520,
   "height": 300,
   "data": {
-    "url": "../data/campsites_by_state_type.csv"
+    "url": "data/campsites_by_state_type.csv"
   },
   "transform": [
     {

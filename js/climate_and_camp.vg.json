@@ -61,7 +61,7 @@
     {
       "description": "Campsites Hazard Layer",
       "data": {
-        "url": "../datasets/campsites_climate_risk.csv"
+        "url": "datasets/campsites_climate_risk.csv"
       },
       "transform": [
         {

@@ -15,7 +15,7 @@
   "width": 500,
   "height": 320,
   "data": {
-    "url": "../datasets/scripts/age_group_gender_share.csv"
+    "url":"datasets/scripts/age_group_gender_share.csv"
   },
   "transform": [
     {

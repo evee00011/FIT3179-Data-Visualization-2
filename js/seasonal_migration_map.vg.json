@@ -48,7 +48,7 @@
     {
       "description": "Regional Camping Demand & Climate Bubbles",
       "data": {
-        "url": "../data/campsite_seasonal_migration_map.csv"
+        "url": "data/campsite_seasonal_migration_map.csv"
       },
       "transform": [
         {

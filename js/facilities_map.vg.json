@@ -58,7 +58,7 @@
     {
       "description": "Campsites Layer",
       "data": {
-        "url": "../data/campsites_price_facilities.csv"
+        "url": "data/campsites_price_facilities.csv"
       },
       "transform": [
         {

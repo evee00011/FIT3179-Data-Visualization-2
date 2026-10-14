@@ -36,7 +36,7 @@
     {
       "description": "Flow Trajectory Lines",
       "data": {
-        "url": "../datasets/scripts/campers_to_WA.csv"
+        "url": "datasets/scripts/campers_to_WA.csv"
       },
       "mark": {
         "type": "rule",
@@ -83,7 +83,7 @@
     {
       "description": "Origin State Nodes",
       "data": {
-        "url": "../datasets/scripts/campers_to_WA.csv"
+        "url": "datasets/scripts/campers_to_WA.csv"
       },
       "mark": {
         "type": "circle",
@@ -126,7 +126,7 @@
     {
       "description": "Origin Labels",
       "data": {
-        "url": "../datasets/scripts/campers_to_WA.csv"
+        "url": "datasets/scripts/campers_to_WA.csv"
       },
       "mark": {
         "type": "text",

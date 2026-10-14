@@ -15,7 +15,7 @@
   "width": 550,
   "height": 260,
   "data": {
-    "url": "../data/solo_vs_family_accommodation.csv"
+    "url": "data/solo_vs_family_accommodation.csv"
   },
   "layer": [
     {
