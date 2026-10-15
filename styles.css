@@ -145,20 +145,21 @@ h2{
 /* --- Two-Column Layout (Map Left, Text Right) --- */
 .vis-side-layout {
   display: grid;
-  /* Left column: 62% for the map; Right column: 38% for narrative */
   grid-template-columns: 1.6fr 1fr;
   gap: 36px;
   align-items: start;
-  margin-top: 20px;
   position: relative;
+  margin-top: 20px;
+  margin-bottom: 80px; /* Space before the next section arrives */
 }
 
+/* Map sticky column */
 .map-column {
   width: 100%;
   display: flex;
-  justify-content: flex-start; /* Keeps the map flush with the left sight-line */
+  justify-content: flex-start;
   position: sticky;
-  top: 40px;
+  top: 40px; /* Sticks while scrolling through the cards */
 }
 
 /* Ensure Vega-Lite fills its container cleanly */
@@ -248,4 +249,18 @@ h2{
     opacity: 1;
     margin-bottom: 20px;
   }
+}
+
+.section-divider {
+  position: relative;
+  z-index: 2;
+  background-color: var(--bg-sand); /* Uses your dashboard background */
+  padding-top: 40px;
+  margin-top: 60px;
+  clear: both;
+}
+
+.chart-container-full {
+  width: 100%;
+  margin-top: 20px;
 }
