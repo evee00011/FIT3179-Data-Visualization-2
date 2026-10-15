@@ -1,0 +1,265 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "background": "transparent",
+  "title": {
+    "text": "Where Are Most Campsites Located?",
+    "subtitle": [
+      "Source: OpenStreetMap Australia (OSM), extracted via Overpass Turbo (N = 9,930)"
+    ],
+    "anchor": "start",
+    "font": "Playfair Display",
+    "fontSize": 18,
+    "fontWeight": 700,
+    "color": "#1f2421",
+    "subtitleFont": "Roboto",
+    "subtitleFontSize": 11,
+    "subtitleColor": "#5c6460",
+    "subtitleFontStyle": "italic",
+    "dy": -8
+  },
+  "width": 800,
+  "height": 600,
+  "projection": {
+    "type": "equirectangular",
+    "center": [133.7751, -26.5],
+    "scale": 780
+  },
+  "params": [
+    {
+      "name": "story_step",
+      "value": 1
+    }
+  ],
+  "layer": [
+    {
+      "description": "Base Australia Map (Official Source)",
+      "data": {
+        "url": "data/australian_states.json",
+        "format": {
+          "type": "topojson",
+          "feature": "ne_50m_admin_1_states_provinces"
+        }
+      },
+      "mark": {
+        "type": "geoshape",
+        "fill": "#f5efe6",
+        "stroke": "#94a3b8",
+        "strokeWidth": 1.0
+      }
+    },
+    {
+      "description": "Dot map (1 dot = 3 campsites) - Persists across both steps",
+      "data": {
+        "url": "data/campsites_coastal_distribution.csv"
+      },
+      "transform": [
+        {
+          "bin": {"step": 0.35},
+          "field": "lon",
+          "as": ["binned_lon", "binned_lon_end"]
+        },
+        {
+          "bin": {"step": 0.35},
+          "field": "lat",
+          "as": ["binned_lat", "binned_lat_end"]
+        },
+        {
+          "calculate": "(datum.binned_lon + datum.binned_lon_end) / 2",
+          "as": "center_lon"
+        },
+        {
+          "calculate": "(datum.binned_lat + datum.binned_lat_end) / 2",
+          "as": "center_lat"
+        },
+        {
+          "aggregate": [{"op": "count", "as": "campsite_count"}],
+          "groupby": ["center_lon", "center_lat"]
+        },
+        {
+          "calculate": "if(datum.center_lat < -40.0, 'Tasmania', if(datum.center_lon < 129.0, 'Western Australia', if(datum.center_lon < 138.0 && datum.center_lat < -26.0, 'South Australia', if(datum.center_lon < 138.0 && datum.center_lat >= -26.0, 'Northern Territory', if(datum.center_lat < -34.0 && datum.center_lon >= 141.0 && datum.center_lon <= 150.0, 'Victoria', if(datum.center_lat < -29.0, 'New South Wales', 'Queensland'))))))",
+          "as": "state_name"
+        },
+        {
+          "filter": "datum.campsite_count >= 3"
+        },
+        {
+          "calculate": "'1 Dot = 3 Campsites'",
+          "as": "dot_ratio"
+        }
+      ],
+      "mark": {
+        "type": "circle",
+        "opacity": 0.85,
+        "size": 22
+      },
+      "encoding": {
+        "longitude": {"field": "center_lon", "type": "quantitative"},
+        "latitude": {"field": "center_lat", "type": "quantitative"},
+        "color": {
+          "field": "dot_ratio",
+          "type": "nominal",
+          "scale": {
+            "domain": ["1 Dot = 3 Campsites"],
+            "range": ["#7b2e01"]
+          },
+          "legend": {
+            "title": "Legend",
+            "orient": "bottom-left",
+            "symbolType": "circle",
+            "symbolSize": 70,
+            "titleFont": "Roboto",
+            "titleFontSize": 11,
+            "titleFontWeight": "bold",
+            "titleColor": "#1f2421",
+            "labelFont": "Roboto",
+            "labelFontSize": 11,
+            "labelColor": "#5c6460",
+            "fillColor": "rgba(255, 255, 255, 0.85)",
+            "strokeColor": "#e7e2d9",
+            "padding": 6,
+            "cornerRadius": 4
+          }
+        },
+        "tooltip": [
+          {"field": "campsite_count", "type": "quantitative", "title": "Recorded Campsites in Zone"},
+          {"field": "state_name", "type": "nominal", "title": "State / Territory"}
+        ]
+      }
+    },
+    {
+      "description": "100 km Urban Buffer Zone around Capitals - Step 2 Only",
+      "data": {
+        "url": "data/major_cities.csv"
+      },
+      "transform": [
+        {"filter": "story_step == 2"}
+      ],
+      "mark": {
+        "type": "circle",
+        "color": "#fcff4a",
+        "opacity": 0.22,
+        "size": 3200
+      },
+      "encoding": {
+        "longitude": {"field": "lon", "type": "quantitative"},
+        "latitude": {"field": "lat", "type": "quantitative"}
+      }
+    },
+    {
+      "description": "Major Capital City Markers - Step 2 Only",
+      "data": {
+        "url": "data/major_cities.csv"
+      },
+      "transform": [
+        {"filter": "story_step == 2"}
+      ],
+      "mark": {
+        "type": "point",
+        "shape": "diamond",
+        "size": 110,
+        "fill": "#1e293b",
+        "stroke": "#ffffff",
+        "strokeWidth": 1.5
+      },
+      "encoding": {
+        "longitude": {"field": "lon", "type": "quantitative"},
+        "latitude": {"field": "lat", "type": "quantitative"},
+        "tooltip": [
+          {"field": "city", "type": "nominal", "title": "Capital City"},
+          {"field": "summer_temp", "type": "quantitative", "title": "Summer Avg (°C)"},
+          {"field": "winter_temp", "type": "quantitative", "title": "Winter Avg (°C)"},
+          {"field": "peak_season", "type": "nominal", "title": "Peak Camping Window"},
+          {"field": "camping_driver", "type": "nominal", "title": "Why Campers Travel"}
+        ]
+      }
+    },
+    {
+      "description": "City Connector Leader Lines - Step 2 Only",
+      "data": {
+        "values": [
+          {"city": "Sydney",    "lon": 151.21, "lat": -33.87, "target_lon": 156.0, "target_lat": -33.87},
+          {"city": "Melbourne", "lon": 144.96, "lat": -37.81, "target_lon": 142.0, "target_lat": -43.00},
+          {"city": "Brisbane",  "lon": 153.03, "lat": -27.47, "target_lon": 157.0, "target_lat": -27.47},
+          {"city": "Perth",     "lon": 115.86, "lat": -31.95, "target_lon": 109.0, "target_lat": -31.95},
+          {"city": "Adelaide",  "lon": 138.60, "lat": -34.93, "target_lon": 133.0, "target_lat": -38.50},
+          {"city": "Hobart",    "lon": 147.33, "lat": -42.88, "target_lon": 152.0, "target_lat": -42.88},
+          {"city": "Darwin",    "lon": 130.84, "lat": -12.46, "target_lon": 124.0, "target_lat": -11.00}
+        ]
+      },
+      "transform": [
+        {"filter": "story_step == 2"}
+      ],
+      "mark": {
+        "type": "rule",
+        "color": "#475569",
+        "strokeWidth": 1.2,
+        "strokeCap": "round"
+      },
+      "encoding": {
+        "longitude": {"field": "lon", "type": "quantitative"},
+        "latitude": {"field": "lat", "type": "quantitative"},
+        "longitude2": {"field": "target_lon"},
+        "latitude2": {"field": "target_lat"}
+      }
+    },
+    {
+      "description": "City Labels - Right Side (Left-Aligned Text) - Step 2 Only",
+      "data": {
+        "values": [
+          {"city": "Sydney",   "label_lon": 156.0, "label_lat": -33.87},
+          {"city": "Brisbane", "label_lon": 157.0, "label_lat": -27.47},
+          {"city": "Hobart",   "label_lon": 152.0, "label_lat": -42.88}
+        ]
+      },
+      "transform": [
+        {"filter": "story_step == 2"}
+      ],
+      "mark": {
+        "type": "text",
+        "fontWeight": "bold",
+        "fontSize": 11,
+        "color": "#1f2421",
+        "align": "left",
+        "baseline": "middle",
+        "dx": 6
+      },
+      "encoding": {
+        "longitude": {"field": "label_lon", "type": "quantitative"},
+        "latitude": {"field": "label_lat", "type": "quantitative"},
+        "text": {"field": "city", "type": "nominal"}
+      }
+    },
+    {
+      "description": "City Labels - Left Side (Right-Aligned Text) - Step 2 Only",
+      "data": {
+        "values": [
+          {"city": "Melbourne", "label_lon": 142.0, "label_lat": -43.00},
+          {"city": "Perth",     "label_lon": 109.0, "label_lat": -31.95},
+          {"city": "Adelaide",  "label_lon": 133.0, "label_lat": -38.50},
+          {"city": "Darwin",    "label_lon": 124.0, "label_lat": -11.00}
+        ]
+      },
+      "transform": [
+        {"filter": "story_step == 2"}
+      ],
+      "mark": {
+        "type": "text",
+        "fontWeight": "bold",
+        "fontSize": 11,
+        "color": "#1f2421",
+        "align": "right",
+        "baseline": "middle",
+        "dx": -6
+      },
+      "encoding": {
+        "longitude": {"field": "label_lon", "type": "quantitative"},
+        "latitude": {"field": "label_lat", "type": "quantitative"},
+        "text": {"field": "city", "type": "nominal"}
+      }
+    }
+  ],
+  "config": {
+    "view": {"stroke": null},
+    "font": "Roboto"
+  }
+}

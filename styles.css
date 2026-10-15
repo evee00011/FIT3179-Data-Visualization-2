@@ -150,12 +150,15 @@ h2{
   gap: 36px;
   align-items: start;
   margin-top: 20px;
+  position: relative;
 }
 
 .map-column {
   width: 100%;
   display: flex;
   justify-content: flex-start; /* Keeps the map flush with the left sight-line */
+  position: sticky;
+  top: 40px;
 }
 
 /* Ensure Vega-Lite fills its container cleanly */
@@ -168,8 +171,20 @@ h2{
 .text-column {
   display: flex;
   flex-direction: column;
-  gap: 14px;
-  padding-top: 70px;
+  gap: 20px;
+  padding-top: 20px;
+}
+
+.step {
+  min-height: 75vh;
+  display: flex;
+  align-items: center;
+  opacity: 0.25;
+  transition: opacity 0.35s ease-in-out;
+}
+
+.step.is-active {
+  opacity: 1;
 }
 
 .insight-card {
@@ -178,6 +193,7 @@ h2{
   border-radius: 6px;
   padding: 20px 22px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+  width: 100%;
 }
 
 .insight-card.highlight-card {
@@ -223,5 +239,13 @@ h2{
   .vis-side-layout {
     grid-template-columns: 1fr; /* Stacks vertically on tablets and mobile */
     gap: 24px;
+  }
+  .map-column {
+    position: static;
+  }
+  .step {
+    min-height: auto;
+    opacity: 1;
+    margin-bottom: 20px;
   }
 }
