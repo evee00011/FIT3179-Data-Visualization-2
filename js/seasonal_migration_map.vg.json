@@ -1,5 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "background":"transparent",
   "title": {
     "text": "The Great Australian Sun-Chaser Migration: When & Where Campers Prefer to Camp",
     "subtitle": [
