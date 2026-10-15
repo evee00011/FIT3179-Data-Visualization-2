@@ -2,7 +2,7 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "background": "transparent",
   "title": {
-    "text": "The Great Australian Sun-Chaser Migration: When & Where Campers Prefer to Camp",
+    "text": "Where to camp in each season?",
     "subtitle": [
       "Bubble size denotes camper preference share (%); colour indicates overall seasonal camping condition.",
       "Scroll through the seasons to watch demand invert between the Tropical North and Temperate South."
@@ -68,18 +68,20 @@
         "longitude": {"field": "lon", "type": "quantitative"},
         "latitude": {"field": "lat", "type": "quantitative"},
         "size": {
-          "field": "camper_preference_pct",
-          "type": "quantitative",
-          "scale": {
-            "domain": [5, 100],
-            "range": [70, 950]
-          },
-          "legend": {
-            "title": "Camper Preference (%)",
-            "values": [10, 50, 95],
-            "orient": "bottom-left"
-          }
-        },
+  "field": "camper_preference_pct",
+  "type": "quantitative",
+  "scale": {
+    "type": "pow",
+    "exponent": 1.6,
+    "domain": [5, 100],
+    "range": [30, 2400]
+  },
+  "legend": {
+    "title": "Camper Preference (%)",
+    "values": [10, 50, 95],
+    "orient": "bottom-left"
+  }
+},
         "color": {
           "field": "simple_status",
           "type": "nominal",
