@@ -26,18 +26,21 @@
   },
   "layer": [
     {
-      "description": "Base Australia map",
-      "data": {
-        "url": "https://raw.githubusercontent.com/tonywr71/GeoJson-Data/master/australian-states.json",
-        "format": {"type": "json", "property": "features"}
-      },
-      "mark": {
-        "type": "geoshape",
-        "fill": "#f5efe6",
-        "stroke": "#cbd5e1",
-        "strokeWidth": 0.8
-      }
-    },
+  "description": "Base Australia Map (Official Source)",
+  "data": {
+    "url": "data/australian_states.json",
+    "format": {
+      "type": "topojson",
+      "feature": "ne_50m_admin_1_states_provinces"
+    }
+  },
+  "mark": {
+    "type": "geoshape",
+    "fill": "#f5efe6",
+    "stroke": "#94a3b8",
+    "strokeWidth": 1.0
+  }
+},
     {
       "description": "Dot map (1 dot = 3 campsites)",
       "data": {
@@ -65,6 +68,10 @@
         {
           "aggregate": [{"op": "count", "as": "campsite_count"}],
           "groupby": ["center_lon", "center_lat"]
+        },
+        {
+          "calculate": "if(datum.center_lat < -40.0, 'Tasmania', if(datum.center_lon < 129.0, 'Western Australia', if(datum.center_lon < 138.0 && datum.center_lat < -26.0, 'South Australia', if(datum.center_lon < 138.0 && datum.center_lat >= -26.0, 'Northern Territory', if(datum.center_lat < -34.0 && datum.center_lon >= 141.0 && datum.center_lon <= 150.0, 'Victoria', if(datum.center_lat < -29.0, 'New South Wales', 'Queensland'))))))",
+          "as": "state_name"
         },
         {
           "filter": "datum.campsite_count >= 3"
@@ -109,9 +116,7 @@
         },
         "tooltip": [
           {"field": "campsite_count", "type": "quantitative", "title": "Recorded Campsites in Zone"},
-          {"field": "center_lat", "type": "quantitative", "title": "Latitude", "format": ".2f"},
-          {"field": "center_lon", "type": "quantitative", "title": "Longitude", "format": ".2f"}
-        ]
+          {"field": "state_name", "type": "nominal", "title": "State / Territory"}        ]
       }
     }
   ],
