@@ -17,8 +17,8 @@
     "subtitleFontStyle": "italic",
     "dy": -8
   },
-  "width": 750,
-  "height": 520,
+  "width": 600,
+  "height": 540,
   "projection": {
     "type": "equirectangular",
     "center": [133.7751, -26.5],

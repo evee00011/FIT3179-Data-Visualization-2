@@ -48,9 +48,9 @@ p.subtitle {
   margin-top: 30px;
   margin-bottom: 25px;
 }
-
-.data-story{
-
+.text-highlight {
+  color: #7b2e01;          /* Your theme ochre/terracotta */
+  font-weight: 700;        /* Bold for contrast */
 }
 
 h2{
@@ -140,3 +140,88 @@ h2{
   opacity: 0.6;
 }
 
+
+
+/* --- Two-Column Layout (Map Left, Text Right) --- */
+.vis-side-layout {
+  display: grid;
+  /* Left column: 62% for the map; Right column: 38% for narrative */
+  grid-template-columns: 1.6fr 1fr;
+  gap: 36px;
+  align-items: start;
+  margin-top: 20px;
+}
+
+.map-column {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start; /* Keeps the map flush with the left sight-line */
+}
+
+/* Ensure Vega-Lite fills its container cleanly */
+.map-column .chart-container {
+  width: 100%;
+  overflow-x: auto;
+}
+
+/* Text Column & Typography Hierarchy */
+.text-column {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding-top: 70px;
+}
+
+.insight-card {
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid var(--border-subtle, #e7e2d9);
+  border-radius: 6px;
+  padding: 20px 22px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+}
+
+.insight-card.highlight-card {
+  background: #fbf9f4;
+  border-left: 3px solid #7b2e01; /* Ochre accent line */
+}
+
+.kicker-tag {
+  display: inline-block;
+  font-family: 'Roboto', sans-serif;
+  font-size: 0.68rem;
+  letter-spacing: 1.8px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #7b2e01;
+  margin-bottom: 6px;
+}
+
+.insight-card h3 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #1f2421;
+  margin: 0 0 10px 0;
+  line-height: 1.25;
+}
+
+.insight-card p {
+  font-family: 'Roboto', sans-serif;
+  font-size: 0.94rem;
+  line-height: 1.6;
+  color: #4b5563;
+  margin: 0 0 10px 0;
+  text-align: left; /* Left-aligned for multi-line readability as per course notes */
+}
+
+.insight-card p:last-child {
+  margin-bottom: 0;
+}
+
+/* Responsive fallback for smaller screens */
+@media (max-width: 992px) {
+  .vis-side-layout {
+    grid-template-columns: 1fr; /* Stacks vertically on tablets and mobile */
+    gap: 24px;
+  }
+}
