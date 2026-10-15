@@ -264,3 +264,18 @@ h2{
   width: 100%;
   margin-top: 20px;
 }
+
+/* Styling for seasonal scrollytelling text steps */
+.step-season {
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  opacity: 0.25;
+  transition: opacity 0.35s ease-in-out, transform 0.35s ease-in-out;
+  transform: translateY(12px);
+}
+
+.step-season.is-active {
+  opacity: 1;
+  transform: translateY(0);
+}
