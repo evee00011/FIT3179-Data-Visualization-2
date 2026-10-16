@@ -4,12 +4,13 @@
     "text": "Camper type and how they choose to camp",
     "subtitle": "Flow of setup choices between solo travellers and family groups (% within cohort)",
     "anchor": "start",
-    "fontSize": 15,
-    "subtitleFontSize": 11,
+    "fontSize": 16,
+    "fontWeight": "bold",
+    "subtitleFontSize": 12,
     "subtitleColor": "#64748b",
     "subtitleFontStyle": "italic"
   },
-  "width": 640,
+  "width": 820,
   "height": 380,
   "padding": {"top": 15, "left": 10, "right": 30, "bottom": 15},
 
@@ -19,10 +20,10 @@
       "values": [
         {"name": "Solo Travellers", "side": "left", "x": 160, "y0": 40, "y1": 185, "color": "#d97706"},
         {"name": "Family Groups", "side": "left", "x": 160, "y0": 215, "y1": 360, "color": "#0f766e"},
-        {"name": "Caravan / Camper-Trailer", "side": "right", "x": 480, "y0": 40, "y1": 140, "color": "#475569"},
-        {"name": "Swag / Small Tent", "side": "right", "x": 480, "y0": 155, "y1": 240, "color": "#475569"},
-        {"name": "Large Family Tent", "side": "right", "x": 480, "y0": 255, "y1": 305, "color": "#475569"},
-        {"name": "Campervan / 4WD Rooftop", "side": "right", "x": 480, "y0": 320, "y1": 370, "color": "#475569"}
+        {"name": "Caravan / Camper-Trailer", "side": "right", "x": 620, "y0": 40, "y1": 140, "color": "#334155"},
+        {"name": "Swag / Small Tent", "side": "right", "x": 620, "y0": 155, "y1": 240, "color": "#334155"},
+        {"name": "Large Family Tent", "side": "right", "x": 620, "y0": 255, "y1": 305, "color": "#334155"},
+        {"name": "Campervan / 4WD Rooftop", "side": "right", "x": 620, "y0": 320, "y1": 370, "color": "#334155"}
       ]
     },
     {
@@ -88,7 +89,7 @@
       "transform": [
         {
           "type": "formula",
-          "expr": "'M ' + 180 + ' ' + datum.y0a + ' C ' + 330 + ' ' + datum.y0a + ', ' + 330 + ' ' + datum.y1a + ', ' + 480 + ' ' + datum.y1a + ' L ' + 480 + ' ' + datum.y1b + ' C ' + 330 + ' ' + datum.y1b + ', ' + 330 + ' ' + datum.y0b + ', ' + 180 + ' ' + datum.y0b + ' Z'",
+          "expr": "'M ' + 180 + ' ' + datum.y0a + ' C ' + 400 + ' ' + datum.y0a + ', ' + 400 + ' ' + datum.y1a + ', ' + 620 + ' ' + datum.y1a + ' L ' + 620 + ' ' + datum.y1b + ' C ' + 400 + ' ' + datum.y1b + ', ' + 400 + ' ' + datum.y0b + ', ' + 180 + ' ' + datum.y0b + ' Z'",
           "as": "pathStr"
         }
       ]
@@ -135,13 +136,11 @@
     },
     {
       "type": "text",
-      "from": {
-        "data": "nodes"
-      },
+      "from": {"data": "nodes"},
       "encode": {
         "enter": {
           "x": {
-            "signal": "datum.side === 'left' ? datum.x - 12 : datum.x + 28"
+            "signal": "datum.side === 'left' ? datum.x - 14 : datum.x + 28"
           },
           "y": {"signal": "(datum.y0 + datum.y1) / 2"},
           "text": {"field": "name"},
