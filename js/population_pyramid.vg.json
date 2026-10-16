@@ -16,7 +16,7 @@
   "width": 500,
   "height": 320,
   "data": {
-    "url":"data/age_group_gender_share.csv"
+    "url": "data/age_group_gender_share.csv"
   },
   "transform": [
     {
@@ -24,54 +24,91 @@
       "as": "signed_share"
     }
   ],
-  "mark": {
-    "type": "bar",
-    "cornerRadius": 2
-  },
-  "encoding": {
-    "y": {
-      "field": "age_group",
-      "type": "nominal",
-      "sort": ["18-24", "25-34", "35-44", "45-54", "55-64", "65-74", "75+"],
-      "axis": {
-        "title": "Age Cohort",
-        "domain": false,
-        "ticks": false,
-        "labelFontSize": 11,
-        "titleFontSize": 12
-      }
-    },
-    "x": {
-      "field": "signed_share",
-      "type": "quantitative",
-      "scale": {
-        "domain": [-16, 16]
+  "layer": [
+    {
+      "description": "Bilateral population pyramid bars",
+      "mark": {
+        "type": "bar",
+        "cornerRadius": 2
       },
-      "axis": {
-        "title": "← Female (%)          Male (%) →",
-        "labelExpr": "abs(datum.value) + '%'",
-        "grid": true
+      "encoding": {
+        "y": {
+          "field": "age_group",
+          "type": "nominal",
+          "sort": ["18-24", "25-34", "35-44", "45-54", "55-64", "65-74", "75+"],
+          "axis": {
+            "title": "Age Cohort",
+            "domain": false,
+            "ticks": false,
+            "labelFontSize": 11,
+            "titleFontSize": 12
+          }
+        },
+        "x": {
+          "field": "signed_share",
+          "type": "quantitative",
+          "scale": {
+            "domain": [-16, 21]
+          },
+          "axis": {
+            "title": "← Female (%)          Male (%) →",
+            "values": [-16, -12, -8, -4, 0, 4, 8, 12, 16],
+            "labelExpr": "abs(datum.value) + '%'",
+            "grid": true
+          }
+        },
+        "color": {
+          "field": "gender",
+          "type": "nominal",
+          "scale": {
+            "domain": ["Female", "Male"],
+            "range": ["#b45309", "#334155"]
+          },
+          "legend": {
+            "orient": "top-right",
+            "title": null,
+            "labelFontSize": 11
+          }
+        },
+        "tooltip": [
+          {"field": "age_group", "type": "nominal", "title": "Age Cohort"},
+          {"field": "gender", "type": "nominal", "title": "Gender"},
+          {"field": "share", "type": "quantitative", "title": "Share of Campers", "format": ".2f"}
+        ]
       }
     },
-    "color": {
-      "field": "gender",
-      "type": "nominal",
-      "scale": {
-        "domain": ["Female", "Male"],
-        "range": ["#b45309", "#334155"]
+    
+    {
+      "description": "Multi-line text inside enlarged box",
+      "data": {
+        "values": [
+          {
+            "age_group": "45-54",
+            "x": 17.6,
+            "text": ["Peak Demographic", "45-54"]
+          }
+        ]
       },
-      "legend": {
-        "orient": "top-right",
-        "title": null,
-        "labelFontSize": 11
+      "mark": {
+        "type": "text",
+        "align": "center",
+        "baseline": "middle",
+        "fontSize": 10.5,
+        "fontWeight": "bold",
+        "color": "#7b2e01",
+        "lineHeight": 15
+      },
+      "encoding": {
+        "y": {
+          "field": "age_group",
+          "type": "nominal",
+          "sort": ["18-24", "25-34", "35-44", "45-54", "55-64", "65-74", "75+"]
+        },
+        "x": {"field": "x", "type": "quantitative"},
+        "text": {"field": "text"}
       }
-    },
-    "tooltip": [
-      {"field": "age_group", "type": "nominal", "title": "Age Cohort"},
-      {"field": "gender", "type": "nominal", "title": "Gender"},
-      {"field": "share", "type": "quantitative", "title": "Share of Campers", "format": ".2f"}
-    ]
-  },
+    }
+  ],
   "config": {
     "view": {"stroke": null}
   }
