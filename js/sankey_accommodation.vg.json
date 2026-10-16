@@ -1,7 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega/v5.json",
   "title": {
-    "text": "Camper Cohort to Accommodation Flow (Alluvial / Sankey)",
+    "text": "Camper type and how they choose to camp",
     "subtitle": "Flow of setup choices between solo travellers and family groups (% within cohort)",
     "anchor": "start",
     "fontSize": 15,
