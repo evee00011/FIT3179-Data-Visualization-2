@@ -1,6 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": {
+  "background": "transparent",
+    "title": {
     "text": "Interstate Camper Flows into Western Australia",
     "subtitle": [
       "Origin-to-destination volume of interstate campers travelling to WA National & Conservation Parks (n = 886)",
@@ -28,7 +29,7 @@
       },
       "mark": {
         "type": "geoshape",
-        "fill": "#f8fafc",
+        "fill": "#f5efe6",
         "stroke": "#cbd5e1",
         "strokeWidth": 0.9
       }
@@ -36,7 +37,7 @@
     {
       "description": "Flow Trajectory Lines",
       "data": {
-        "url": "datasets/scripts/campers_to_WA.csv"
+        "url": "data/campers_to_WA.csv"
       },
       "mark": {
         "type": "rule",
@@ -70,13 +71,13 @@
       "description": "Directional Flow Arrowheads",
       "data": {
         "values": [
-          {"origin": "VIC", "lon": 129.83, "lat": -34.76, "angle": 281.4, "people": 64, "camper_share": 7.2},
-          {"origin": "NSW", "lon": 132.83, "lat": -32.87, "angle": 273.1, "people": 38, "camper_share": 4.3},
-          {"origin": "QLD", "lon": 133.70, "lat": -29.80, "angle": 263.1, "people": 34, "camper_share": 3.8},
-          {"origin": "SA",  "lon": 126.78, "lat": -33.38, "angle": 277.5, "people": 24, "camper_share": 2.7},
-          {"origin": "TAS", "lon": 130.97, "lat": -37.20, "angle": 289.2, "people": 8,  "camper_share": 0.9},
-          {"origin": "NT",  "lon": 123.05, "lat": -22.59, "angle": 217.5, "people": 8,  "camper_share": 0.9},
-          {"origin": "ACT", "lon": 131.83, "lat": -33.55, "angle": 275.7, "people": 2,  "camper_share": 0.2}
+          {"origin": "VICTORIA", "lon": 129.83, "lat": -34.76, "angle": 281.4, "people": 64, "camper_share": 7.2},
+          {"origin": "NEW SOUTH WALES", "lon": 132.83, "lat": -32.87, "angle": 273.1, "people": 38, "camper_share": 4.3},
+          {"origin": "QUEENSLAND", "lon": 133.70, "lat": -29.80, "angle": 263.1, "people": 34, "camper_share": 3.8},
+          {"origin": "SOUTH AUSTRALIA",  "lon": 126.78, "lat": -33.38, "angle": 277.5, "people": 24, "camper_share": 2.7},
+          {"origin": "TASMANIA", "lon": 130.97, "lat": -37.20, "angle": 289.2, "people": 8,  "camper_share": 0.9},
+          {"origin": "NORTHERN TERRITORY",  "lon": 123.05, "lat": -22.59, "angle": 217.5, "people": 8,  "camper_share": 0.9},
+          {"origin": "AUSTRALIAN CAPITAL TERRITORY", "lon": 131.83, "lat": -33.55, "angle": 275.7, "people": 2,  "camper_share": 0.2}
         ]
       },
       "mark": {
@@ -117,7 +118,7 @@
     {
       "description": "Origin State Nodes",
       "data": {
-        "url": "datasets/scripts/campers_to_WA.csv"
+        "url": "data/campers_to_WA.csv"
       },
       "mark": {
         "type": "circle",
@@ -156,7 +157,7 @@
     {
       "description": "Origin Labels",
       "data": {
-        "url": "datasets/scripts/campers_to_WA.csv"
+        "url": "data/campers_to_WA.csv"
       },
       "mark": {
         "type": "text",

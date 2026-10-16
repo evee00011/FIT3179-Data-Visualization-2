@@ -70,19 +70,6 @@
           {"field": "count", "type": "quantitative", "title": "Total Sites", "format": ","}
         ]
       }
-    },
-    {
-      "mark": {
-        "type": "text",
-        "align": "left",
-        "dx": 10,
-        "fontSize": 11,
-        "fontWeight": 600,
-        "color": "#0f172a"
-      },
-      "encoding": {
-        "text": {"field": "percentage", "type": "quantitative", "format": ".1f"}
-      }
     }
   ]
 }
