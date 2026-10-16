@@ -1,5 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "background": "transparent",
   "title": {
     "text": "Demographic Profile of Australian Campers",
     "subtitle": [
@@ -15,7 +16,7 @@
   "width": 500,
   "height": 320,
   "data": {
-    "url":"datasets/scripts/age_group_gender_share.csv"
+    "url":"data/age_group_gender_share.csv"
   },
   "transform": [
     {
@@ -57,10 +58,10 @@
       "type": "nominal",
       "scale": {
         "domain": ["Female", "Male"],
-        "range": ["#0284c7", "#0f766e"]
+        "range": ["#b45309", "#334155"]
       },
       "legend": {
-        "orient": "top",
+        "orient": "top-right",
         "title": null,
         "labelFontSize": 11
       }
