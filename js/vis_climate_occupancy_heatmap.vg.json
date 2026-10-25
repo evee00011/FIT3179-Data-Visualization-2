@@ -1,0 +1,128 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "background": "transparent",
+  "title": {
+    "text": "Thermal Migration: How Climate Inverts State Campsite Occupancy",
+    "subtitle": [
+      "Cell colour encodes monthly campsite occupancy rate (%); text labels display mean daytime maximum temperature (°C).",
+      "Notice the diagonal X-crossover: Winter peaks in the Tropical North (NT/QLD), while Summer peaks in the Temperate South (VIC/TAS)."
+    ],
+    "anchor": "start",
+    "font": "Playfair Display",
+    "fontSize": 16,
+    "fontWeight": 700,
+    "color": "#1f2421",
+    "subtitleFont": "Roboto",
+    "subtitleFontSize": 11,
+    "subtitleColor": "#64748b",
+    "subtitleFontStyle": "italic",
+    "dy": -8
+  },
+  "width": "container",
+  "height": 360,
+  "data": {
+    "url": "data/state_climate_occupancy.csv"
+  },
+  "encoding": {
+    "x": {
+      "field": "month",
+      "type": "nominal",
+      "sort": ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+      "axis": {
+        "title": "Month of the Year",
+        "titleFont": "Roboto",
+        "titleFontSize": 11,
+        "titleFontWeight": "bold",
+        "labelFont": "Roboto",
+        "labelFontSize": 11,
+        "labelColor": "#1f2421",
+        "labelAngle": 0,
+        "domain": false,
+        "ticks": false
+      }
+    },
+    "y": {
+      "field": "state",
+      "type": "nominal",
+      "sort": {
+        "field": "lat_order",
+        "order": "ascending"
+      },
+      "axis": {
+        "title": "State (North → South by Latitude)",
+        "titleFont": "Roboto",
+        "titleFontSize": 11,
+        "titleFontWeight": "bold",
+        "labelFont": "Roboto",
+        "labelFontSize": 11,
+        "labelFontWeight": "bold",
+        "labelColor": "#1f2421",
+        "domain": false,
+        "ticks": false
+      }
+    }
+  },
+  "layer": [
+    {
+      "description": "Background 2D Matrix Heatmap Tile",
+      "mark": {
+        "type": "rect",
+        "cornerRadius": 3,
+        "stroke": "#ffffff",
+        "strokeWidth": 2.5
+      },
+      "encoding": {
+        "color": {
+          "field": "occupancy_rate",
+          "type": "quantitative",
+          "scale": {
+            "type": "sequential",
+            "scheme": "tealblues",
+            "domain": [10, 95]
+          },
+          "legend": {
+            "title": "Occupancy Rate (%)",
+            "orient": "bottom",
+            "direction": "horizontal",
+            "gradientLength": 240,
+            "titleFont": "Roboto",
+            "titleFontSize": 11,
+            "labelFont": "Roboto",
+            "labelFontSize": 10
+          }
+        },
+        "tooltip": [
+          {"field": "state", "type": "nominal", "title": "State / Territory"},
+          {"field": "month", "type": "nominal", "title": "Month"},
+          {"field": "occupancy_rate", "type": "quantitative", "title": "Campsite Occupancy (%)", "format": "d"},
+          {"field": "avg_temp_c", "type": "quantitative", "title": "Mean Day Temp (°C)", "format": ".1f"},
+          {"field": "climate_driver", "type": "nominal", "title": "Climate & Travel Driver"}
+        ]
+      }
+    },
+    {
+      "description": "Direct Daytime Temperature Label inside each cell",
+      "mark": {
+        "type": "text",
+        "baseline": "middle",
+        "align": "center",
+        "font": "Roboto",
+        "fontSize": 10,
+        "fontWeight": 600
+      },
+      "encoding": {
+        "text": {"field": "temp_label", "type": "nominal"},
+        "color": {
+          "condition": {
+            "test": "datum.occupancy_rate > 55",
+            "value": "#ffffff"
+          },
+          "value": "#0f172a"
+        }
+      }
+    }
+  ],
+  "config": {
+    "view": {"stroke": null}
+  }
+}

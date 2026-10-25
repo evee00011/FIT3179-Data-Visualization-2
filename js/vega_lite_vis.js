@@ -99,3 +99,8 @@ vegaEmbed("#vis-activities", vg_activities, embedOpt).catch(console.error);
 
 vegaEmbed("#vis-dumbbell", vg_dumbbell, { actions: false })
   .catch(console.error);
+
+const vg_climate_heatmap = "js/vis_climate_occupancy_heatmap.vg.json";
+
+vegaEmbed("#vis-climate-heatmap", vg_climate_heatmap, { actions: false })
+  .catch(console.error);

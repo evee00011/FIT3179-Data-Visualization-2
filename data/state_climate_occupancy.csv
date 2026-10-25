@@ -1,0 +1,85 @@
+state,lat_order,month,month_num,occupancy_rate,avg_temp_c,temp_label,climate_driver
+Northern Territory,1,Jan,1,15,32.4,32°C,Monsoon Wet Season: Flooded park tracks & road washouts
+Northern Territory,1,Feb,2,14,32.2,32°C,Monsoon Wet Season: Peak tropical cyclone & flood risk
+Northern Territory,1,Mar,3,25,32.5,33°C,Shoulder Season: Floodwaters receding; waterfalls reopening
+Northern Territory,1,Apr,4,50,33.0,33°C,Dry Season Transition: Park access fully restored
+Northern Territory,1,May,5,75,32.1,32°C,Dry Season Arrival: Warm sunny days & low humidity
+Northern Territory,1,Jun,6,92,30.8,31°C,Peak Season: Grey Nomad influx fleeing southern freeze
+Northern Territory,1,Jul,7,96,30.6,31°C,Absolute Annual Peak: Flawless dry winter & blue skies
+Northern Territory,1,Aug,8,90,32.0,32°C,Peak Season: Heavy outback caravan & 4WD touring
+Northern Territory,1,Sep,9,65,33.2,33°C,Shoulder Season: Warm dry conditions before the build-up
+Northern Territory,1,Oct,10,35,34.5,35°C,Build-up Heat: Oppressive humidity and pre-monsoon storms
+Northern Territory,1,Nov,11,22,34.4,34°C,Early Wet Season: Tropical storms commence
+Northern Territory,1,Dec,12,16,33.5,34°C,Monsoon Wet Season: Parks evacuate for seasonal rains
+Queensland,2,Jan,1,58,31.2,31°C,Summer Holidays: Peak in south; monsoons in far north
+Queensland,2,Feb,2,52,30.5,31°C,Late Summer: High humidity and tropical showers
+Queensland,2,Mar,3,56,29.4,29°C,Autumn Transition: Easter school holiday surge
+Queensland,2,Apr,4,66,27.5,28°C,Optimal Touring: Mild temperatures & trade winds
+Queensland,2,May,5,74,25.2,25°C,Dry Season Touring: Campers head toward reef & outback
+Queensland,2,Jun,6,82,23.1,23°C,Winter Pilgrimage: Southern retirees arrive for winter sun
+Queensland,2,Jul,7,88,22.4,22°C,Peak Winter Escape: Pristine dry winter across the north
+Queensland,2,Aug,8,84,24.0,24°C,Late Winter Sun: Steady grey nomad touring demand
+Queensland,2,Sep,9,74,26.2,26°C,Spring Warmth: Optimal coastal and national park touring
+Queensland,2,Oct,10,64,28.0,28°C,Spring Shoulder: Warm conditions before tropical humidity
+Queensland,2,Nov,11,58,29.5,30°C,Pre-Summer Warmth: Moderate coastal touring demand
+Queensland,2,Dec,12,62,30.8,31°C,Summer Holidays: Coastal and island campgrounds fill up
+Western Australia,3,Jan,1,54,32.1,32°C,Southwest Summer: Coastal beach peak; north closed
+Western Australia,3,Feb,2,48,32.3,32°C,Late Summer: Margaret River & coastal ocean camps
+Western Australia,3,Mar,3,52,30.1,30°C,Autumn Shoulder: Stable sunny touring conditions
+Western Australia,3,Apr,4,60,26.4,26°C,Ningaloo Migration: Whale shark season opens up north
+Western Australia,3,May,5,68,23.0,23°C,Kimberley Dry Opens: Gibb River Road touring begins
+Western Australia,3,Jun,6,78,20.1,20°C,Winter Sun Escape: Caravans surge into Ningaloo & Pilbara
+Western Australia,3,Jul,7,82,19.2,19°C,Peak Northern Touring: Warm outback days & cool nights
+Western Australia,3,Aug,8,80,20.5,21°C,Wildflower Pilgrimage: Coorong & mid-west flora blooms
+Western Australia,3,Sep,9,72,22.4,22°C,Peak Wildflower Season: Massive regional park demand
+Western Australia,3,Oct,10,60,24.8,25°C,Spring Shoulder: Mild conditions across southern parks
+Western Australia,3,Nov,11,52,27.6,28°C,Early Summer: Coastal breeze touring in south
+Western Australia,3,Dec,12,62,30.2,30°C,Summer Holidays: South-west coastal holiday parks fill
+South Australia,4,Jan,1,76,29.8,30°C,Summer Beach Peak: Yorke and Fleurieu Peninsula camps
+South Australia,4,Feb,2,62,29.4,29°C,Late Summer: Coastal touring & lake getaways
+South Australia,4,Mar,3,68,26.5,27°C,Mad March Festivals: Barossa & Adelaide Hills camping
+South Australia,4,Apr,4,65,23.2,23°C,Flinders Ranges Peak: Mild autumn outback touring
+South Australia,4,May,5,46,19.4,19°C,Late Autumn: Chilly inland nights begin
+South Australia,4,Jun,6,32,16.5,17°C,Winter Cold Fronts: Rainy southern coastlines
+South Australia,4,Jul,7,28,15.4,15°C,Annual Low: Cold damp conditions; outback only
+South Australia,4,Aug,8,34,16.8,17°C,Late Winter: Chilly mornings across conservation parks
+South Australia,4,Sep,9,50,19.2,19°C,Spring Rebound: Flinders Ranges and desert blooms
+South Australia,4,Oct,10,58,22.1,22°C,Mild Spring Touring: Pleasant vineyard & coastal camps
+South Australia,4,Nov,11,64,25.4,25°C,Warming Weather: Peninsula holiday parks open up
+South Australia,4,Dec,12,72,27.5,28°C,Summer Holiday Rush: Coastal campgrounds reach capacity
+New South Wales,5,Jan,1,71,26.8,27°C,Summer Coastal Peak: School holiday coastal park surge
+New South Wales,5,Feb,2,53,26.3,26°C,Late Summer: Ocean beach & coastal lake getaways
+New South Wales,5,Mar,3,51,25.1,25°C,Early Autumn: Mild Blue Mountains & coastal touring
+New South Wales,5,Apr,4,54,22.4,22°C,Easter School Holidays: Inland rivers and parks fill
+New South Wales,5,May,5,37,19.2,19°C,Autumn Cool: Coastal crowds thin out rapidly
+New South Wales,5,Jun,6,38,17.0,17°C,Winter Trough: Chilly coastal winds & inland frost
+New South Wales,5,Jul,7,41,16.4,16°C,Mid-Winter: Low domestic camping participation
+New South Wales,5,Aug,8,40,18.1,18°C,Late Winter: Crisp sunny days but near-freezing nights
+New South Wales,5,Sep,9,49,20.5,21°C,Spring School Holidays: Warming weather across coastal parks
+New South Wales,5,Oct,10,52,22.4,22°C,Spring Wildflowers: National parks reactivate
+New South Wales,5,Nov,11,51,24.1,24°C,Pre-Summer Warmth: Coastal holiday bookings accelerate
+New South Wales,5,Dec,12,55,26.0,26°C,Christmas Influx: Coastal parks reach high capacity
+Victoria,6,Jan,1,88,26.2,26°C,Summer Coastal Rush: Great Ocean Road & Gippsland at capacity
+Victoria,6,Feb,2,70,26.0,26°C,Late Summer: Coastal beach and lake park getaways
+Victoria,6,Mar,3,64,24.1,24°C,Labour Day Weekend: High Country & river camping
+Victoria,6,Apr,4,58,20.2,20°C,Autumn Foliage: Bright & Grampians regional touring
+Victoria,6,May,5,34,16.8,17°C,Late Autumn: Rain fronts and cold alpine winds
+Victoria,6,Jun,6,22,14.3,14°C,Winter Chill: Sub-alpine frost & wet campground tracks
+Victoria,6,Jul,7,18,13.8,14°C,Annual Freeze Trough: Campers flee north to escape cold
+Victoria,6,Aug,8,25,15.2,15°C,Late Winter: Cold rain & seasonal park closures
+Victoria,6,Sep,9,42,17.4,17°C,AFL Finals Weekend: Warming spring conditions
+Victoria,6,Oct,10,55,20.1,20°C,Spring Flora: Grampians & High Country camps reopen
+Victoria,6,Nov,11,62,22.5,23°C,Cup Weekend: Warm weather activates river & lake camps
+Victoria,6,Dec,12,82,24.4,24°C,Christmas Rush: Coastal holiday parks fully booked
+Tasmania,7,Jan,1,94,22.0,22°C,Summer Peak: Long daylight & prime wilderness hiking
+Tasmania,7,Feb,2,86,22.1,22°C,Late Summer: Optimal alpine and coastal national parks
+Tasmania,7,Mar,3,60,20.2,20°C,Early Autumn: Calm conditions; hiking the Overland Track
+Tasmania,7,Apr,4,45,17.4,17°C,Autumn Colors: Turning of the Fagus foliage season
+Tasmania,7,May,5,24,14.5,15°C,Early Winter: Cold brisk maritime fronts arrive
+Tasmania,7,Jun,6,14,12.2,12°C,Winter Solstice: Dark, damp & sub-zero alpine frosts
+Tasmania,7,Jul,7,10,11.8,12°C,Absolute Low: Off-grid freeze; national parks near-empty
+Tasmania,7,Aug,8,15,13.1,13°C,Late Winter: Cold sleet and mountain snowfalls
+Tasmania,7,Sep,9,32,15.2,15°C,Early Spring: Variable brisk winds and spring blooms
+Tasmania,7,Oct,10,48,17.2,17°C,Spring Touring: Wilderness tracks dry out gradually
+Tasmania,7,Nov,11,64,19.1,19°C,Pre-Summer: Long days draw interstate ferry travellers
+Tasmania,7,Dec,12,88,21.0,21°C,Summer Explosion: Island parks surge toward capacity
