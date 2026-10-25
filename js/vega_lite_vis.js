@@ -11,6 +11,7 @@ const vg_lollipop             = "js/lollipop_chart.vg.json";
 const vg_pyramid              = "js/population_pyramid.vg.json";
 const vg_sankey               = "js/sankey_accommodation.vg.json";
 const vg_solo_family          = "js/solo_vs_family_accommodation.vg.json";
+const vg_occupation           = "js/vis_occupancy_multiline.vg.json"
 
 const embedOpt = { actions: false };
 
@@ -89,3 +90,4 @@ vegaEmbed("#vis-lollipop", vg_lollipop, embedOpt).catch(console.error);
 vegaEmbed("#vis-pyramid", vg_pyramid, embedOpt).catch(console.error);
 vegaEmbed("#vis-sankey", vg_sankey, embedOpt).catch(console.error);
 vegaEmbed("#vis-solo-family", vg_solo_family, embedOpt).catch(console.error);
+vegaEmbed("#vis-occupation", vg_occupation, embedOpt).catch(console.error);

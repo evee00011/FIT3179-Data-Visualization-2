@@ -1,0 +1,226 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "background": "transparent",
+  "title": {
+    "text": "Monthly Campsite & Holiday Park Occupancy Rates (2019–2026)",
+    "subtitle": [
+      "Comparison of New South Wales vs. Australian National Occupancy Rates across seasonal cycles and pandemic disruptions.",
+      "Source: Tourism Research Australia (TRA) / Caravan Industry Association of Australia (CIAA)"
+    ],
+    "anchor": "start",
+    "fontSize": 15,
+    "fontWeight": 700,
+    "color": "#1f2421",
+    "subtitleFontSize": 11,
+    "subtitleColor": "#64748b",
+    "subtitleFontStyle": "italic",
+    "dy": -8
+  },
+  "width": 720,
+  "height": 360,
+  "data": {
+    "url": "data/monthly.csv"
+  },
+  "transform": [
+    {
+      "fold": ["nsw_occupancy_rate", "national_occupancy_rate"],
+      "as": ["region_raw", "occupancy_rate"]
+    },
+    {
+      "calculate": "datum.region_raw === 'nsw_occupancy_rate' ? 'New South Wales' : 'National Benchmark'",
+      "as": "Region"
+    }
+  ],
+  "layer": [
+    {
+      "description": "Lockdown Event Shading Rectangles",
+      "data": {
+        "values": [
+          {
+            "start": "2020-03-20",
+            "end": "2020-06-05",
+            "event": "Initial National Lockdown (Apr 2020: NSW 6.2%, Nat 14.4%)"
+          },
+          {
+            "start": "2021-06-25",
+            "end": "2021-10-15",
+            "event": "NSW Delta Lockdown (Sep 2021: NSW 13.6% vs Nat 42.0%)"
+          }
+        ]
+      },
+      "mark": {
+        "type": "rect",
+        "color": "#fee2e2",
+        "opacity": 0.65
+      },
+      "encoding": {
+        "x": {"field": "start", "type": "temporal"},
+        "x2": {"field": "end", "type": "temporal"},
+        "tooltip": [
+          {"field": "event", "type": "nominal", "title": "Disruption Phase"}
+        ]
+      }
+    },
+    {
+      "description": "Multi-Series Occupancy Rate Lines",
+      "mark": {
+        "type": "line",
+        "strokeWidth": 2.6,
+        "interpolate": "monotone"
+      },
+      "encoding": {
+        "x": {
+          "field": "date",
+          "type": "temporal",
+          "axis": {
+            "title": "Time (Monthly Interval)",
+            "format": "%b %Y",
+            "tickCount": "year",
+            "grid": true,
+            "gridColor": "#f1f5f9"
+          }
+        },
+        "y": {
+          "field": "occupancy_rate",
+          "type": "quantitative",
+          "scale": {"domain": [0, 80]},
+          "axis": {
+            "title": "Occupancy Rate (%)",
+            "format": "d",
+            "grid": true,
+            "gridColor": "#f1f5f9"
+          }
+        },
+        "color": {
+          "field": "Region",
+          "type": "nominal",
+          "scale": {
+            "domain": ["New South Wales", "National Benchmark"],
+            "range": ["#6b21a8", "#0284c7"]
+          },
+          "legend": {
+            "orient": "bottom-right",
+            "title": null,
+            "labelFontSize": 11,
+            "symbolType": "stroke",
+            "symbolStrokeWidth": 3
+          }
+        }
+      }
+    },
+    {
+      "description": "Interactive Nearest Point Selector",
+      "params": [
+        {
+          "name": "hover",
+          "select": {
+            "type": "point",
+            "fields": ["date"],
+            "nearest": true,
+            "on": "pointerover",
+            "clear": "pointerout"
+          }
+        }
+      ],
+      "mark": {
+        "type": "point",
+        "size": 50,
+        "filled": true
+      },
+      "encoding": {
+        "x": {"field": "date", "type": "temporal"},
+        "y": {"field": "occupancy_rate", "type": "quantitative"},
+        "color": {
+          "field": "Region",
+          "type": "nominal",
+          "scale": {
+            "domain": ["New South Wales", "National Benchmark"],
+            "range": ["#6b21a8", "#0284c7"]
+          }
+        },
+        "opacity": {
+          "condition": {"param": "hover", "empty": false, "value": 1},
+          "value": 0
+        },
+        "tooltip": [
+          {"field": "date", "type": "temporal", "title": "Month", "format": "%B %Y"},
+          {"field": "Region", "type": "nominal", "title": "Region"},
+          {"field": "occupancy_rate", "type": "quantitative", "title": "Occupancy Rate (%)", "format": ".1f"}
+        ]
+      }
+    },
+    {
+      "description": "Event Label 1: Initial Lockdown",
+      "data": {
+        "values": [
+          {"date": "2020-04-15", "y": 8.0, "text": "Initial COVID-19 Lockdown: NSW 6.2%"}
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "baseline": "bottom",
+        "dx": 8,
+        "dy": -8,
+        "fontSize": 10.5,
+        "fontWeight": "bold",
+        "color": "#991b1b"
+      },
+      "encoding": {
+        "x": {"field": "date", "type": "temporal"},
+        "y": {"field": "y", "type": "quantitative"},
+        "text": {"field": "text", "type": "nominal"}
+      }
+    },
+    {
+      "description": "Event Label 2: NSW Delta Lockdown",
+      "data": {
+        "values": [
+          {"date": "2021-08-15", "y": 15.0, "text": "NSW Delta Lockdown: NSW 13.6%"}
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "baseline": "bottom",
+        "dx": 8,
+        "dy": -8,
+        "fontSize": 10.5,
+        "fontWeight": "bold",
+        "color": "#991b1b"
+      },
+      "encoding": {
+        "x": {"field": "date", "type": "temporal"},
+        "y": {"field": "y", "type": "quantitative"},
+        "text": {"field": "text", "type": "nominal"}
+      }
+    },
+    {
+      "description": "Seasonal Peak Callout Indicator",
+      "data": {
+        "values": [
+          {"date": "2026-01-01", "y": 71.7, "text": "Summer Peak (Jan >70%)"}
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "align": "right",
+        "baseline": "bottom",
+        "dx": -6,
+        "dy": -6,
+        "fontSize": 10,
+        "fontStyle": "italic",
+        "color": "#475569"
+      },
+      "encoding": {
+        "x": {"field": "date", "type": "temporal"},
+        "y": {"field": "y", "type": "quantitative"},
+        "text": {"field": "text", "type": "nominal"}
+      }
+    }
+  ],
+  "config": {
+    "view": {"stroke": null},
+    "axis": {"domain": false, "ticks": false}
+  }
+}
