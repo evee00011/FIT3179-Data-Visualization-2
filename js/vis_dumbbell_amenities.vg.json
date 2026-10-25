@@ -1,0 +1,165 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "background": "transparent",
+  "title": {
+    "text": "The Remoteness Penalty: Campsite Amenity Deficit",
+    "subtitle": [
+      "Comparison of facility availability between Coastal/Urban Holiday Parks and Remote Outback Bushcamps",
+      "Sources: Synthesized from OpenStreetMap Australia (OSM) & DBCA/TRA Camper Cohort Surveys"
+    ],
+    "anchor": "start",
+    "font": "Playfair Display",
+    "fontSize": 16,
+    "fontWeight": 700,
+    "color": "#1f2421",
+    "subtitleFont": "Roboto",
+    "subtitleFontSize": 11,
+    "subtitleColor": "#64748b",
+    "subtitleFontStyle": "italic",
+    "dy": -8
+  },
+  "width": "container",
+  "height": 340,
+  "data": {
+    "url": "data/amenities_remoteness_gap.csv"
+  },
+  "encoding": {
+    "y": {
+      "field": "amenity",
+      "type": "nominal",
+      "sort": {"field": "coastal_urban", "order": "descending"},
+      "axis": {
+        "title": null,
+        "labelFont": "Roboto",
+        "labelFontSize": 12,
+        "labelFontWeight": "bold",
+        "labelColor": "#1f2421",
+        "domain": false,
+        "ticks": false
+      }
+    }
+  },
+  "layer": [
+    {
+      "description": "Connecting Rule (Dumbbell Bar encoding the Gap)",
+      "mark": {
+        "type": "rule",
+        "color": "#cbd5e1",
+        "strokeWidth": 3.5,
+        "strokeCap": "round"
+      },
+      "encoding": {
+        "x": {
+          "field": "remote_outback",
+          "type": "quantitative",
+          "scale": {"domain": [0, 100]},
+          "axis": {
+            "title": "Facility Availability Rate (%)",
+            "titleFont": "Roboto",
+            "titleFontSize": 11,
+            "labelFont": "Roboto",
+            "labelFontSize": 10,
+            "grid": true,
+            "gridColor": "#f1f5f9"
+          }
+        },
+        "x2": {"field": "coastal_urban"}
+      }
+    },
+    {
+      "description": "Remote / Outback Bushcamp Dot (Teal)",
+      "mark": {
+        "type": "point",
+        "size": 180,
+        "filled": true,
+        "color": "#0f766e",
+        "opacity": 1
+      },
+      "encoding": {
+        "x": {"field": "remote_outback", "type": "quantitative"},
+        "tooltip": [
+          {"field": "amenity", "type": "nominal", "title": "Facility"},
+          {"field": "remote_outback", "type": "quantitative", "title": "Remote / Outback Rate (%)", "format": ".1f"},
+          {"field": "gap", "type": "quantitative", "title": "Remoteness Penalty (%)", "format": ".1f"}
+        ]
+      }
+    },
+    {
+      "description": "Coastal / Urban Holiday Park Dot (Amber)",
+      "mark": {
+        "type": "point",
+        "size": 180,
+        "filled": true,
+        "color": "#d97706",
+        "opacity": 1
+      },
+      "encoding": {
+        "x": {"field": "coastal_urban", "type": "quantitative"},
+        "tooltip": [
+          {"field": "amenity", "type": "nominal", "title": "Facility"},
+          {"field": "coastal_urban", "type": "quantitative", "title": "Coastal / Urban Rate (%)", "format": ".1f"},
+          {"field": "gap", "type": "quantitative", "title": "Remoteness Penalty (%)", "format": ".1f"}
+        ]
+      }
+    },
+    {
+      "description": "Remote Value Label",
+      "mark": {
+        "type": "text",
+        "align": "right",
+        "baseline": "middle",
+        "dx": -10,
+        "font": "Roboto",
+        "fontSize": 10.5,
+        "fontWeight": 600,
+        "color": "#0f766e"
+      },
+      "encoding": {
+        "x": {"field": "remote_outback", "type": "quantitative"},
+        "text": {"field": "remote_outback", "type": "quantitative", "format": ".1f"}
+      }
+    },
+    {
+      "description": "Coastal Value Label",
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "baseline": "middle",
+        "dx": 10,
+        "font": "Roboto",
+        "fontSize": 10.5,
+        "fontWeight": 600,
+        "color": "#d97706"
+      },
+      "encoding": {
+        "x": {"field": "coastal_urban", "type": "quantitative"},
+        "text": {"field": "coastal_urban", "type": "quantitative", "format": ".1f"}
+      }
+    },
+    {
+      "description": "Gap Annotation Text positioned midway along the rule",
+      "mark": {
+        "type": "text",
+        "align": "center",
+        "baseline": "bottom",
+        "dy": -8,
+        "font": "Roboto",
+        "fontSize": 9.5,
+        "fontStyle": "italic",
+        "color": "#64748b"
+      },
+      "encoding": {
+        "x": {
+          "calculate": "(datum.coastal_urban + datum.remote_outback) / 2",
+          "type": "quantitative"
+        },
+        "text": {
+          "calculate": "'-' + datum.gap + '% deficit'"
+        }
+      }
+    }
+  ],
+  "config": {
+    "view": {"stroke": null}
+  }
+}

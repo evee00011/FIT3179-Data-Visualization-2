@@ -13,6 +13,8 @@ const vg_sankey               = "js/sankey_accommodation.vg.json";
 const vg_solo_family          = "js/solo_vs_family_accommodation.vg.json";
 const vg_occupation           = "js/vis_occupancy_multiline.vg.json"
 const vg_activities         = "js/vis_camp_activities.vg.json"
+const vg_dumbbell = "js/vis_dumbbell_amenities.vg.json";
+
 
 const embedOpt = { actions: false };
 
@@ -93,3 +95,7 @@ vegaEmbed("#vis-sankey", vg_sankey, embedOpt).catch(console.error);
 vegaEmbed("#vis-solo-family", vg_solo_family, embedOpt).catch(console.error);
 vegaEmbed("#vis-occupation", vg_occupation, embedOpt).catch(console.error);
 vegaEmbed("#vis-activities", vg_activities, embedOpt).catch(console.error);
+
+
+vegaEmbed("#vis-dumbbell", vg_dumbbell, { actions: false })
+  .catch(console.error);
