@@ -1,0 +1,139 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "background": "transparent",
+  "title": {
+    "text": "Why People Camp: Activity Participation Dot Matrix",
+    "subtitle": [
+      "Each filled dot represents 1% of surveyed park visitors (n = 994). Select an activity below.",
+      "Source: WA Department of Biodiversity, Conservation and Attractions (DBCA)"
+    ],
+    "anchor": "start",
+    "font": "Playfair Display",
+    "fontSize": 16,
+    "fontWeight": 700,
+    "color": "#1f2421",
+    "subtitleFont": "Roboto",
+    "subtitleFontSize": 11,
+    "subtitleColor": "#64748b",
+    "subtitleFontStyle": "italic",
+    "dy": -8
+  },
+  "params": [
+    {
+      "name": "selected_activity",
+      "value": "Relaxing / fun / enjoyment",
+      "bind": {
+        "input": "select",
+        "options": [
+          "Relaxing / fun / enjoyment",
+          "Bushwalking / hiking",
+          "Sightseeing",
+          "Cycling / mountain bike riding",
+          "Swimming",
+          "Wildflower viewing",
+          "Photography",
+          "Snorkelling / diving",
+          "Wildlife viewing",
+          "Guided tours",
+          "Surfing / kite surfing",
+          "Fishing",
+          "Visit Aboriginal / cultural sites",
+          "Picnicking / barbecuing",
+          "Visit the visitor centre in park",
+          "Four wheel driving",
+          "Fitness / health",
+          "Rock climbing / abseiling",
+          "Bird watching",
+          "Canoeing / kayaking / boating"
+        ],
+        "name": "Select Activity: "
+      }
+    }
+  ],
+  "data": {
+    "sequence": {"start": 0, "stop": 100, "step": 1, "as": "dot_id"}
+  },
+  "transform": [
+    {
+      "calculate": "datum.dot_id % 10",
+      "as": "col"
+    },
+    {
+      "calculate": "floor(datum.dot_id / 10)",
+      "as": "row"
+    },
+    {
+      "calculate": "selected_activity == 'Relaxing / fun / enjoyment' ? 90.1 : selected_activity == 'Bushwalking / hiking' ? 72.9 : selected_activity == 'Sightseeing' ? 66.4 : selected_activity == 'Cycling / mountain bike riding' ? 65.1 : selected_activity == 'Swimming' ? 30.2 : selected_activity == 'Wildflower viewing' ? 27.2 : selected_activity == 'Photography' ? 27.1 : selected_activity == 'Snorkelling / diving' ? 27.0 : selected_activity == 'Wildlife viewing' ? 26.2 : selected_activity == 'Guided tours' ? 21.2 : selected_activity == 'Surfing / kite surfing' ? 20.9 : selected_activity == 'Fishing' ? 19.4 : selected_activity == 'Visit Aboriginal / cultural sites' ? 17.3 : selected_activity == 'Picnicking / barbecuing' ? 12.6 : selected_activity == 'Visit the visitor centre in park' ? 11.4 : selected_activity == 'Four wheel driving' ? 10.1 : selected_activity == 'Fitness / health' ? 7.1 : selected_activity == 'Rock climbing / abseiling' ? 4.3 : selected_activity == 'Bird watching' ? 3.2 : 2.5",
+      "as": "rate_value"
+    },
+    {
+      "calculate": "datum.dot_id < round(datum.rate_value) ? 'Active Participants' : 'Non-Participants'",
+      "as": "status"
+    }
+  ],
+  "width": 480,
+  "height": 480,
+  "layer": [
+    {
+      "mark": {
+        "type": "circle",
+        "size": 520,
+        "opacity": 0.95
+      },
+      "encoding": {
+        "x": {
+          "field": "col",
+          "type": "ordinal",
+          "axis": null
+        },
+        "y": {
+          "field": "row",
+          "type": "ordinal",
+          "sort": "descending",
+          "axis": null
+        },
+        "color": {
+          "field": "status",
+          "type": "nominal",
+          "scale": {
+            "domain": ["Active Participants", "Non-Participants"],
+            "range": ["#0f766e", "#e2e8f0"]
+          },
+          "legend": {
+            "title": null,
+            "orient": "bottom",
+            "direction": "horizontal",
+            "labelFont": "Roboto",
+            "labelFontSize": 11
+          }
+        },
+        "tooltip": [
+          {"field": "status", "type": "nominal", "title": "Status"},
+          {"field": "rate_value", "type": "quantitative", "title": "Participation Rate (%)", "format": ".1f"}
+        ]
+      }
+    },
+    {
+      "data": {"values": [{}]},
+      "mark": {
+        "type": "text",
+        "align": "center",
+        "baseline": "middle",
+        "font": "Playfair Display",
+        "fontSize": 44,
+        "fontWeight": 700,
+        "color": "#0f766e",
+        "x": 240,
+        "y": 240
+      },
+      "encoding": {
+        "text": {
+          "expr": "format(selected_activity == 'Relaxing / fun / enjoyment' ? 90.1 : selected_activity == 'Bushwalking / hiking' ? 72.9 : selected_activity == 'Sightseeing' ? 66.4 : selected_activity == 'Cycling / mountain bike riding' ? 65.1 : selected_activity == 'Swimming' ? 30.2 : selected_activity == 'Wildflower viewing' ? 27.2 : selected_activity == 'Photography' ? 27.1 : selected_activity == 'Snorkelling / diving' ? 27.0 : selected_activity == 'Wildlife viewing' ? 26.2 : selected_activity == 'Guided tours' ? 21.2 : selected_activity == 'Surfing / kite surfing' ? 20.9 : selected_activity == 'Fishing' ? 19.4 : selected_activity == 'Visit Aboriginal / cultural sites' ? 17.3 : selected_activity == 'Picnicking / barbecuing' ? 12.6 : selected_activity == 'Visit the visitor centre in park' ? 11.4 : selected_activity == 'Four wheel driving' ? 10.1 : selected_activity == 'Fitness / health' ? 7.1 : selected_activity == 'Rock climbing / abseiling' ? 4.3 : selected_activity == 'Bird watching' ? 3.2 : 2.5, '.1f') + '%'"
+        }
+      }
+    }
+  ],
+  "config": {
+    "view": {"stroke": null}
+  }
+}

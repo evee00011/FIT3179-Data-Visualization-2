@@ -35,243 +35,271 @@
     </div>
   </header>
 
-  <!--Start of the dashboard-->
-  <div class = "dashboard-container">
-      <div class="theme-header">
-          <h2> Where do Australians camp?</h2>
-          <p class="subtitle">
-            An analysis on popular camping destinations
-          </p>
-      </div>
-          <!-- Side-by-Side: Map on the Left, Narrative Text on the Right -->
-  <div class="vis-side-layout">
-    
-    <!-- Left Column: The Vega-Lite Map Container -->
-    <div class="map-column">
+  <!-- Start of the dashboard -->
+  <div class="dashboard-container">
+    <div class="theme-header">
+      <h2>Where do Australians camp?</h2>
+      <p class="subtitle">An analysis on popular camping destinations</p>
+    </div>
+
+    <!-- Side-by-Side: Map on the Left, Narrative Text on the Right -->
+    <div class="vis-side-layout">
+      <!-- Left Column: The Vega-Lite Map Container -->
+      <div class="map-column">
         <div id="vis-coastal" class="chart-container"></div>
       </div>
 
-    <!-- Right Column: Course-aligned Narrative & Key Insights -->
-    <div class="text-column">
-      <div class="step is-active" data-step="1">
-        <div class="insight-card">
-          <span class="kicker-tag">WHERE?</span>
-          <h3>Campsites concentrated near the coasts</h3>
-          <p>
-  Australia’s camping landscape is defined by extreme coastal density. While the continental landmass spans 7.7 million square kilometres, <span class="text-highlight">the vast majority of campgrounds stay near the coastline      </span>  </p>
-          <p>
-  This concentration directly reflects Australia's demographic and environmental realities. With over <span class="text-highlight">85% of the population living within 50 km of the sea</span>, holidaymakers naturally gravitate toward the temperate ocean breezes, reliable freshwater estuaries, and sealed arterial highway networks of the eastern and south-western shores.        </p>
-        </div>
-      </div>
-
-      <div class="step" data-step="2">
-        <div class="insight-card highlight-card">
-          <span class="kicker-tag">INFRASTRUCTURE</span>
-          <h3>Concentration around major cities</h3>
-          <p>
-As seen from the map, most campsites concentrate around the major cities as marked by the highlighted circles. The yellow circles represent a 100km diameter around the city. Other than the outliers, most <span class=" text-highlight">Australians camp near major cities. </span>          </p>
-        </div>
-      </div>
-
-    </div>
-
-  </div>
-
-  <!-- ==============================================
-       SECTION 2: SEASONAL MIGRATION (SCROLLY)
-       ============================================== -->
-  <section class="section-divider">
-    <div class="theme-header">
-      <h2>In which seasons are camping locations most popular?</h2>
-      <p class="subtitle">An analysis of how weather affects camping location</p>
-    </div>
-
-    <div class="vis-side-layout season-scrolly-layout">
-      <!-- Left: Pinned Seasonal Map -->
-      <div class="map-column">
-        <div id="vis-seasonal-migration" class="chart-container"></div>
-      </div>
-
-      <!-- Right: Scrolling Seasonal Cards -->
+      <!-- Right Column: Course-aligned Narrative & Key Insights -->
       <div class="text-column">
-        <!-- Summer -->
-        <div class="step-season is-active" data-season="Summer">
+        <div class="step is-active" data-step="1">
           <div class="insight-card">
-            <span class="kicker-tag">DECEMBER – FEBRUARY</span>
-            <h3>Summer: Southern Coastal Surge</h3>
+            <span class="kicker-tag">WHERE?</span>
+            <h3>Campsites concentrated near the coasts</h3>
             <p>
-              Warm weather cause camper demand to surge across the temperate south: <span class="text-highlight">Tasmania (95%) and Victoria (90%) reach peak capacity</span>.
+              Australia’s camping landscape is defined by extreme coastal density. While the continental landmass spans 7.7 million square kilometres, <span class="text-highlight">the vast majority of campgrounds stay near the coastline</span>.
             </p>
             <p>
-              Conversely, the Tropical North shuts down as the wet season triggers monsoonal flooding and impassable access routes.
+              This concentration directly reflects Australia's demographic and environmental realities. With over <span class="text-highlight">85% of the population living within 50 km of the sea</span>, holidaymakers naturally gravitate toward the temperate ocean breezes, reliable freshwater estuaries, and sealed arterial highway networks of the eastern and south-western shores.
             </p>
           </div>
         </div>
 
-        <!-- Autumn -->
-        <div class="step-season" data-season="Autumn">
-          <div class="insight-card">
-            <span class="kicker-tag">MARCH – MAY</span>
-            <h3>Autumn: Moderate Weather</h3>
-            <p>
-              As extreme summer temperatures abate, regional camping spreads inland.<span class="text-highlight"> Mild, stable conditions</span> open up pastoral and central touring routes.
-            </p>
-            <p>
-              This means that camping conditions are stable throughout the country with mild differences.            </p>
-          </div>
-        </div>
-
-        <!-- Winter -->
-        <div class="step-season" data-season="Winter">
+        <div class="step" data-step="2">
           <div class="insight-card highlight-card">
-            <span class="kicker-tag">JUNE – AUGUST</span>
-            <h3>Winter: The Flip</h3>
+            <span class="kicker-tag">INFRASTRUCTURE</span>
+            <h3>Concentration around major cities</h3>
             <p>
-              The seasonal migration inverts completely compared to the summer. Campers flock to the south to avoid harsh temperatures in the north. 
-            </p>
-            
-          </div>
-        </div>
-
-        <!-- Spring -->
-        <div class="step-season" data-season="Spring">
-          <div class="insight-card">
-            <span class="kicker-tag">SEPTEMBER – NOVEMBER</span>
-            <h3>Spring: Moderate weather</h3>
-            <p>
-              As build-up humidity begins in the north, campers migrate back down through coastal Queensland, New South Wales, and south-west Western Australia for the start of the warm season.
+              As seen from the map, most campsites concentrate around the major cities as marked by the highlighted circles. The yellow circles represent a 100km diameter around the city. Other than the outliers, most <span class="text-highlight">Australians camp near major cities.</span>
             </p>
           </div>
         </div>
       </div>
     </div>
-  </section>
 
-  <section class="section-divider">
-    <div class="theme-header">
-      <h2>Who camps and How?</h2>
-      <p class="subtitle">An analysis on who actually camps and how they choose to camp</p>
-    </div>
-    
-    <div class="vis-side-layout">
-      <!-- Left Column: Population Pyramid Chart -->
-      <div class="map-column">
-        <div id="vis-pyramid" class="chart-container"></div>
+    <!-- ==============================================
+         SECTION 2: SEASONAL MIGRATION (SCROLLY)
+         ============================================== -->
+    <section class="section-divider">
+      <div class="theme-header">
+        <h2>In which seasons are camping locations most popular?</h2>
+        <p class="subtitle">An analysis of how weather affects camping location</p>
       </div>
 
-      <!-- Right Column: Narrative Card -->
-      <div class="text-column">
-        <div class="insight-card highlight-card">
-          <span class="kicker-tag">DEMOGRAPHICS</span>
-          <h3>The 35–54 Age Bracket Dominates the Outdoors</h3>
-          <p>
-            Contrary to the perception that camping is either for young backpackers or retired "Grey Nomads", the data reveals that <span class="text-highlight">campers aged 35 to 54 make up over 52% of all overnight park visitors</span>.
-          </p>
-          <p>
-            This peak reflects family-oriented travel during school holiday periods, where parents camp with children. Participation drops steeply below age 25 (<span class="text-highlight">under 8% total</span>), primarily due to vehicle setup costs, and tapers off after age 65 as older travellers transition toward caravan parks with powered amenities.
-          </p>
-          <p>
-            Gender participation remains remarkably balanced across every age cohort, with female campers representing <span class="text-highlight">49.4%</span> of all surveyed park stays.
-          </p>
+      <div class="vis-side-layout season-scrolly-layout">
+        <!-- Left: Pinned Seasonal Map -->
+        <div class="map-column">
+          <div id="vis-seasonal-migration" class="chart-container"></div>
+        </div>
+
+        <!-- Right: Scrolling Seasonal Cards -->
+        <div class="text-column">
+          <!-- Summer -->
+          <div class="step-season is-active" data-season="Summer">
+            <div class="insight-card">
+              <span class="kicker-tag">DECEMBER – FEBRUARY</span>
+              <h3>Summer: Southern Coastal Surge</h3>
+              <p>
+                Warm weather cause camper demand to surge across the temperate south: <span class="text-highlight">Tasmania (95%) and Victoria (90%) reach peak capacity</span>[cite: 7].
+              </p>
+              <p>
+                Conversely, the Tropical North shuts down as the wet season triggers monsoonal flooding and impassable access routes[cite: 7].
+              </p>
+            </div>
+          </div>
+
+          <!-- Autumn -->
+          <div class="step-season" data-season="Autumn">
+            <div class="insight-card">
+              <span class="kicker-tag">MARCH – MAY</span>
+              <h3>Autumn: Moderate Weather</h3>
+              <p>
+                As extreme summer temperatures abate, regional camping spreads inland. <span class="text-highlight">Mild, stable conditions</span> open up pastoral and central touring routes.
+              </p>
+              <p>
+                This means that camping conditions are stable throughout the country with mild differences.
+              </p>
+            </div>
+          </div>
+
+          <!-- Winter -->
+          <div class="step-season" data-season="Winter">
+            <div class="insight-card highlight-card">
+              <span class="kicker-tag">JUNE – AUGUST</span>
+              <h3>Winter: The Flip</h3>
+              <p>
+                The seasonal migration inverts completely compared to the summer. Campers flock to the north to avoid harsh winter temperatures in the south.
+              </p>
+            </div>
+          </div>
+
+          <!-- Spring -->
+          <div class="step-season" data-season="Spring">
+            <div class="insight-card">
+              <span class="kicker-tag">SEPTEMBER – NOVEMBER</span>
+              <h3>Spring: Moderate weather</h3>
+              <p>
+                As build-up humidity begins in the north, campers migrate back down through coastal Queensland, New South Wales, and south-west Western Australia for the start of the warm season.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
+    </section>
 
-    <div class="vis-side-layout">
-      <!-- Left Column: Population Pyramid Chart -->
-      <div class="map-column">
-        <div id="vis-flow-map" class="chart-container"></div>
+    <!-- ==============================================
+         SECTION 3: DEMOGRAPHICS & FLOWS
+         ============================================== -->
+    <section class="section-divider">
+      <div class="theme-header">
+        <h2>Who camps and How?</h2>
+        <p class="subtitle">An analysis on who actually camps and how they choose to camp</p>
       </div>
+      
+      <!-- Population Pyramid -->
+      <div class="vis-side-layout">
+        <div class="map-column">
+          <div id="vis-pyramid" class="chart-container"></div>
+        </div>
 
-      <!-- Right Column: Narrative Card -->
-      <div class="text-column">
-        <div class="insight-card highlight-card">
-  <span class="kicker-tag">CASE STUDY: WESTERN AUSTRALIA</span>
-  <h3>Crossing the Nullarbor: The Long-Haul Outlier</h3>
-  <p>
-    By sheer absolute volume, eastern coastal states like New South Wales and Victoria dominate Australia’s camping totals. Yet, <span class="text-highlight">Western Australia represents the ultimate test of camper intent and overland endurance</span>.
-  </p>
-  <p>
-    Because of extreme geographic isolation, visiting WA requires traversing thousands of kilometres across the Nullarbor Plain or the arid Red Centre. Despite these physical barriers, <span class="text-highlight">Victoria alone accounts for over 7.2% of interstate park campers (64 sampled travellers)</span>, followed by New South Wales (4.3%) and Queensland (3.8%).
-  </p>
-  
-</div>
-      </div>
-    </div>
-  </section>
-
-  <section>
-    <div class="theme-header">
-      <h2>How do people camp?</h2>
-      <p class="subtitle">How people choose to camp</p>
-    </div>
-    <div class="vis-side-layout">
-      <div class="map-column">
-        <div id="vis-sankey" class="chart-container"></div>
-      </div>
-
-      <!-- Right Column: Narrative Card -->
-      <div class="text-column">
-        <div class="insight-card highlight-card">
-          <span class="kicker-tag">ACCOMODATION CHOICES</span>
-          <h3>Mobility vs Comfort: The Travel Group Divide</h3>
-          <p>
-How Australians choose to sleep under the stars is strongly dictated by party composition </p>
-          <span class="text-highlight">Solo travellers prioritize agility and low footprint</span>, with over half opting for traditional swags and compact tents. Rooftop tents and campervans form their secondary choice, catering to long-range outback mobility
-<p>
-    In contrast, <span class="text-highlight">family groups gravitate decisively toward high-amenity setups</span>. More than 54% travel with caravans or camper-trailers, while large multi-room ground tents account for nearly a third of family excursions. 
-  </p>
-  
+        <div class="text-column">
+          <div class="insight-card highlight-card">
+            <span class="kicker-tag">DEMOGRAPHICS</span>
+            <h3>The 35–54 Age Bracket Dominates the Outdoors</h3>
+            <p>
+              Contrary to the perception that camping is either for young backpackers or retired "Grey Nomads", the data reveals that <span class="text-highlight">campers aged 35 to 54 make up over 52% of all overnight park visitors</span>.
+            </p>
+            <p>
+              This peak reflects family-oriented travel during school holiday periods, where parents camp with children. Participation drops steeply below age 25 (<span class="text-highlight">under 8% total</span>), primarily due to vehicle setup costs, and tapers off after age 65 as older travellers transition toward caravan parks with powered amenities.
+            </p>
+            <p>
+              Gender participation remains remarkably balanced across every age cohort, with female campers representing <span class="text-highlight">49.4%</span> of all surveyed park stays.
+            </p>
+          </div>
         </div>
       </div>
-    </div>
 
-  <div class="vis-side-layout">
-      <div class="map-column">
-        <div id="vis-lollipop" class="chart-container"></div>
-      </div>
+      <!-- Flow Map -->
+      <div class="vis-side-layout">
+        <div class="map-column">
+          <div id="vis-flow-map" class="chart-container"></div>
+        </div>
 
-      <!-- Right Column: Narrative Card -->
-      <div class="insight-card highlight-card">
-  <span class="kicker-tag">INFRASTRUCTURE GAP</span>
-  <h3>Self-Sufficiency Required: The Reality of Bush Camping</h3>
-  <p>
-    Across nearly 10,000 documented Australian campsites, basic access far outpaces utility infrastructure. While over <span class="text-highlight">21.0% officially permit tent pitching</span> and <span class="text-highlight">16.1% accommodate caravans</span>, essential amenities remain remarkably scarce across the continent.
-  </p>
-  <p>
-    Grid-connected power supplies drop to just <span class="text-highlight">8.9%</span>, and shower blocks are present at only <span class="text-highlight">7.5%</span> of destinations. Most critically, potable drinking water is verified at fewer than <span class="text-highlight">3 in every 100 sites (2.6%)</span>.
-  </p>
-  <p>
-    This steep drop-off underscores the self-reliant nature of Australian outdoor travel: holidaymakers venturing beyond managed coastal holiday parks must carry their own water filtration, dual-battery power, and self-contained waste storage.
-  </p>
-</div>
-</div>
-
-<!-- Occupancy Dynamics & Pandemic Disruption -->
-    <div class="vis-side-layout">
-      <!-- Left Column: Multi-Series Occupancy Chart -->
-      <div class="map-column">
-        <div id="vis-occupation" class="chart-container"></div>
-      </div>
-
-      <!-- Right Column: Narrative Card -->
-      <div class="text-column">
-        <div class="insight-card highlight-card">
-          <span class="kicker-tag">CAPACITY & RESILIENCE</span>
-          <h3>The Lockdown Shock &amp; Post-2020 Surge</h3>
-          <p>
-            Australia's camping and holiday park sector experienced its most violent demand shock on record during the initial COVID-19 pandemic wave: <span class="text-highlight">NSW occupancy cratered to just 6.2% in April 2020</span> (compared to 48.7% in April 2019), while National occupancy fell to 14.4%.
-          </p>
-          <p>
-            While state-border lockdowns triggered a secondary collapse in NSW in winter 2021 (<span class="text-highlight">13.6% in September 2021</span>), intrastate "drive-tourism" and border reopenings fueled a rapid rebound. Summer capacity now routinely surges above <span class="text-highlight">70% every January</span>, outstripping pre-pandemic benchmarks.
-          </p>
+        <div class="text-column">
+          <div class="insight-card highlight-card">
+            <span class="kicker-tag">CASE STUDY: WESTERN AUSTRALIA</span>
+            <h3>Crossing the Nullarbor: The Long-Haul Outlier</h3>
+            <p>
+              By sheer absolute volume, eastern coastal states like New South Wales and Victoria dominate Australia’s camping totals. Yet, <span class="text-highlight">Western Australia represents the ultimate test of camper intent and overland endurance</span>.
+            </p>
+            <p>
+              Because of extreme geographic isolation, visiting WA requires traversing thousands of kilometres across the Nullarbor Plain or the arid Red Centre. Despite these physical barriers, <span class="text-highlight">Victoria alone accounts for over 7.2% of interstate park campers (64 sampled travellers)</span>, followed by New South Wales (4.3%) and Queensland (3.8%).
+            </p>
+          </div>
         </div>
       </div>
-    </div>
-    </div>
+    </section>
 
-  </section>
-  </div>
+    <!-- ==============================================
+         SECTION 4: ACCOMMODATION, SITES & MOTIVATIONS
+         ============================================== -->
+    <section class="section-divider">
+      <div class="theme-header">
+        <h2>How do people camp?</h2>
+        <p class="subtitle">How people choose to camp and why they head outdoors</p>
+      </div>
+
+      <!-- 1. Accommodations / Sankey -->
+      <div class="vis-side-layout">
+        <div class="map-column">
+          <div id="vis-sankey" class="chart-container"></div>
+        </div>
+
+        <div class="text-column">
+          <div class="insight-card highlight-card">
+            <span class="kicker-tag">ACCOMMODATION CHOICES</span>
+            <h3>Mobility vs Comfort: The Travel Group Divide</h3>
+            <p>
+              How Australians choose to sleep under the stars is strongly dictated by party composition.
+            </p>
+            <p>
+              <span class="text-highlight">Solo travellers prioritize agility and low footprint</span>, with over half opting for traditional swags and compact tents. Rooftop tents and campervans form their secondary choice, catering to long-range outback mobility.
+            </p>
+            <p>
+              In contrast, <span class="text-highlight">family groups gravitate decisively toward high-amenity setups</span>. More than 54% travel with caravans or camper-trailers, while large multi-room ground tents account for nearly a third of family excursions.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. Infrastructure / Lollipop -->
+      <div class="vis-side-layout">
+        <div class="map-column">
+          <div id="vis-lollipop" class="chart-container"></div>
+        </div>
+
+        <div class="text-column">
+          <div class="insight-card highlight-card">
+            <span class="kicker-tag">INFRASTRUCTURE GAP</span>
+            <h3>Self-Sufficiency Required: The Reality of Bush Camping</h3>
+            <p>
+              Across nearly 10,000 documented Australian campsites, basic access far outpaces utility infrastructure. While over <span class="text-highlight">21.0% officially permit tent pitching</span> and <span class="text-highlight">16.1% accommodate caravans</span>, essential amenities remain remarkably scarce across the continent.
+            </p>
+            <p>
+              Grid-connected power supplies drop to just <span class="text-highlight">8.9%</span>, and shower blocks are present at only <span class="text-highlight">7.5%</span> of destinations. Most critically, potable drinking water is verified at fewer than <span class="text-highlight">3 in every 100 sites (2.6%)</span>.
+            </p>
+            <p>
+              This steep drop-off underscores the self-reliant nature of Australian outdoor travel: holidaymakers venturing beyond managed coastal holiday parks must carry their own water filtration, dual-battery power, and self-contained waste storage.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. Occupancy Dynamics & Pandemic Disruption -->
+      <div class="vis-side-layout">
+        <div class="map-column">
+          <div id="vis-occupation" class="chart-container"></div>
+        </div>
+
+        <div class="text-column">
+          <div class="insight-card highlight-card">
+            <span class="kicker-tag">CAPACITY &amp; RESILIENCE</span>
+            <h3>The Lockdown Shock &amp; Post-2020 Surge</h3>
+            <p>
+              Australia's camping and holiday park sector experienced its most violent demand shock on record during the initial COVID-19 pandemic wave: <span class="text-highlight">NSW occupancy cratered to just 6.2% in April 2020</span> (compared to 48.7% in April 2019), while National occupancy fell to 14.4%.
+            </p>
+            <p>
+              While state-border lockdowns triggered a secondary collapse in NSW in winter 2021 (<span class="text-highlight">13.6% in September 2021</span>), intrastate "drive-tourism" and border reopenings fueled a rapid rebound. Summer capacity now routinely surges above <span class="text-highlight">70% every January</span>, outstripping pre-pandemic benchmarks.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4. Camper Motivations (Dot Matrix / Activities) -->
+      <div class="vis-side-layout">
+        <div class="map-column" style="display: flex; justify-content: center; align-items: center;">
+          <div id="vis-activities" class="chart-container"></div>
+        </div>
+
+        <div class="text-column">
+          <div class="insight-card highlight-card">
+            <span class="kicker-tag">CAMPER MOTIVATIONS</span>
+            <h3>Relaxation Over Adrenaline: The Mental Reset</h3>
+            <p>
+              Surveying park campers reveals a clear hierarchy of intent: the overwhelming driver for outdoor travel is psychological restoration rather than extreme adventure sports.
+            </p>
+            <p>
+              Over <span class="text-highlight">90.1% of all campers identify relaxation and enjoyment</span> as their primary activity, closely followed by nature immersion: <span class="text-highlight">bushwalking (72.9%)</span>, <span class="text-highlight">sightseeing (66.4%)</span>, and trail cycling (65.1%).
+            </p>
+            <p>
+              In stark contrast, specialized adrenaline and equipment-heavy sports represent narrow niches: rock climbing (4.3%), bird watching (3.2%), and canoeing/paddling (2.5%). This demonstrates that camping infrastructure must prioritize tranquil, scenic natural surroundings and walking access over motorized recreation hubs.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div> <!-- Close .dashboard-container -->
+
   <script src="js/vega_lite_vis.js"></script>
 </body>
 </html>
