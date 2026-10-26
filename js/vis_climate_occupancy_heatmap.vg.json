@@ -2,10 +2,10 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "background": "transparent",
   "title": {
-    "text": "Thermal Migration: How Climate Inverts State Campsite Occupancy",
+    "text": "Climate drives seasonal demand",
     "subtitle": [
       "Cell colour encodes monthly campsite occupancy rate (%); text labels display mean daytime maximum temperature (°C).",
-      "Notice the diagonal X-crossover: Winter peaks in the Tropical North (NT/QLD), while Summer peaks in the Temperate South (VIC/TAS)."
+      "Notice the diagonal X-crossover: Winter peaks in the Tropical North , while Summer peaks in the Temperate South ."
     ],
     "anchor": "start",
     "font": "Playfair Display",

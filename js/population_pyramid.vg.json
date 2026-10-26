@@ -22,7 +22,11 @@
     {
       "calculate": "datum.gender === 'Female' ? -datum.share : datum.share",
       "as": "signed_share"
-    }
+    },
+    {
+  "calculate": "format(datum.share, '.1f') + '%'",
+  "as": "share_pct"
+}
   ],
   "layer": [
     {
@@ -73,8 +77,7 @@
         "tooltip": [
           {"field": "age_group", "type": "nominal", "title": "Age Cohort"},
           {"field": "gender", "type": "nominal", "title": "Gender"},
-          {"field": "share", "type": "quantitative", "title": "Share of Campers", "format": ".2f"}
-        ]
+{"field": "share_pct", "type": "nominal", "title": "Share of Campers"}        ]
       }
     },
     
