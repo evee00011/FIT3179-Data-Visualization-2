@@ -1,139 +1,348 @@
 {
-  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "$schema": "https://vega.github.io/schema/vega/v5.json",
   "background": "transparent",
   "title": {
-    "text": "Why People Camp: Activity Participation Dot Matrix",
+    "text": "Why People Camp: Activity Participation & Motivation",
     "subtitle": [
-      "Each filled dot represents 1% of surveyed park visitors (n = 994). Select an activity below.",
+      "Click any activity bar on the left to inspect its exact 100-dot participation matrix (n = 994).",
       "Source: WA Department of Biodiversity, Conservation and Attractions (DBCA)"
     ],
     "anchor": "start",
-    "font": "Playfair Display",
-    "fontSize": 16,
-    "fontWeight": 700,
+    "fontSize": 18,
+    "fontWeight": "bold",
     "color": "#1f2421",
-    "subtitleFont": "Roboto",
-    "subtitleFontSize": 11,
+    "subtitleFontSize": 12,
     "subtitleColor": "#64748b",
     "subtitleFontStyle": "italic",
-    "dy": -8
+    "dy": -10
   },
-  "params": [
+  "width": 860,
+  "height": 580,
+  "padding": {"top": 10, "left": 10, "right": 20, "bottom": 10},
+
+  "signals": [
     {
-      "name": "selected_activity",
+      "name": "selectedActivity",
       "value": "Relaxing / fun / enjoyment",
-      "bind": {
-        "input": "select",
-        "options": [
-          "Relaxing / fun / enjoyment",
-          "Bushwalking / hiking",
-          "Sightseeing",
-          "Cycling / mountain bike riding",
-          "Swimming",
-          "Wildflower viewing",
-          "Photography",
-          "Snorkelling / diving",
-          "Wildlife viewing",
-          "Guided tours",
-          "Surfing / kite surfing",
-          "Fishing",
-          "Visit Aboriginal / cultural sites",
-          "Picnicking / barbecuing",
-          "Visit the visitor centre in park",
-          "Four wheel driving",
-          "Fitness / health",
-          "Rock climbing / abseiling",
-          "Bird watching",
-          "Canoeing / kayaking / boating"
-        ],
-        "name": "Select Activity: "
-      }
+      "on": [
+        {
+          "events": "@barRowBg:click, @barFill:click, @barLabel:click, @barTextVal:click",
+          "update": "datum.activity"
+        }
+      ]
+    },
+    {
+      "name": "activeRate",
+      "update": "data('activitiesTable')[indexof(pluck(data('activitiesTable'), 'activity'), selectedActivity)].rate"
     }
   ],
-  "data": {
-    "sequence": {"start": 0, "stop": 100, "step": 1, "as": "dot_id"}
-  },
-  "transform": [
+
+  "data": [
     {
-      "calculate": "datum.dot_id % 10",
-      "as": "col"
+      "name": "activitiesTable",
+      "values": [
+        {"activity": "Relaxing / fun / enjoyment", "rate": 90.1},
+        {"activity": "Bushwalking / hiking", "rate": 72.9},
+        {"activity": "Sightseeing", "rate": 66.4},
+        {"activity": "Cycling / mountain biking", "rate": 65.1},
+        {"activity": "Swimming", "rate": 30.2},
+        {"activity": "Wildflower viewing", "rate": 27.2},
+        {"activity": "Photography", "rate": 27.1},
+        {"activity": "Snorkelling / diving", "rate": 27.0},
+        {"activity": "Wildlife viewing", "rate": 26.2},
+        {"activity": "Guided tours", "rate": 21.2},
+        {"activity": "Surfing / kite surfing", "rate": 20.9},
+        {"activity": "Fishing", "rate": 19.4},
+        {"activity": "Aboriginal / cultural sites", "rate": 17.3},
+        {"activity": "Picnicking / barbecuing", "rate": 12.6},
+        {"activity": "Visit park visitor centre", "rate": 11.4},
+        {"activity": "Four-wheel driving (4WD)", "rate": 10.1},
+        {"activity": "Fitness / health", "rate": 7.1},
+        {"activity": "Rock climbing / abseiling", "rate": 4.3},
+        {"activity": "Bird watching", "rate": 3.2},
+        {"activity": "Canoeing / kayaking", "rate": 2.5}
+      ]
     },
     {
-      "calculate": "floor(datum.dot_id / 10)",
-      "as": "row"
-    },
-    {
-      "calculate": "selected_activity == 'Relaxing / fun / enjoyment' ? 90.1 : selected_activity == 'Bushwalking / hiking' ? 72.9 : selected_activity == 'Sightseeing' ? 66.4 : selected_activity == 'Cycling / mountain bike riding' ? 65.1 : selected_activity == 'Swimming' ? 30.2 : selected_activity == 'Wildflower viewing' ? 27.2 : selected_activity == 'Photography' ? 27.1 : selected_activity == 'Snorkelling / diving' ? 27.0 : selected_activity == 'Wildlife viewing' ? 26.2 : selected_activity == 'Guided tours' ? 21.2 : selected_activity == 'Surfing / kite surfing' ? 20.9 : selected_activity == 'Fishing' ? 19.4 : selected_activity == 'Visit Aboriginal / cultural sites' ? 17.3 : selected_activity == 'Picnicking / barbecuing' ? 12.6 : selected_activity == 'Visit the visitor centre in park' ? 11.4 : selected_activity == 'Four wheel driving' ? 10.1 : selected_activity == 'Fitness / health' ? 7.1 : selected_activity == 'Rock climbing / abseiling' ? 4.3 : selected_activity == 'Bird watching' ? 3.2 : 2.5",
-      "as": "rate_value"
-    },
-    {
-      "calculate": "datum.dot_id < round(datum.rate_value) ? 'Active Participants' : 'Non-Participants'",
-      "as": "status"
+      "name": "dotsTable",
+      "values": [
+        {"id": 0}, {"id": 1}, {"id": 2}, {"id": 3}, {"id": 4}, {"id": 5}, {"id": 6}, {"id": 7}, {"id": 8}, {"id": 9},
+        {"id": 10}, {"id": 11}, {"id": 12}, {"id": 13}, {"id": 14}, {"id": 15}, {"id": 16}, {"id": 17}, {"id": 18}, {"id": 19},
+        {"id": 20}, {"id": 21}, {"id": 22}, {"id": 23}, {"id": 24}, {"id": 25}, {"id": 26}, {"id": 27}, {"id": 28}, {"id": 29},
+        {"id": 30}, {"id": 31}, {"id": 32}, {"id": 33}, {"id": 34}, {"id": 35}, {"id": 36}, {"id": 37}, {"id": 38}, {"id": 39},
+        {"id": 40}, {"id": 41}, {"id": 42}, {"id": 43}, {"id": 44}, {"id": 45}, {"id": 46}, {"id": 47}, {"id": 48}, {"id": 49},
+        {"id": 50}, {"id": 51}, {"id": 52}, {"id": 53}, {"id": 54}, {"id": 55}, {"id": 56}, {"id": 57}, {"id": 58}, {"id": 59},
+        {"id": 60}, {"id": 61}, {"id": 62}, {"id": 63}, {"id": 64}, {"id": 65}, {"id": 66}, {"id": 67}, {"id": 68}, {"id": 69},
+        {"id": 70}, {"id": 71}, {"id": 72}, {"id": 73}, {"id": 74}, {"id": 75}, {"id": 76}, {"id": 77}, {"id": 78}, {"id": 79},
+        {"id": 80}, {"id": 81}, {"id": 82}, {"id": 83}, {"id": 84}, {"id": 85}, {"id": 86}, {"id": 87}, {"id": 88}, {"id": 89},
+        {"id": 90}, {"id": 91}, {"id": 92}, {"id": 93}, {"id": 94}, {"id": 95}, {"id": 96}, {"id": 97}, {"id": 98}, {"id": 99}
+      ],
+      "transform": [
+        {
+          "type": "formula",
+          "expr": "datum.id % 10",
+          "as": "col"
+        },
+        {
+          "type": "formula",
+          "expr": "floor(datum.id / 10)",
+          "as": "row"
+        }
+      ]
     }
   ],
-  "width": 660,
-  "height": 480,
-  "layer": [
+
+  "scales": [
     {
-      "mark": {
-        "type": "circle",
-        "size": 520,
-        "opacity": 0.95
-      },
-      "encoding": {
-        "x": {
-          "field": "col",
-          "type": "ordinal",
-          "axis": null
+      "name": "yScale",
+      "type": "band",
+      "domain": {"data": "activitiesTable", "field": "activity"},
+      "range": [25, 565],
+      "padding": 0.2
+    },
+    {
+      "name": "xBarScale",
+      "type": "linear",
+      "domain": [0, 100],
+      "range": [0, 270]
+    }
+  ],
+
+  "marks": [
+    {
+      "type": "text",
+      "name": "barLabel",
+      "from": {"data": "activitiesTable"},
+      "encode": {
+        "enter": {
+          "x": {"value": 170},
+          "y": {"scale": "yScale", "field": "activity", "band": 0.5},
+          "text": {"field": "activity"},
+          "align": {"value": "right"},
+          "baseline": {"value": "middle"},
+          "font": {"value": "Roboto"},
+          "fontSize": {"value": 11},
+          "cursor": {"value": "pointer"}
         },
-        "y": {
-          "field": "row",
-          "type": "ordinal",
-          "sort": "descending",
-          "axis": null
-        },
-        "color": {
-          "field": "status",
-          "type": "nominal",
-          "scale": {
-            "domain": ["Active Participants", "Non-Participants"],
-            "range": ["#0f766e", "#e2e8f0"]
+        "update": {
+          "fill": {
+            "signal": "datum.activity === selectedActivity ? '#0f766e' : '#1f2421'"
           },
-          "legend": {
-            "title": null,
-            "orient": "bottom",
-            "direction": "horizontal",
-            "labelFont": "Roboto",
-            "labelFontSize": 11
+          "fontWeight": {
+            "signal": "datum.activity === selectedActivity ? 'bold' : 'normal'"
+          }
+        }
+      }
+    },
+
+    {
+      "type": "rect",
+      "name": "barRowBg",
+      "from": {"data": "activitiesTable"},
+      "encode": {
+        "enter": {
+          "x": {"value": 180},
+          "y": {"scale": "yScale", "field": "activity"},
+          "width": {"value": 270},
+          "height": {"scale": "yScale", "band": 1},
+          "fill": {"value": "#f1f5f9"},
+          "cornerRadius": {"value": 4},
+          "cursor": {"value": "pointer"}
+        }
+      }
+    },
+
+    {
+      "type": "rect",
+      "name": "barFill",
+      "from": {"data": "activitiesTable"},
+      "encode": {
+        "enter": {
+          "x": {"value": 180},
+          "y": {"scale": "yScale", "field": "activity"},
+          "height": {"scale": "yScale", "band": 1},
+          "cornerRadius": {"value": 4},
+          "cursor": {"value": "pointer"}
+        },
+        "update": {
+          "width": {"scale": "xBarScale", "field": "rate"},
+          "fill": {
+            "signal": "datum.activity === selectedActivity ? '#0f766e' : '#94a3b8'"
+          },
+          "tooltip": {
+            "signal": "{'Motivation': datum.activity, 'Participation Rate': format(datum.rate, '.1f') + '%'}"
           }
         },
-        "tooltip": [
-          {"field": "status", "type": "nominal", "title": "Status"},
-          {"field": "rate_value", "type": "quantitative", "title": "Participation Rate (%)", "format": ".1f"}
-        ]
+        "hover": {
+          "fill": {"value": "#0d9488"}
+        }
+      }
+    },
+
+    {
+      "type": "text",
+      "name": "barTextVal",
+      "from": {"data": "activitiesTable"},
+      "encode": {
+        "enter": {
+          "y": {"scale": "yScale", "field": "activity", "band": 0.5},
+          "baseline": {"value": "middle"},
+          "font": {"value": "Roboto"},
+          "fontSize": {"value": 10},
+          "fontWeight": {"value": "bold"},
+          "cursor": {"value": "pointer"}
+        },
+        "update": {
+          "x": {
+            "signal": "scale('xBarScale', datum.rate) > 42 ? scale('xBarScale', datum.rate) + 172 : scale('xBarScale', datum.rate) + 186"
+          },
+          "align": {
+            "signal": "scale('xBarScale', datum.rate) > 42 ? 'right' : 'left'"
+          },
+          "text": {"signal": "format(datum.rate, '.1f') + '%'"},
+          "fill": {
+            "signal": "scale('xBarScale', datum.rate) > 42 ? '#ffffff' : (datum.activity === selectedActivity ? '#0f766e' : '#475569')"
+          }
+        }
+      }
+    },
+
+    {
+      "type": "text",
+      "interactive": false,
+      "encode": {
+        "enter": {
+          "x": {"value": 665},
+          "y": {"value": 55},
+          "align": {"value": "center"},
+          "baseline": {"value": "middle"},
+          "font": {"value": "Playfair Display"},
+          "fontSize": {"value": 56},
+          "fontWeight": {"value": "bold"},
+          "fill": {"value": "#0f766e"}
+        },
+        "update": {
+          "text": {"signal": "format(activeRate, '.1f') + '%'"}
+        }
       }
     },
     {
-      "data": {"values": [{}]},
-      "mark": {
-        "type": "text",
-        "align": "center",
-        "baseline": "middle",
-        "font": "Playfair Display",
-        "fontSize": 44,
-        "fontWeight": 700,
-        "color": "#0f766e",
-        "x": 240,
-        "y": 240
-      },
-      "encoding": {
-        "text": {
-          "expr": "format(selected_activity == 'Relaxing / fun / enjoyment' ? 90.1 : selected_activity == 'Bushwalking / hiking' ? 72.9 : selected_activity == 'Sightseeing' ? 66.4 : selected_activity == 'Cycling / mountain bike riding' ? 65.1 : selected_activity == 'Swimming' ? 30.2 : selected_activity == 'Wildflower viewing' ? 27.2 : selected_activity == 'Photography' ? 27.1 : selected_activity == 'Snorkelling / diving' ? 27.0 : selected_activity == 'Wildlife viewing' ? 26.2 : selected_activity == 'Guided tours' ? 21.2 : selected_activity == 'Surfing / kite surfing' ? 20.9 : selected_activity == 'Fishing' ? 19.4 : selected_activity == 'Visit Aboriginal / cultural sites' ? 17.3 : selected_activity == 'Picnicking / barbecuing' ? 12.6 : selected_activity == 'Visit the visitor centre in park' ? 11.4 : selected_activity == 'Four wheel driving' ? 10.1 : selected_activity == 'Fitness / health' ? 7.1 : selected_activity == 'Rock climbing / abseiling' ? 4.3 : selected_activity == 'Bird watching' ? 3.2 : 2.5, '.1f') + '%'"
+      "type": "text",
+      "interactive": false,
+      "encode": {
+        "enter": {
+          "x": {"value": 665},
+          "y": {"value": 98},
+          "align": {"value": "center"},
+          "baseline": {"value": "top"},
+          "font": {"value": "Roboto"},
+          "fontSize": {"value": 13},
+          "fontWeight": {"value": "bold"},
+          "fill": {"value": "#1f2421"},
+          "limit": {"value": 310}
+        },
+        "update": {
+          "text": {"signal": "selectedActivity"}
+        }
+      }
+    },
+    {
+      "type": "text",
+      "interactive": false,
+      "encode": {
+        "enter": {
+          "x": {"value": 665},
+          "y": {"value": 128},
+          "align": {"value": "center"},
+          "baseline": {"value": "middle"},
+          "font": {"value": "Roboto"},
+          "fontSize": {"value": 11.5},
+          "fontStyle": {"value": "italic"},
+          "fill": {"value": "#64748b"},
+          "text": {"value": "Each dot represents 1% of surveyed park visitors"}
+        }
+      }
+    },
+
+    {
+      "type": "symbol",
+      "from": {"data": "dotsTable"},
+      "encode": {
+        "enter": {
+          "x": {"signal": "530 + datum.col * 30"},
+          "y": {"signal": "170 + datum.row * 30"},
+          "size": {"value": 260},
+          "shape": {"value": "circle"}
+        },
+        "update": {
+          "fill": {
+            "signal": "datum.id < round(activeRate) ? '#0f766e' : '#e2e8f0'"
+          },
+          "fillOpacity": {"value": 0.95},
+          "tooltip": {
+            "signal": "{'Motivation': selectedActivity, 'Participation': format(activeRate, '.1f') + '%', 'Dot #': datum.id + 1, 'Status': datum.id < round(activeRate) ? 'Active' : 'Non-Active'}"
+          }
+        }
+      }
+    },
+
+    {
+      "type": "symbol",
+      "interactive": false,
+      "encode": {
+        "enter": {
+          "x": {"value": 605},
+          "y": {"value": 495},
+          "size": {"value": 95},
+          "fill": {"value": "#0f766e"},
+          "shape": {"value": "circle"}
+        }
+      }
+    },
+    {
+      "type": "text",
+      "interactive": false,
+      "encode": {
+        "enter": {
+          "x": {"value": 620},
+          "y": {"value": 496},
+          "align": {"value": "left"},
+          "baseline": {"value": "middle"},
+          "font": {"value": "Roboto"},
+          "fontSize": {"value": 12},
+          "fill": {"value": "#475569"},
+          "text": {"value": "Active"}
+        }
+      }
+    },
+    {
+      "type": "symbol",
+      "interactive": false,
+      "encode": {
+        "enter": {
+          "x": {"value": 700},
+          "y": {"value": 495},
+          "size": {"value": 95},
+          "fill": {"value": "#e2e8f0"},
+          "shape": {"value": "circle"}
+        }
+      }
+    },
+    {
+      "type": "text",
+      "interactive": false,
+      "encode": {
+        "enter": {
+          "x": {"value": 715},
+          "y": {"value": 496},
+          "align": {"value": "left"},
+          "baseline": {"value": "middle"},
+          "font": {"value": "Roboto"},
+          "fontSize": {"value": 12},
+          "fill": {"value": "#475569"},
+          "text": {"value": "Non-Active"}
         }
       }
     }
-  ],
-  "config": {
-    "view": {"stroke": null}
-  }
+  ]
 }
