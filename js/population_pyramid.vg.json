@@ -13,8 +13,8 @@
     "subtitleColor": "#64748b",
     "subtitleFontStyle": "italic"
   },
-  "width": 500,
-  "height": 320,
+  "width": 700,
+  "height": 440,
   "data": {
     "url": "data/age_group_gender_share.csv"
   },

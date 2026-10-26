@@ -16,8 +16,8 @@
     "subtitleFontStyle": "italic",
     "dy": -8
   },
-  "width": 720,
-  "height": 360,
+  "width": 700,
+  "height": 440,
   "data": {
     "url": "data/monthly.csv"
   },

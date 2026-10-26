@@ -18,8 +18,8 @@
     "subtitleFontStyle": "italic",
     "dy": -8
   },
-  "width": "container",
-  "height": 340,
+  "width": 600,
+  "height": 440,
   "data": {
     "url": "data/amenities_remoteness_gap.csv"
   },

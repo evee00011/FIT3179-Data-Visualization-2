@@ -122,29 +122,34 @@ p.subtitle {
   margin: 30px 0 70px 0;
   box-sizing: border-box;
 }
+/* ==============================================================
+   UNIFIED SIGHTLINE & FIXED CHART CANVAS SIZE
+   ============================================================== */
 
+/* Left column anchors charts to the EXACT same left edge */
 .map-column {
   width: 100%;
+  max-width: 700px;
   display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.map-column .chart-container {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow-x: auto;
-}
-
-/* LOCKED RIGHT TEXT COLUMN (EXACTLY 390px EVERYWHERE) */
-.text-column {
-  width: 100%;
-  max-width: 390px;
-  display: flex;
-  flex-direction: column;
+  justify-content: flex-start; /* Crucial: Aligns all charts to the exact same left line */
+  align-items: flex-start;
   box-sizing: border-box;
+}
+
+/* Forces every Vega container to start and occupy the exact same footprint */
+.map-column .chart-container {
+  width: 680px;
+  min-height: 520px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  overflow: visible;
+  box-sizing: border-box;
+}
+
+/* Ensure SVG outputs render cleanly without unexpected offsets */
+.map-column .chart-container svg {
+  display: block;
 }
 
 /* ==============================================================

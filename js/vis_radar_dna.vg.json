@@ -16,8 +16,8 @@
     "subtitleFontStyle": "italic",
     "dy": -8
   },
-  "width": 480,
-  "height": 420,
+  "width": 700,
+  "height": 440,
   "padding": 15,
 
   "signals": [

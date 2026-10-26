@@ -12,8 +12,8 @@
     "subtitleColor": "#64748b",
     "subtitleFontStyle": "italic"
   },
-  "width": 550,
-  "height": 260,
+  "width": 600,
+  "height": 440,
   "data": {
     "url": "data/solo_vs_family_accommodation.csv"
   },

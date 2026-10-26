@@ -10,8 +10,8 @@
     "subtitleColor": "#64748b",
     "subtitleFontStyle": "italic"
   },
-  "width": 820,
-  "height": 380,
+  "width": 600,
+  "height": 440,
   "padding": {"top": 15, "left": 10, "right": 30, "bottom": 15},
 
   "data": [

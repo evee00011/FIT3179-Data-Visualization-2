@@ -13,8 +13,8 @@
     "anchor": "start",
     "fontSize": 15
   },
-  "width": 460,
-  "height": 280,
+  "width": 600,
+  "height": 440,
   "data": {
     "values": [
       {"category": "Tent Camping Allowed", "count": 2083, "percentage": 21.0},

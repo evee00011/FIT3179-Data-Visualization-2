@@ -24,8 +24,8 @@
   "vconcat": [
     {
       "description": "Top View: Intersection Size Bar Chart",
-      "width": 480,
-      "height": 190,
+      "width": 700,
+      "height": 300,
       "transform": [
         {"filter": "datum.amenity === 'Tent Pitching'"}
       ],
@@ -99,8 +99,8 @@
     },
     {
       "description": "Bottom View: Combination Dot Matrix Grid",
-      "width": 480,
-      "height": 160,
+      "width": 700,
+      "height": 300,
       "layer": [
         {
           "description": "Background Inactive Dots (Grey)",

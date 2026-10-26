@@ -18,7 +18,7 @@
     "subtitleFontStyle": "italic",
     "dy": -8
   },
-  "width": "container",
+  "width": 700,
   "height": 360,
   "data": {
     "url": "data/state_climate_occupancy.csv"
