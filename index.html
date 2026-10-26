@@ -172,6 +172,26 @@
         </div>
       </div>
     </div>
+     <!-- 3. Occupancy Dynamics & Pandemic Disruption -->
+      <div class="vis-side-layout">
+        <div class="map-column">
+          <div id="vis-occupation" class="chart-container"></div>
+        </div>
+
+        <div class="text-column">
+          <div class="insight-card highlight-card">
+            <span class="kicker-tag">CAPACITY &amp; RESILIENCE</span>
+            <h3>The Lockdown Shock &amp; Post-2020 Surge</h3>
+            <p>
+              Australia's camping and holiday park sector experienced its most violent demand shock on record during the initial COVID-19 pandemic wave: <span class="text-highlight">NSW occupancy cratered to just 6.2% in April 2020</span> (compared to 48.7% in April 2019), while National occupancy fell to 14.4%.
+            </p>
+            <p>
+              While state-border lockdowns triggered a secondary collapse in NSW in winter 2021 (<span class="text-highlight">13.6% in September 2021</span>), intrastate "drive-tourism" and border reopenings fueled a rapid rebound. Summer capacity now routinely surges above <span class="text-highlight">70% every January</span>, outstripping pre-pandemic benchmarks.
+            </p>
+          </div>
+        </div>
+      </div>
+
     
     </section>
 
@@ -180,8 +200,8 @@
          ============================================== -->
     <section class="section-divider">
       <div class="theme-header">
-        <h2>Who camps ?</h2>
-        <p class="subtitle">An analysis on who actually camps at these sites</p>
+        <h2>Who camps and How?</h2>
+        <p class="subtitle">An analysis on who actually camps at these sites and how they choose to do it</p>
       </div>
       
       <!-- Population Pyramid -->
@@ -226,17 +246,6 @@
           </div>
         </div>
       </div>
-    </section>
-
-    <!-- ==============================================
-         SECTION 4: ACCOMMODATION, SITES & MOTIVATIONS
-         ============================================== -->
-    <section class="section-divider">
-      <div class="theme-header">
-        <h2>How do people camp?</h2>
-        <p class="subtitle">How people choose to camp and why they head outdoors</p>
-      </div>
-
       <!-- 1. Accommodations / Sankey -->
       <div class="vis-side-layout">
         <div class="map-column">
@@ -259,6 +268,65 @@
           </div>
         </div>
       </div>
+      <!-- Ridgeline Plot: Stay Duration by Cohort -->
+      <div class="vis-side-layout">
+        <div class="map-column">
+          <div id="vis-ridgeline" class="chart-container"></div>
+        </div>
+
+        <div class="text-column">
+          <div class="insight-card highlight-card">
+            <span class="kicker-tag">TRAVEL VELOCITY</span>
+            <h3>Weekend Getaways vs. The 60-Day Pilgrimage</h3>
+            <p>
+              Trip duration is sharply divided by demographic cohort. 
+            </p>
+            <p>
+              Campers aged <span class="text-highlight">18 to 34 ('Weekend Warriors')</span> exhibit a hyper-concentrated distribution: over <span class="text-highlight">72% of their stays last only 1 to 2 nights</span>. Their trips focus on rapid peri-urban escapes within 100 km of capital cities, bound strictly by regular working weeks.
+            </p>
+            <p>
+              In contrast, <span class="text-highlight">Family Campers (35–54)</span> peak squarely across the <span class="text-highlight">4-to-7-night band (42% combined)</span>, reflecting school holiday windows and holiday park stays.
+            </p>
+            <p>
+              The most extreme distribution belongs to <span class="text-highlight">Retirees (65+ 'Grey Nomads')</span>. Their curve flattens into an elongated tail: over <span class="text-highlight">48% of trips extend past 10 nights</span>, with substantial proportions lasting between 30 and 60+ days as they tour remote northern and outback networks.
+            </p>
+          </div>
+        </div>
+      </div>
+      <!-- 4. Camper Motivations (Dot Matrix / Activities) -->
+      <div class="vis-side-layout">
+        <div class="map-column" style="display: flex; justify-content: center; align-items: center;">
+          <div id="vis-activities" class="chart-container"></div>
+        </div>
+
+        <div class="text-column">
+          <div class="insight-card highlight-card">
+            <span class="kicker-tag">CAMPER MOTIVATIONS</span>
+            <h3>Relaxation Over Adrenaline: The Mental Reset</h3>
+            <p>
+              Surveying park campers reveals a clear hierarchy of intent: the overwhelming driver for outdoor travel is psychological restoration rather than extreme adventure sports.
+            </p>
+            <p>
+              Over <span class="text-highlight">90.1% of all campers identify relaxation and enjoyment</span> as their primary activity, closely followed by nature immersion: <span class="text-highlight">bushwalking (72.9%)</span>, <span class="text-highlight">sightseeing (66.4%)</span>, and trail cycling (65.1%).
+            </p>
+            <p>
+              In stark contrast, specialized adrenaline and equipment-heavy sports represent narrow niches: rock climbing (4.3%), bird watching (3.2%), and canoeing/paddling (2.5%). This demonstrates that camping infrastructure must prioritize tranquil, scenic natural surroundings and walking access over motorized recreation hubs.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==============================================
+         SECTION 4: ACCOMMODATION, SITES & MOTIVATIONS
+         ============================================== -->
+    <section class="section-divider">
+      <div class="theme-header">
+        <h2>How do people camp?</h2>
+        <p class="subtitle">What facilities are the most common and how do they relate to each other</p>
+      </div>
+
+      
 
       <!-- 2. Infrastructure / Lollipop -->
       <div class="vis-side-layout">
@@ -283,48 +351,8 @@
         </div>
       </div>
 
-      <!-- 3. Occupancy Dynamics & Pandemic Disruption -->
-      <div class="vis-side-layout">
-        <div class="map-column">
-          <div id="vis-occupation" class="chart-container"></div>
-        </div>
-
-        <div class="text-column">
-          <div class="insight-card highlight-card">
-            <span class="kicker-tag">CAPACITY &amp; RESILIENCE</span>
-            <h3>The Lockdown Shock &amp; Post-2020 Surge</h3>
-            <p>
-              Australia's camping and holiday park sector experienced its most violent demand shock on record during the initial COVID-19 pandemic wave: <span class="text-highlight">NSW occupancy cratered to just 6.2% in April 2020</span> (compared to 48.7% in April 2019), while National occupancy fell to 14.4%.
-            </p>
-            <p>
-              While state-border lockdowns triggered a secondary collapse in NSW in winter 2021 (<span class="text-highlight">13.6% in September 2021</span>), intrastate "drive-tourism" and border reopenings fueled a rapid rebound. Summer capacity now routinely surges above <span class="text-highlight">70% every January</span>, outstripping pre-pandemic benchmarks.
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <!-- 4. Camper Motivations (Dot Matrix / Activities) -->
-      <div class="vis-side-layout">
-        <div class="map-column" style="display: flex; justify-content: center; align-items: center;">
-          <div id="vis-activities" class="chart-container"></div>
-        </div>
-
-        <div class="text-column">
-          <div class="insight-card highlight-card">
-            <span class="kicker-tag">CAMPER MOTIVATIONS</span>
-            <h3>Relaxation Over Adrenaline: The Mental Reset</h3>
-            <p>
-              Surveying park campers reveals a clear hierarchy of intent: the overwhelming driver for outdoor travel is psychological restoration rather than extreme adventure sports.
-            </p>
-            <p>
-              Over <span class="text-highlight">90.1% of all campers identify relaxation and enjoyment</span> as their primary activity, closely followed by nature immersion: <span class="text-highlight">bushwalking (72.9%)</span>, <span class="text-highlight">sightseeing (66.4%)</span>, and trail cycling (65.1%).
-            </p>
-            <p>
-              In stark contrast, specialized adrenaline and equipment-heavy sports represent narrow niches: rock climbing (4.3%), bird watching (3.2%), and canoeing/paddling (2.5%). This demonstrates that camping infrastructure must prioritize tranquil, scenic natural surroundings and walking access over motorized recreation hubs.
-            </p>
-          </div>
-        </div>
-      </div>
+     
+      
 
       <!-- Connected Dot Plot: Demand vs. Reality Gap -->
       <div class="vis-side-layout">
@@ -370,31 +398,7 @@
           </div>
         </div>
       </div>
-      <!-- Ridgeline Plot: Stay Duration by Cohort -->
-      <div class="vis-side-layout">
-        <div class="map-column">
-          <div id="vis-ridgeline" class="chart-container"></div>
-        </div>
-
-        <div class="text-column">
-          <div class="insight-card highlight-card">
-            <span class="kicker-tag">TRAVEL VELOCITY</span>
-            <h3>Weekend Getaways vs. The 60-Day Pilgrimage</h3>
-            <p>
-              Trip duration is sharply divided by demographic cohort. 
-            </p>
-            <p>
-              Campers aged <span class="text-highlight">18 to 34 ('Weekend Warriors')</span> exhibit a hyper-concentrated distribution: over <span class="text-highlight">72% of their stays last only 1 to 2 nights</span>. Their trips focus on rapid peri-urban escapes within 100 km of capital cities, bound strictly by regular working weeks.
-            </p>
-            <p>
-              In contrast, <span class="text-highlight">Family Campers (35–54)</span> peak squarely across the <span class="text-highlight">4-to-7-night band (42% combined)</span>, reflecting school holiday windows and holiday park stays.
-            </p>
-            <p>
-              The most extreme distribution belongs to <span class="text-highlight">Retirees (65+ 'Grey Nomads')</span>. Their curve flattens into an elongated tail: over <span class="text-highlight">48% of trips extend past 10 nights</span>, with substantial proportions lasting between 30 and 60+ days as they tour remote northern and outback networks.
-            </p>
-          </div>
-        </div>
-      </div>
+      
       <!-- Radar Plot: The DNA of Australian Campgrounds -->
       <div class="vis-side-layout">
         <div class="map-column">
