@@ -18,7 +18,7 @@ const vg_radar              = "js/vis_radar_dna.vg.json";
 const embedOpt = { actions: false };
 
 // =============================================================
-// 1. SCROLLYTELLING SECTION 1: WHERE DO AUSTRALIANS CAMP? (UNCHANGED)
+// 1. SCROLLYTELLING SECTION 1: WHERE DO AUSTRALIANS CAMP?
 // =============================================================
 let coastalView = null;
 let currentStep = 1;
@@ -26,26 +26,32 @@ let currentStep = 1;
 vegaEmbed("#vis-coastal", vg_scrolly, embedOpt)
   .then((res) => {
     coastalView = res.view;
+    // Explicitly guarantee map starts on Step 1 (pure coastal dots, no city halos)
+    coastalView.signal("story_step", 1).runAsync().catch(console.error);
   })
   .catch(console.error);
 
-const stepObserver = new IntersectionObserver((entries) => {
-  entries.forEach((entry) => {
-    if (entry.isIntersecting) {
-      document.querySelectorAll(".step").forEach((el) => el.classList.remove("is-active"));
-      entry.target.classList.add("is-active");
+const stepObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        document.querySelectorAll(".step").forEach((el) => el.classList.remove("is-active"));
+        entry.target.classList.add("is-active");
 
-      const stepNum = Number(entry.target.getAttribute("data-step"));
-      if (stepNum && stepNum !== currentStep && coastalView) {
-        currentStep = stepNum;
-        coastalView.signal("story_step", stepNum).runAsync().catch(console.error);
+        const stepNum = Number(entry.target.getAttribute("data-step"));
+        if (stepNum && stepNum !== currentStep && coastalView) {
+          currentStep = stepNum;
+          // Smoothly toggle layers: 1 = coastal dots, 2 = city halos & leader lines
+          coastalView.signal("story_step", stepNum).runAsync().catch(console.error);
+        }
       }
-    }
-  });
-}, { root: null, rootMargin: "-35% 0px -35% 0px", threshold: 0.1 });
+    });
+  },
+  { root: null, rootMargin: "-30% 0px -30% 0px", threshold: 0.15 }
+);
 
 // =============================================================
-// 2. SCROLLYTELLING SECTION 2: SEASONAL MIGRATION MAP (UNCHANGED)
+// 2. SCROLLYTELLING SECTION 2: SEASONAL MIGRATION MAP
 // =============================================================
 let seasonalView = null;
 let currentSeason = "Summer";
@@ -53,23 +59,27 @@ let currentSeason = "Summer";
 vegaEmbed("#vis-seasonal-migration", vg_seasonal_migration, embedOpt)
   .then((res) => {
     seasonalView = res.view;
+    seasonalView.signal("season_filter", "Summer").runAsync().catch(console.error);
   })
   .catch(console.error);
 
-const seasonObserver = new IntersectionObserver((entries) => {
-  entries.forEach((entry) => {
-    if (entry.isIntersecting) {
-      document.querySelectorAll(".step-season").forEach((el) => el.classList.remove("is-active"));
-      entry.target.classList.add("is-active");
+const seasonObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        document.querySelectorAll(".step-season").forEach((el) => el.classList.remove("is-active"));
+        entry.target.classList.add("is-active");
 
-      const seasonName = entry.target.getAttribute("data-season");
-      if (seasonName && seasonName !== currentSeason && seasonalView) {
-        currentSeason = seasonName;
-        seasonalView.signal("season_filter", seasonName).runAsync().catch(console.error);
+        const seasonName = entry.target.getAttribute("data-season");
+        if (seasonName && seasonName !== currentSeason && seasonalView) {
+          currentSeason = seasonName;
+          seasonalView.signal("season_filter", seasonName).runAsync().catch(console.error);
+        }
       }
-    }
-  });
-}, { root: null, rootMargin: "-35% 0px -35% 0px", threshold: 0.1 });
+    });
+  },
+  { root: null, rootMargin: "-30% 0px -30% 0px", threshold: 0.15 }
+);
 
 // =============================================================
 // 3. REMAINING DASHBOARD VISUALISATIONS
@@ -90,18 +100,16 @@ vegaEmbed("#vis-radar", vg_radar, embedOpt).catch(console.error);
 // 4. ATTACH OBSERVERS & SCROLL FOCUS FOR REMAINING CHARTS
 // =============================================================
 document.addEventListener("DOMContentLoaded", () => {
-  // 1. Observe the original two scrollytelling sections
+  // Attach scrollytelling observers
   document.querySelectorAll(".step").forEach((el) => stepObserver.observe(el));
   document.querySelectorAll(".step-season").forEach((el) => seasonObserver.observe(el));
 
-  // 2. Select only the standalone charts (excluding the first 2 scrolly charts)
+  // Focus observer for the remaining standalone charts
   const allSideLayouts = Array.from(document.querySelectorAll(".vis-side-layout"));
-  // First section is index 0, seasonal scrolly is the one with class .season-scrolly-layout
   const standaloneCharts = allSideLayouts.filter(
-    (el, idx) => idx !== 0 && !el.classList.contains("season-scrolly-layout")
+    (el) => !el.classList.contains("coastal-scrolly-layout") && !el.classList.contains("season-scrolly-layout")
   );
 
-  // Add the class so CSS applies the isolated viewport focus to them
   standaloneCharts.forEach((el) => el.classList.add("standalone-chart-section"));
 
   const chartFocusObserver = new IntersectionObserver(
@@ -113,16 +121,11 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       });
     },
-    {
-      root: null,
-      rootMargin: "-20% 0px -20% 0px", // Illuminates as soon as it enters comfortable viewing range
-      threshold: 0.15
-    }
+    { root: null, rootMargin: "-15% 0px -15% 0px", threshold: 0.15 }
   );
 
   standaloneCharts.forEach((section) => chartFocusObserver.observe(section));
 
-  // Ensure whichever is first visible is activated immediately
   if (standaloneCharts.length > 0) {
     standaloneCharts[0].classList.add("is-focused-chart");
   }

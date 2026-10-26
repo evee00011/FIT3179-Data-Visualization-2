@@ -42,15 +42,16 @@
       <p class="subtitle">An analysis on popular camping destinations</p>
     </div>
 
-    <!-- Side-by-Side: Map on the Left, Narrative Text on the Right -->
-    <div class="vis-side-layout">
-      <!-- Left Column: The Vega-Lite Map Container -->
+    <!-- Scrolly Section 1: Coastal Map transitioning into City Proximity -->
+    <div class="vis-side-layout coastal-scrolly-layout">
+      <!-- Left Column: The Pinned Vega-Lite Map Container -->
       <div class="map-column">
         <div id="vis-coastal" class="chart-container"></div>
       </div>
 
-      <!-- Right Column: Course-aligned Narrative & Key Insights -->
+      <!-- Right Column: Scrolling Narrative Cards -->
       <div class="text-column">
+        <!-- Step 1: Coastal Concentration -->
         <div class="step is-active" data-step="1">
           <div class="insight-card">
             <span class="kicker-tag">WHERE?</span>
@@ -64,6 +65,7 @@
           </div>
         </div>
 
+        <!-- Step 2: Major Cities Concentration -->
         <div class="step" data-step="2">
           <div class="insight-card highlight-card">
             <span class="kicker-tag">INFRASTRUCTURE</span>
@@ -74,7 +76,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> <!-- Correctly closed Section 1 container -->
 
     <!-- ==============================================
          SECTION 2: SEASONAL MIGRATION (SCROLLY)
@@ -145,34 +147,33 @@
         </div>
       </div>
 
-      <!-- NEW ADVANCED IDIOM: 2D Climate x State Occupancy Matrix Heatmap -->
-    <div class="vis-side-layout">
-      <!-- Left Column: 2D Heatmap Container -->
-      <div class="map-column">
-        <div id="vis-climate-heatmap" class="chart-container"></div>
-      </div>
+      <!-- 2D Climate x State Occupancy Matrix Heatmap -->
+      <div class="vis-side-layout">
+        <div class="map-column">
+          <div id="vis-climate-heatmap" class="chart-container"></div>
+        </div>
 
-      <!-- Right Column: Narrative Commentary Card -->
-      <div class="text-column">
-        <div class="insight-card highlight-card">
-          <span class="kicker-tag">Why do the changes above follow a gradient?</span>
-          <h3>Most campers chase a sweet spot temperature between 22-28°C </h3>
-          <p>
-            While seasonal maps show camper positions, mapping state occupancy directly against mean temperatures proves <em>why</em> campers move: domestic travel is strictly bounded by climate comfort.
-          </p>
-          <p>
-            Organising Australia from North to South reveals an unmistakable <span class="text-highlight">diagonal X-shaped crossover</span> across the calendar year:
-          </p>
-          <p>
-            In <span class="text-highlight">July (Winter)</span>, near-freezing maritime frosts (<span class="text-highlight">12°C in Tasmania, 14°C in Victoria</span>) collapse southern park occupancy to annual lows (<span class="text-highlight">10%–18%</span>). Simultaneously, sun-seeking retirees ("Grey Nomads") surge into the tropical dry season of the <span class="text-highlight">Northern Territory (96%)</span> and <span class="text-highlight">Queensland (88%)</span>.
-          </p>
-          <p>
-            In <span class="text-highlight">January (Summer)</span>, the pattern completely inverts: monsoons and oppressive 33°C humidity shut down northern camping, driving peak national capacity into <span class="text-highlight">Tasmania (94%)</span>, <span class="text-highlight">Victoria (88%)</span>, and <span class="text-highlight">South Australia (76%)</span>.
-          </p>
+        <div class="text-column">
+          <div class="insight-card highlight-card">
+            <span class="kicker-tag">THERMAL MIGRATION</span>
+            <h3>The Latitude Inversion: Chasing the 22°C–28°C Sweet Spot</h3>
+            <p>
+              While seasonal maps show camper positions, mapping state occupancy directly against mean temperatures proves <em>why</em> campers move: domestic travel is strictly bounded by climate comfort.
+            </p>
+            <p>
+              Organising Australia from North to South reveals an unmistakable <span class="text-highlight">diagonal X-shaped crossover</span> across the calendar year:
+            </p>
+            <p>
+              In <span class="text-highlight">July (Winter)</span>, near-freezing maritime frosts (<span class="text-highlight">12°C in Tasmania, 14°C in Victoria</span>) collapse southern park occupancy to annual lows (<span class="text-highlight">10%–18%</span>). Simultaneously, sun-seeking retirees ("Grey Nomads") surge into the tropical dry season of the <span class="text-highlight">Northern Territory (96%)</span> and <span class="text-highlight">Queensland (88%)</span>.
+            </p>
+            <p>
+              In <span class="text-highlight">January (Summer)</span>, the pattern completely inverts: monsoons and oppressive 33°C humidity shut down northern camping, driving peak national capacity into <span class="text-highlight">Tasmania (94%)</span>, <span class="text-highlight">Victoria (88%)</span>, and <span class="text-highlight">South Australia (76%)</span>.
+            </p>
+          </div>
         </div>
       </div>
-    </div>
-     <!-- 3. Occupancy Dynamics & Pandemic Disruption -->
+
+      <!-- Occupancy Dynamics & Pandemic Disruption -->
       <div class="vis-side-layout">
         <div class="map-column">
           <div id="vis-occupation" class="chart-container"></div>
@@ -191,8 +192,6 @@
           </div>
         </div>
       </div>
-
-    
     </section>
 
     <!-- ==============================================
@@ -246,7 +245,8 @@
           </div>
         </div>
       </div>
-      <!-- 1. Accommodations / Sankey -->
+
+      <!-- Accommodations / Sankey -->
       <div class="vis-side-layout">
         <div class="map-column">
           <div id="vis-sankey" class="chart-container"></div>
@@ -268,6 +268,7 @@
           </div>
         </div>
       </div>
+
       <!-- Ridgeline Plot: Stay Duration by Cohort -->
       <div class="vis-side-layout">
         <div class="map-column">
@@ -293,7 +294,8 @@
           </div>
         </div>
       </div>
-      <!-- 4. Camper Motivations (Dot Matrix / Activities) -->
+
+      <!-- Camper Motivations -->
       <div class="vis-side-layout">
         <div class="map-column" style="display: flex; justify-content: center; align-items: center;">
           <div id="vis-activities" class="chart-container"></div>
@@ -326,9 +328,7 @@
         <p class="subtitle">What facilities are the most common and how do they relate to each other</p>
       </div>
 
-      
-
-      <!-- 2. Infrastructure / Lollipop -->
+      <!-- Lollipop -->
       <div class="vis-side-layout">
         <div class="map-column">
           <div id="vis-lollipop" class="chart-container"></div>
@@ -350,9 +350,6 @@
           </div>
         </div>
       </div>
-
-     
-      
 
       <!-- Connected Dot Plot: Demand vs. Reality Gap -->
       <div class="vis-side-layout">
@@ -376,6 +373,7 @@
           </div>
         </div>
       </div>
+
       <!-- UpSet Plot: Amenity Bundle Co-occurrence -->
       <div class="vis-side-layout">
         <div class="map-column">
@@ -399,7 +397,7 @@
         </div>
       </div>
       
-      <!-- Radar Plot: The DNA of Australian Campgrounds -->
+      <!-- Radar Plot -->
       <div class="vis-side-layout">
         <div class="map-column">
           <div id="vis-radar" class="chart-container"></div>

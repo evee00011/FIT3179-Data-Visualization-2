@@ -19,10 +19,10 @@ body {
 
 /* 1. SMALLER PAGE MARGINS ON LEFT AND RIGHT */
 .dashboard-container {
-  max-width: 1380px;         /* Wider canvas so side margins are smaller */
+  max-width: 1400px;
   margin: 0 auto;
-  padding-left: 20px;        /* Reduced side margin */
-  padding-right: 20px;       /* Reduced side margin */
+  padding-left: 20px;
+  padding-right: 20px;
   box-sizing: border-box;
 }
 
@@ -77,7 +77,6 @@ body {
   color: #d1d5db;
   border-top: 1px solid rgba(255, 255, 255, 0.15);
   padding-top: 14px;
-  margin-top: 10px;
 }
 
 .hero-author .divider {
@@ -87,7 +86,7 @@ body {
 
 /* Headings */
 .theme-header {
-  margin-top: 30px;
+  margin-top: 40px;
   margin-bottom: 25px;
 }
 
@@ -112,20 +111,18 @@ p.subtitle {
 }
 
 /* ==============================================================
-   2. UNIFIED SIGHTLINE: EVERY TEXT BOX STARTS & ENDS AT SAME PLACE
+   2. UNIFIED SIGHTLINE: ALL TEXT BOXES START & END AT SAME POINT
    ============================================================== */
 .vis-side-layout {
   display: grid;
-  /* Left column: Chart area | Right column: FIXED 390px for identical text position */
   grid-template-columns: minmax(0, 1fr) 390px;
   gap: 36px;
-  align-items: center;
+  align-items: start;
   position: relative;
-  margin: 40px 0 80px 0;
+  margin: 30px 0 70px 0;
   box-sizing: border-box;
 }
 
-/* Chart Container Column */
 .map-column {
   width: 100%;
   display: flex;
@@ -141,54 +138,57 @@ p.subtitle {
   overflow-x: auto;
 }
 
-/* LOCKED RIGHT TEXT COLUMN */
+/* LOCKED RIGHT TEXT COLUMN (EXACTLY 390px EVERYWHERE) */
 .text-column {
   width: 100%;
-  max-width: 390px;          /* Every text box starts and ends at this exact width */
+  max-width: 390px;
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
 }
 
 /* ==============================================================
-   PRESERVE FIRST TWO SCROLLING CHARTS UNCHANGED
+   SCROLLYTELLING: ISOLATED STICKY CONTAINERS (PREVENTS MAP OVERLAP)
    ============================================================== */
-/* Map sticks while user scrolls past text cards */
-.vis-side-layout:first-of-type,
+.coastal-scrolly-layout,
 .season-scrolly-layout {
-  align-items: start;        /* Required for sticky map positioning */
-  opacity: 1 !important;    /* Always 100% visible, never dimmed */
-  filter: none !important;
-  transform: none !important;
+  position: relative;
+  /* Containment boundary forces sticky map to UNPIN when section ends */
+  contain: paint;
+  margin-bottom: 80px;
 }
 
-.vis-side-layout:first-of-type .map-column,
+.coastal-scrolly-layout .map-column,
 .season-scrolly-layout .map-column {
   position: sticky;
-  top: 40px;
+  top: 60px;
+  height: fit-content;
+  z-index: 1;
 }
 
-/* Step cards for Scrollytelling 1 */
-.vis-side-layout:first-of-type .step {
-  min-height: 65vh;
+/* Scrolly Step Cards for Section 1 */
+.coastal-scrolly-layout .step {
+  min-height: 85vh;          /* Ample scroll distance to trigger Step 1 then Step 2 */
   display: flex;
   align-items: center;
-  opacity: 0.25;
-  transition: opacity 0.35s ease-in-out;
-}
-
-.vis-side-layout:first-of-type .step.is-active {
-  opacity: 1;
-}
-
-/* Step cards for Seasonal Scrollytelling 2 */
-.step-season {
-  min-height: 70vh;
-  display: flex;
-  align-items: center;
-  opacity: 0.25;
+  opacity: 0.2;
   transition: opacity 0.35s ease-in-out, transform 0.35s ease-in-out;
-  transform: translateY(10px);
+  transform: translateY(8px);
+}
+
+.coastal-scrolly-layout .step.is-active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Scrolly Step Cards for Section 2 */
+.step-season {
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  opacity: 0.2;
+  transition: opacity 0.35s ease-in-out, transform 0.35s ease-in-out;
+  transform: translateY(8px);
 }
 
 .step-season.is-active {
@@ -197,29 +197,28 @@ p.subtitle {
 }
 
 /* ==============================================================
-   4. SCROLL FOCUS FOR ALL REMAINING CHARTS
-   (Only the active chart & its text are visible when scrolling)
+   FOCUSED VIEW FOR STANDALONE CHARTS (SECTIONS 3 & 4)
    ============================================================== */
 .standalone-chart-section {
-  min-height: 85vh;          /* Isolates each chart so you only see what you need to see */
-  opacity: 0.15;             /* Inactive charts are quietly dimmed */
+  min-height: 80vh;
+  opacity: 0.15;
   transition: opacity 0.45s ease-in-out, transform 0.45s ease-in-out;
   transform: scale(0.98);
 }
 
 .standalone-chart-section.is-focused-chart {
-  opacity: 1;                /* Fully illuminated when user scrolls to it */
+  opacity: 1;
   transform: scale(1);
 }
 
-/* Card Styling */
+/* Insight Cards */
 .insight-card {
   width: 100%;
   box-sizing: border-box;
   background: #ffffff;
   border: 1px solid var(--border-subtle);
   border-radius: 6px;
-  padding: 22px 24px;
+  padding: 24px;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
 }
 
@@ -247,7 +246,7 @@ p.subtitle {
   line-height: 1.25;
 }
 
-/* 3. STRICT LINE LENGTH: NO LINE CAN HAVE MORE THAN 10 WORDS */
+/* 3. STRICT LINE LENGTH: NO LINE HAS MORE THAN 10 WORDS */
 .insight-card p {
   font-family: 'Roboto', sans-serif;
   font-size: 0.94rem;
@@ -255,7 +254,7 @@ p.subtitle {
   color: #4b5563;
   margin: 0 0 12px 0;
   text-align: left;
-  max-width: 36ch;           /* ~36 characters restricts line length to ~7-9 words */
+  max-width: 36ch;           /* Exactly 7-9 words per line */
   word-wrap: break-word;
 }
 
@@ -263,21 +262,23 @@ p.subtitle {
   margin-bottom: 0;
 }
 
+/* Section dividers clear sticky layers cleanly */
 .section-divider {
   position: relative;
+  z-index: 2;
+  background-color: var(--bg-sand);
   border-top: 1px solid var(--border-subtle);
-  padding-top: 30px;
+  padding-top: 40px;
   margin-top: 60px;
+  clear: both;
 }
 
-/* Responsive fallback */
 @media (max-width: 960px) {
   .vis-side-layout {
     grid-template-columns: 1fr;
     min-height: auto;
-    opacity: 1 !important;
   }
-  .vis-side-layout:first-of-type .map-column,
+  .coastal-scrolly-layout .map-column,
   .season-scrolly-layout .map-column {
     position: static;
   }
