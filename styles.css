@@ -1,6 +1,5 @@
 :root {
- 
-  --bg-sand: #fffef8;       
+  --bg-sand: #fffef8;
   --card-bg: #f4e2d4;
   --text-main: #1f2421;
   --text-muted: #5c6460;
@@ -8,7 +7,6 @@
   --accent-dark: #1b1613;
   --border-subtle: #e7e2d9;
 }
-
 
 body {
   margin: 0;
@@ -19,57 +17,20 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+/* 1. SMALLER PAGE MARGINS ON LEFT AND RIGHT */
 .dashboard-container {
-  max-width: 1200px;         /* Caps max width so charts don't overstretch on wide monitors */
-  margin: 0 auto;            /* Centers the entire dashboard */
-  padding-left: 40px;        /* Left page margin */
-  padding-right: 40px;       /* Right page margin */
-  box-sizing: border-box;    /* Ensures padding doesn't cause horizontal scrollbars */
+  max-width: 1380px;         /* Wider canvas so side margins are smaller */
+  margin: 0 auto;
+  padding-left: 20px;        /* Reduced side margin */
+  padding-right: 20px;       /* Reduced side margin */
+  box-sizing: border-box;
 }
 
-header {
-  text-align: center;
-  margin-bottom: 40px;
-}
-
-h1 {
-  font-size: 2.2rem;
-  margin-bottom: 8px;
-  color: #1f2937;
-}
-
-p.subtitle {
-  font-size: 1.5rem;
-  color: #4b5563;
-  margin: 4px 0 0 0;
-}
-
-.theme-header {
-  margin-top: 30px;
-  margin-bottom: 25px;
-}
-.text-highlight {
-  color: #7b2e01;          /* Your theme ochre/terracotta */
-  font-weight: 700;        /* Bold for contrast */
-}
-
-h2{
-    font-size: 4rem;
-    font-family: 'Playfair Display', Georgia, serif;
-    color:#7b2e01;
-    padding-bottom: 5px;
-    line-height: 1.15;
-    margin: 0;
-    padding-bottom: 7px;
-}
-
-
-/* Full-bleed banner background */
+/* Hero Header */
 .hero-header {
   position: relative;
-  margin: 0 auto;
   width: 100%;
-  min-height: 500px;
+  min-height: 480px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -81,30 +42,16 @@ h2{
     url('https://i.natgeofe.com/n/b8604459-e40a-41bb-89e5-dfd033675f90/AusOutbackaerial1300683277_3x4.jpg') center/cover no-repeat;
 }
 
-/* Centred dark translucent card */
 .hero-card {
   max-width: 720px;
   width: 100%;
   background: rgba(18, 14, 11, 0.82);
   backdrop-filter: blur(4px);
   border-radius: 4px;
-  padding: 42px 36px 36px;
+  padding: 42px 36px;
   text-align: center;
   color: #ffffff;
   box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
-}
-
-.hero-tag {
-  display: inline-block;
-  padding: 4px 14px;
-  font-family: 'Roboto', sans-serif;
-  font-size: 0.72rem;
-  letter-spacing: 2.2px;
-  font-weight: 600;
-  text-transform: uppercase;
-  color: #f3f4f6;
-  border: 1px solid rgba(255, 255, 255, 0.55);
-  margin-bottom: 20px;
 }
 
 .hero-title {
@@ -117,7 +64,6 @@ h2{
 }
 
 .hero-desc {
-  font-family: 'Roboto', sans-serif;
   font-size: 0.98rem;
   line-height: 1.6;
   color: #e5e7eb;
@@ -127,7 +73,6 @@ h2{
 }
 
 .hero-author {
-  font-family: 'Roboto', sans-serif;
   font-size: 0.85rem;
   color: #d1d5db;
   border-top: 1px solid rgba(255, 255, 255, 0.15);
@@ -140,72 +85,152 @@ h2{
   opacity: 0.6;
 }
 
-
-
-/* --- Two-Column Layout (Map Left, Text Right) --- */
-.vis-side-layout {
-  display: grid;
-  grid-template-columns: 1.6fr 1fr;
-  gap: 36px;
-  align-items: start;
-  position: relative;
-  margin-top: 20px;
-  margin-bottom: 80px; /* Space before the next section arrives */
+/* Headings */
+.theme-header {
+  margin-top: 30px;
+  margin-bottom: 25px;
 }
 
-/* Map sticky column */
+h2 {
+  font-size: 3.2rem;
+  font-family: 'Playfair Display', Georgia, serif;
+  color: #7b2e01;
+  line-height: 1.15;
+  margin: 0;
+  padding-bottom: 6px;
+}
+
+p.subtitle {
+  font-size: 1.25rem;
+  color: #4b5563;
+  margin: 4px 0 0 0;
+}
+
+.text-highlight {
+  color: #7b2e01;
+  font-weight: 700;
+}
+
+/* ==============================================================
+   2. UNIFIED SIGHTLINE: EVERY TEXT BOX STARTS & ENDS AT SAME PLACE
+   ============================================================== */
+.vis-side-layout {
+  display: grid;
+  /* Left column: Chart area | Right column: FIXED 390px for identical text position */
+  grid-template-columns: minmax(0, 1fr) 390px;
+  gap: 36px;
+  align-items: center;
+  position: relative;
+  margin: 40px 0 80px 0;
+  box-sizing: border-box;
+}
+
+/* Chart Container Column */
 .map-column {
   width: 100%;
   display: flex;
-  justify-content: flex-start;
-  position: sticky;
-  top: 40px; /* Sticks while scrolling through the cards */
+  justify-content: center;
+  align-items: center;
 }
 
-/* Ensure Vega-Lite fills its container cleanly */
 .map-column .chart-container {
   width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   overflow-x: auto;
 }
 
-/* Text Column & Typography Hierarchy */
+/* LOCKED RIGHT TEXT COLUMN */
 .text-column {
+  width: 100%;
+  max-width: 390px;          /* Every text box starts and ends at this exact width */
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  padding-top: 20px;
+  box-sizing: border-box;
 }
 
-.step {
-  min-height: 75vh;
+/* ==============================================================
+   PRESERVE FIRST TWO SCROLLING CHARTS UNCHANGED
+   ============================================================== */
+/* Map sticks while user scrolls past text cards */
+.vis-side-layout:first-of-type,
+.season-scrolly-layout {
+  align-items: start;        /* Required for sticky map positioning */
+  opacity: 1 !important;    /* Always 100% visible, never dimmed */
+  filter: none !important;
+  transform: none !important;
+}
+
+.vis-side-layout:first-of-type .map-column,
+.season-scrolly-layout .map-column {
+  position: sticky;
+  top: 40px;
+}
+
+/* Step cards for Scrollytelling 1 */
+.vis-side-layout:first-of-type .step {
+  min-height: 65vh;
   display: flex;
   align-items: center;
   opacity: 0.25;
   transition: opacity 0.35s ease-in-out;
 }
 
-.step.is-active {
+.vis-side-layout:first-of-type .step.is-active {
   opacity: 1;
 }
 
+/* Step cards for Seasonal Scrollytelling 2 */
+.step-season {
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  opacity: 0.25;
+  transition: opacity 0.35s ease-in-out, transform 0.35s ease-in-out;
+  transform: translateY(10px);
+}
+
+.step-season.is-active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ==============================================================
+   4. SCROLL FOCUS FOR ALL REMAINING CHARTS
+   (Only the active chart & its text are visible when scrolling)
+   ============================================================== */
+.standalone-chart-section {
+  min-height: 85vh;          /* Isolates each chart so you only see what you need to see */
+  opacity: 0.15;             /* Inactive charts are quietly dimmed */
+  transition: opacity 0.45s ease-in-out, transform 0.45s ease-in-out;
+  transform: scale(0.98);
+}
+
+.standalone-chart-section.is-focused-chart {
+  opacity: 1;                /* Fully illuminated when user scrolls to it */
+  transform: scale(1);
+}
+
+/* Card Styling */
 .insight-card {
-  background: rgba(255, 255, 255, 0.7);
-  border: 1px solid var(--border-subtle, #e7e2d9);
-  border-radius: 6px;
-  padding: 20px 22px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
   width: 100%;
+  box-sizing: border-box;
+  background: #ffffff;
+  border: 1px solid var(--border-subtle);
+  border-radius: 6px;
+  padding: 22px 24px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
 }
 
 .insight-card.highlight-card {
   background: #fbf9f4;
-  border-left: 3px solid #7b2e01; /* Ochre accent line */
+  border-left: 4px solid #7b2e01;
 }
 
 .kicker-tag {
   display: inline-block;
-  font-family: 'Roboto', sans-serif;
-  font-size: 0.68rem;
+  font-size: 0.7rem;
   letter-spacing: 1.8px;
   font-weight: 700;
   text-transform: uppercase;
@@ -222,60 +247,41 @@ h2{
   line-height: 1.25;
 }
 
+/* 3. STRICT LINE LENGTH: NO LINE CAN HAVE MORE THAN 10 WORDS */
 .insight-card p {
   font-family: 'Roboto', sans-serif;
   font-size: 0.94rem;
   line-height: 1.6;
   color: #4b5563;
-  margin: 0 0 10px 0;
-  text-align: left; /* Left-aligned for multi-line readability as per course notes */
+  margin: 0 0 12px 0;
+  text-align: left;
+  max-width: 36ch;           /* ~36 characters restricts line length to ~7-9 words */
+  word-wrap: break-word;
 }
 
 .insight-card p:last-child {
   margin-bottom: 0;
 }
 
-/* Responsive fallback for smaller screens */
-@media (max-width: 992px) {
-  .vis-side-layout {
-    grid-template-columns: 1fr; /* Stacks vertically on tablets and mobile */
-    gap: 24px;
-  }
-  .map-column {
-    position: static;
-  }
-  .step {
-    min-height: auto;
-    opacity: 1;
-    margin-bottom: 20px;
-  }
-}
-
 .section-divider {
   position: relative;
-  z-index: 2;
-  background-color: var(--bg-sand); /* Uses your dashboard background */
-  padding-top: 40px;
+  border-top: 1px solid var(--border-subtle);
+  padding-top: 30px;
   margin-top: 60px;
-  clear: both;
 }
 
-.chart-container-full {
-  width: 100%;
-  margin-top: 20px;
-}
-
-/* Styling for seasonal scrollytelling text steps */
-.step-season {
-  min-height: 80vh;
-  display: flex;
-  align-items: center;
-  opacity: 0.25;
-  transition: opacity 0.35s ease-in-out, transform 0.35s ease-in-out;
-  transform: translateY(12px);
-}
-
-.step-season.is-active {
-  opacity: 1;
-  transform: translateY(0);
+/* Responsive fallback */
+@media (max-width: 960px) {
+  .vis-side-layout {
+    grid-template-columns: 1fr;
+    min-height: auto;
+    opacity: 1 !important;
+  }
+  .vis-side-layout:first-of-type .map-column,
+  .season-scrolly-layout .map-column {
+    position: static;
+  }
+  .text-column {
+    max-width: 100%;
+  }
 }
