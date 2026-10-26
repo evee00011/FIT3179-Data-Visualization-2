@@ -87,8 +87,9 @@ const seasonObserver = new IntersectionObserver(
 vegaEmbed("#vis-climate-heatmap", vg_climate_heatmap, embedOpt).catch(console.error);
 vegaEmbed("#vis-occupation", vg_occupation, embedOpt).catch(console.error);
 vegaEmbed("#vis-pyramid", vg_pyramid, embedOpt).catch(console.error);
-vegaEmbed("#vis-flow-map", vg_flow_map, embedOpt).catch(console.error);
-vegaEmbed("#vis-sankey", vg_sankey, embedOpt).catch(console.error);
+vegaEmbed("#vis-flow-map", vg_flow_map, { actions: false, renderer: "svg" })
+  .catch(console.error);
+  vegaEmbed("#vis-sankey", vg_sankey, embedOpt).catch(console.error);
 vegaEmbed("#vis-ridgeline", vg_ridgeline, embedOpt).catch(console.error);
 vegaEmbed("#vis-activities", vg_activities, embedOpt).catch(console.error);
 vegaEmbed("#vis-lollipop", vg_lollipop, embedOpt).catch(console.error);

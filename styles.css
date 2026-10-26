@@ -291,3 +291,29 @@ p.subtitle {
     max-width: 100%;
   }
 }
+/* ==============================================================
+   FLOW MAP PULSE STREAMLINE ANIMATION (ONLY TRAJECTORY LINES)
+   ============================================================== */
+
+/* Strictly target trajectory flow lines and exclude base map geographic paths */
+#vis-flow-map svg g.mark-rule path,
+#vis-flow-map svg g.mark-rule line,
+#vis-flow-map svg g.mark-line path {
+  stroke-dasharray: 8, 6 !important;
+  animation: flow-stream-pulse 1.4s linear infinite !important;
+}
+
+/* Explicitly protect the base map and state borders from being animated */
+#vis-flow-map svg g.mark-geoshape path {
+  stroke-dasharray: none !important;
+  animation: none !important;
+}
+
+@keyframes flow-stream-pulse {
+  from {
+    stroke-dashoffset: 28;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
