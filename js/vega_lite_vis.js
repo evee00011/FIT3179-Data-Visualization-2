@@ -117,3 +117,11 @@ const vg_ridgeline = "js/vis_ridgeline_duration.vg.json";
 // 2. Embed
 vegaEmbed("#vis-ridgeline", vg_ridgeline, { actions: false })
   .catch(console.error);
+
+
+  // 1. Declare path at top
+const vg_radar = "js/vis_radar_dna.vg.json";
+
+// 2. Embed
+vegaEmbed("#vis-radar", vg_radar, { actions: false })
+  .catch(console.error);

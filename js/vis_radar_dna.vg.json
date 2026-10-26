@@ -1,0 +1,256 @@
+{
+  "$schema": "https://vega.github.io/schema/vega/v5.json",
+  "background": "transparent",
+  "title": {
+    "text": "The DNA of Australian Campgrounds: Facility Profiles",
+    "subtitle": [
+      "Radar plot of facility provision rates (%) across the three custodian models (N = 9,930)",
+      "Source: OpenStreetMap Australia (OSM) operator and amenity tags"
+    ],
+    "anchor": "start",
+    "fontSize": 16,
+    "fontWeight": "bold",
+    "color": "#1f2421",
+    "subtitleFontSize": 11,
+    "subtitleColor": "#64748b",
+    "subtitleFontStyle": "italic",
+    "dy": -8
+  },
+  "width": 480,
+  "height": 420,
+  "padding": 15,
+
+  "signals": [
+    {"name": "radius", "value": 150},
+    {"name": "cx", "update": "width / 2"},
+    {"name": "cy", "update": "height / 2 + 10"}
+  ],
+
+  "data": [
+    {
+      "name": "table",
+      "url": "data/campsite_custodian_radar.csv",
+      "format": {"type": "csv", "parse": {"order": "number", "value": "number"}},
+      "transform": [
+        {
+          "type": "formula",
+          "expr": "datum.order * (2 * PI / 6) - (PI / 2)",
+          "as": "angle"
+        },
+        {
+          "type": "formula",
+          "expr": "cx + (datum.value / 100) * radius * cos(datum.angle)",
+          "as": "x"
+        },
+        {
+          "type": "formula",
+          "expr": "cy + (datum.value / 100) * radius * sin(datum.angle)",
+          "as": "y"
+        }
+      ]
+    },
+    {
+      "name": "axes",
+      "values": [
+        {"axis": "Free Entry", "order": 0},
+        {"axis": "Mains Power", "order": 1},
+        {"axis": "Hot Showers", "order": 2},
+        {"axis": "Flush Toilets", "order": 3},
+        {"axis": "Caravan Access", "order": 4},
+        {"axis": "Pet Friendly", "order": 5}
+      ],
+      "transform": [
+        {
+          "type": "formula",
+          "expr": "datum.order * (2 * PI / 6) - (PI / 2)",
+          "as": "angle"
+        },
+        {
+          "type": "formula",
+          "expr": "cx + radius * cos(datum.angle)",
+          "as": "x2"
+        },
+        {
+          "type": "formula",
+          "expr": "cy + radius * sin(datum.angle)",
+          "as": "y2"
+        },
+        {
+          "type": "formula",
+          "expr": "cx + (radius + 22) * cos(datum.angle)",
+          "as": "lx"
+        },
+        {
+          "type": "formula",
+          "expr": "cy + (radius + 18) * sin(datum.angle)",
+          "as": "ly"
+        }
+      ]
+    },
+    {
+      "name": "grid_levels",
+      "values": [
+        {"level": 20},
+        {"level": 40},
+        {"level": 60},
+        {"level": 80},
+        {"level": 100}
+      ]
+    }
+  ],
+
+  "scales": [
+    {
+      "name": "color",
+      "type": "ordinal",
+      "domain": [
+        "Public Parks & Forests",
+        "Local Council & Community",
+        "Private Commercial Parks"
+      ],
+      "range": [
+        "#15803d",
+        "#d97706",
+        "#0284c7"
+      ]
+    }
+  ],
+
+  "legends": [
+    {
+      "fill": "color",
+      "title": "Custodian Model",
+      "orient": "bottom",
+      "direction": "horizontal",
+      "titleFontSize": 11,
+      "titleFontWeight": "bold",
+      "labelFontSize": 11,
+      "symbolSize": 85
+    }
+  ],
+
+  "marks": [
+    {
+      "type": "rule",
+      "description": "Concentric Circular Web Rings",
+      "from": {"data": "grid_levels"},
+      "encode": {
+        "enter": {
+          "stroke": {"value": "#e2e8f0"},
+          "strokeWidth": {"value": 1}
+        }
+      }
+    },
+    {
+      "type": "symbol",
+      "from": {"data": "grid_levels"},
+      "encode": {
+        "enter": {
+          "x": {"signal": "cx"},
+          "y": {"signal": "cy"},
+          "shape": {"value": "circle"},
+          "fill": {"value": "transparent"},
+          "stroke": {"value": "#e2e8f0"},
+          "strokeWidth": {"value": 1.2},
+          "size": {"signal": "PI * pow(datum.level / 100 * radius, 2) * 4"}
+        }
+      }
+    },
+    {
+      "type": "rule",
+      "description": "Radial Spokes",
+      "from": {"data": "axes"},
+      "encode": {
+        "enter": {
+          "x": {"signal": "cx"},
+          "y": {"signal": "cy"},
+          "x2": {"field": "x2"},
+          "y2": {"field": "y2"},
+          "stroke": {"value": "#cbd5e1"},
+          "strokeWidth": {"value": 1.2}
+        }
+      }
+    },
+    {
+      "type": "text",
+      "description": "Radial Axis Category Labels",
+      "from": {"data": "axes"},
+      "encode": {
+        "enter": {
+          "x": {"field": "lx"},
+          "y": {"field": "ly"},
+          "text": {"field": "axis"},
+          "align": {
+            "signal": "abs(cos(datum.angle)) < 0.1 ? 'center' : (cos(datum.angle) > 0 ? 'left' : 'right')"
+          },
+          "baseline": {
+            "signal": "abs(sin(datum.angle)) < 0.1 ? 'middle' : (sin(datum.angle) > 0 ? 'top' : 'bottom')"
+          },
+          "font": {"value": "Roboto"},
+          "fontSize": {"value": 11},
+          "fontWeight": {"value": "bold"},
+          "fill": {"value": "#1f2421"}
+        }
+      }
+    },
+    {
+      "type": "group",
+      "description": "Polygon Areas Grouped by Custodian",
+      "from": {
+        "facet": {
+          "name": "series",
+          "data": "table",
+          "groupby": "custodian"
+        }
+      },
+      "marks": [
+        {
+          "type": "line",
+          "from": {"data": "series"},
+          "encode": {
+            "enter": {
+              "interpolate": {"value": "linear-closed"},
+              "x": {"field": "x"},
+              "y": {"field": "y"},
+              "stroke": {"scale": "color", "field": "custodian"},
+              "strokeWidth": {"value": 2.2}
+            }
+          }
+        },
+        {
+          "type": "area",
+          "from": {"data": "series"},
+          "encode": {
+            "enter": {
+              "interpolate": {"value": "linear-closed"},
+              "x": {"field": "x"},
+              "y": {"field": "y"},
+              "fill": {"scale": "color", "field": "custodian"},
+              "fillOpacity": {"value": 0.22}
+            }
+          }
+        },
+        {
+          "type": "symbol",
+          "from": {"data": "series"},
+          "encode": {
+            "enter": {
+              "x": {"field": "x"},
+              "y": {"field": "y"},
+              "size": {"value": 55},
+              "fill": {"scale": "color", "field": "custodian"},
+              "stroke": {"value": "#ffffff"},
+              "strokeWidth": {"value": 1.5},
+              "tooltip": {
+                "signal": "{'Custodian': datum.custodian, 'Amenity': datum.axis, 'Availability': format(datum.value, '.1f') + '%'}"
+              }
+            },
+            "hover": {
+              "size": {"value": 120}
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
