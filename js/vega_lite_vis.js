@@ -110,3 +110,10 @@ const vg_upset = "js/vis_upset_amenities.vg.json";
 
 // 2. Embed
 vegaEmbed("#vis-upset", vg_upset, { actions: false }).catch(console.error);
+
+// 1. Declare path at top
+const vg_ridgeline = "js/vis_ridgeline_duration.vg.json";
+
+// 2. Embed
+vegaEmbed("#vis-ridgeline", vg_ridgeline, { actions: false })
+  .catch(console.error);

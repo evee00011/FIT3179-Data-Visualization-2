@@ -1,0 +1,148 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "background": "transparent",
+  "title": {
+    "text": "Weekend Warriors vs. Long-Haul Nomads: Trip Duration",
+    "subtitle": [
+      "Ridgeline density distribution of nights spent per camping trip across age cohorts",
+      "Sources: Synthesized from DBCA WA Camping Study & TRA Domestic Visitor Survey"
+    ],
+    "anchor": "start",
+    "font": "Playfair Display",
+    "fontSize": 16,
+    "fontWeight": 700,
+    "color": "#1f2421",
+    "subtitleFont": "Roboto",
+    "subtitleFontSize": 11,
+    "subtitleColor": "#64748b",
+    "subtitleFontStyle": "italic",
+    "dy": -8
+  },
+  "data": {
+    "url": "data/camper_stay_duration_density.csv"
+  },
+  "facet": {
+    "row": {
+      "field": "cohort",
+      "type": "nominal",
+      "sort": {"field": "cohort_order", "order": "ascending"},
+      "header": {
+        "title": null,
+        "labels": false
+      }
+    }
+  },
+  "spec": {
+    "width": 500,
+    "height": 45,
+    "layer": [
+      {
+        "description": "Ridgeline Area Fill",
+        "mark": {
+          "type": "area",
+          "interpolate": "monotone",
+          "opacity": 0.82,
+          "line": {
+            "color": "#0f766e",
+            "width": 1.5
+          }
+        },
+        "encoding": {
+          "x": {
+            "field": "nights",
+            "type": "quantitative",
+            "scale": {
+              "type": "symlog",
+              "constant": 1,
+              "domain": [1, 60]
+            },
+            "axis": {
+              "title": "Nights Stayed per Trip (Logarithmic Scale)",
+              "titleFont": "Roboto",
+              "titleFontSize": 11,
+              "labelFont": "Roboto",
+              "labelFontSize": 10,
+              "values": [1, 2, 3, 5, 7, 14, 30, 60],
+              "format": "d",
+              "grid": true,
+              "gridColor": "#f1f5f9"
+            }
+          },
+          "y": {
+            "field": "density",
+            "type": "quantitative",
+            "scale": {"domain": [0, 0.44]},
+            "axis": null
+          },
+          "color": {
+            "field": "cohort",
+            "type": "nominal",
+            "scale": {
+              "domain": [
+                "18–24 Young Adults",
+                "25–34 Weekend Explorers",
+                "35–54 Family Campers",
+                "55–64 Mature Touring",
+                "65+ Grey Nomads"
+              ],
+              "range": [
+                "#d97706",
+                "#f59e0b",
+                "#0d9488",
+                "#0f766e",
+                "#115e59"
+              ]
+            },
+            "legend": null
+          },
+          "tooltip": [
+            {"field": "cohort", "type": "nominal", "title": "Demographic Cohort"},
+            {"field": "nights", "type": "quantitative", "title": "Trip Length (Nights)"},
+            {"field": "share_pct", "type": "quantitative", "title": "Cohort Share (%)", "format": ".1f"}
+          ]
+        }
+      },
+      {
+        "description": "Baseline Rule to ground each ridge",
+        "mark": {
+          "type": "rule",
+          "color": "#cbd5e1",
+          "strokeWidth": 0.8
+        },
+        "encoding": {
+          "y": {"datum": 0}
+        }
+      },
+      {
+        "description": "Inline Cohort Label (replaces the overlapping vertical header)",
+        "transform": [
+          {"filter": "datum.nights === 1"}
+        ],
+        "mark": {
+          "type": "text",
+          "align": "left",
+          "baseline": "bottom",
+          "font": "Roboto",
+          "fontSize": 11,
+          "fontWeight": "bold",
+          "color": "#1f2421",
+          "dx": 6,
+          "dy": -10
+        },
+        "encoding": {
+          "x": {"datum": 1},
+          "y": {"datum": 0.36},
+          "text": {"field": "cohort"}
+        }
+      }
+    ]
+  },
+  "config": {
+    "facet": {
+      "spacing": -15
+    },
+    "view": {
+      "stroke": null
+    }
+  }
+}
