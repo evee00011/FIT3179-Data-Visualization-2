@@ -1,0 +1,219 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "background": "transparent",
+  "title": {
+    "text": "The Amenity Bundle: Campsite Facility Co-occurrence (UpSet Plot)",
+    "subtitle": [
+      "Top bar chart shows the count of campsites offering each specific bundle of amenities across Australia (N = 9,930).",
+      "Connected dots below reveal the exact combinations present (teal) or absent (grey)."
+    ],
+    "anchor": "start",
+    "font": "Playfair Display",
+    "fontSize": 15,
+    "fontWeight": 700,
+    "color": "#1f2421",
+    "subtitleFont": "Roboto",
+    "subtitleFontSize": 11,
+    "subtitleColor": "#64748b",
+    "subtitleFontStyle": "italic",
+    "dy": -8
+  },
+  "data": {
+    "url": "data/campsite_amenities_upset.csv"
+  },
+  "vconcat": [
+    {
+      "description": "Top View: Intersection Size Bar Chart",
+      "width": 480,
+      "height": 190,
+      "transform": [
+        {"filter": "datum.amenity === 'Tent Pitching'"}
+      ],
+      "layer": [
+        {
+          "mark": {
+            "type": "bar",
+            "color": "#0f766e",
+            "cornerRadiusTopLeft": 3,
+            "cornerRadiusTopRight": 3
+          },
+          "encoding": {
+            "x": {
+              "field": "bundle_name",
+              "type": "nominal",
+              "sort": {"field": "count", "op": "max", "order": "descending"},
+              "axis": null
+            },
+            "y": {
+              "field": "count",
+              "type": "quantitative",
+              "scale": {
+                "zero": true,
+                "nice": true
+              },
+              "axis": {
+                "title": "Campsites in Bundle",
+                "titleFont": "Roboto",
+                "titleFontSize": 11,
+                "labelFont": "Roboto",
+                "labelFontSize": 10,
+                "grid": true,
+                "gridColor": "#f1f5f9"
+              }
+            },
+            "tooltip": [
+              {"field": "bundle_name", "type": "nominal", "title": "Facility Bundle"},
+              {"field": "count", "type": "quantitative", "title": "Campsite Count", "format": ",d"}
+            ]
+          }
+        },
+        {
+          "mark": {
+            "type": "text",
+            "align": "center",
+            "baseline": "bottom",
+            "dy": -4,
+            "font": "Roboto",
+            "fontSize": 9.5,
+            "fontWeight": 600,
+            "color": "#0f766e"
+          },
+          "encoding": {
+            "x": {
+              "field": "bundle_name",
+              "type": "nominal",
+              "sort": {"field": "count", "op": "max", "order": "descending"}
+            },
+            "y": {
+              "field": "count",
+              "type": "quantitative"
+            },
+            "text": {
+              "field": "count",
+              "type": "quantitative",
+              "format": ",d"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "description": "Bottom View: Combination Dot Matrix Grid",
+      "width": 480,
+      "height": 160,
+      "layer": [
+        {
+          "description": "Background Inactive Dots (Grey)",
+          "mark": {
+            "type": "circle",
+            "size": 110,
+            "color": "#e2e8f0",
+            "opacity": 1
+          },
+          "encoding": {
+            "x": {
+              "field": "bundle_name",
+              "type": "nominal",
+              "sort": {"field": "count", "op": "max", "order": "descending"},
+              "axis": null
+            },
+            "y": {
+              "field": "amenity",
+              "type": "nominal",
+              "sort": [
+                "Tent Pitching",
+                "Caravan Access",
+                "Flush Toilets",
+                "Hot Showers",
+                "Power Supply",
+                "Drinking Water"
+              ],
+              "axis": {
+                "title": null,
+                "domain": false,
+                "ticks": false,
+                "labelFont": "Roboto",
+                "labelFontSize": 11,
+                "labelFontWeight": "bold",
+                "labelColor": "#1f2421"
+              }
+            }
+          }
+        },
+        {
+          "description": "Connecting Rule between Active Dots in Bundle",
+          "transform": [
+            {"filter": "datum.min_amenity !== datum.max_amenity"}
+          ],
+          "mark": {
+            "type": "rule",
+            "stroke": "#0f766e",
+            "strokeWidth": 2.5
+          },
+          "encoding": {
+            "x": {
+              "field": "bundle_name",
+              "type": "nominal",
+              "sort": {"field": "count", "op": "max", "order": "descending"}
+            },
+            "y": {
+              "field": "min_amenity",
+              "type": "nominal",
+              "sort": [
+                "Tent Pitching",
+                "Caravan Access",
+                "Flush Toilets",
+                "Hot Showers",
+                "Power Supply",
+                "Drinking Water"
+              ]
+            },
+            "y2": {
+              "field": "max_amenity"
+            }
+          }
+        },
+        {
+          "description": "Foreground Active Dots (Teal)",
+          "transform": [
+            {"filter": "datum.present === 1"}
+          ],
+          "mark": {
+            "type": "circle",
+            "size": 125,
+            "color": "#0f766e",
+            "opacity": 1
+          },
+          "encoding": {
+            "x": {
+              "field": "bundle_name",
+              "type": "nominal",
+              "sort": {"field": "count", "op": "max", "order": "descending"}
+            },
+            "y": {
+              "field": "amenity",
+              "type": "nominal",
+              "sort": [
+                "Tent Pitching",
+                "Caravan Access",
+                "Flush Toilets",
+                "Hot Showers",
+                "Power Supply",
+                "Drinking Water"
+              ]
+            },
+            "tooltip": [
+              {"field": "bundle_name", "type": "nominal", "title": "Facility Bundle"},
+              {"field": "amenity", "type": "nominal", "title": "Active Amenity"},
+              {"field": "count", "type": "quantitative", "title": "Total Sites", "format": ",d"}
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "config": {
+    "spacing": 10,
+    "view": {"stroke": null}
+  }
+}

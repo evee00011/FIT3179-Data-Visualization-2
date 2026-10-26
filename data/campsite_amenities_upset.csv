@@ -1,0 +1,61 @@
+bundle_id,bundle_name,count,amenity,present,min_amenity,max_amenity
+1,Tents Only,5725,Tent Pitching,1,Tent Pitching,Tent Pitching
+1,Tents Only,5725,Caravan Access,0,Tent Pitching,Tent Pitching
+1,Tents Only,5725,Flush Toilets,0,Tent Pitching,Tent Pitching
+1,Tents Only,5725,Hot Showers,0,Tent Pitching,Tent Pitching
+1,Tents Only,5725,Power Supply,0,Tent Pitching,Tent Pitching
+1,Tents Only,5725,Drinking Water,0,Tent Pitching,Tent Pitching
+2,Caravan Access,1484,Tent Pitching,0,Caravan Access,Caravan Access
+2,Caravan Access,1484,Caravan Access,1,Caravan Access,Caravan Access
+2,Caravan Access,1484,Flush Toilets,0,Caravan Access,Caravan Access
+2,Caravan Access,1484,Hot Showers,0,Caravan Access,Caravan Access
+2,Caravan Access,1484,Power Supply,0,Caravan Access,Caravan Access
+2,Caravan Access,1484,Drinking Water,0,Caravan Access,Caravan Access
+3,Caravans + Tents,640,Tent Pitching,1,Tent Pitching,Caravan Access
+3,Caravans + Tents,640,Caravan Access,1,Tent Pitching,Caravan Access
+3,Caravans + Tents,640,Flush Toilets,0,Tent Pitching,Caravan Access
+3,Caravans + Tents,640,Hot Showers,0,Tent Pitching,Caravan Access
+3,Caravans + Tents,640,Power Supply,0,Tent Pitching,Caravan Access
+3,Caravans + Tents,640,Drinking Water,0,Tent Pitching,Caravan Access
+4,Tents + Toilets,425,Tent Pitching,1,Tent Pitching,Flush Toilets
+4,Tents + Toilets,425,Caravan Access,0,Tent Pitching,Flush Toilets
+4,Tents + Toilets,425,Flush Toilets,1,Tent Pitching,Flush Toilets
+4,Tents + Toilets,425,Hot Showers,0,Tent Pitching,Flush Toilets
+4,Tents + Toilets,425,Power Supply,0,Tent Pitching,Flush Toilets
+4,Tents + Toilets,425,Drinking Water,0,Tent Pitching,Flush Toilets
+5,Caravans + Tents + Toilets,362,Tent Pitching,1,Tent Pitching,Flush Toilets
+5,Caravans + Tents + Toilets,362,Caravan Access,1,Tent Pitching,Flush Toilets
+5,Caravans + Tents + Toilets,362,Flush Toilets,1,Tent Pitching,Flush Toilets
+5,Caravans + Tents + Toilets,362,Hot Showers,0,Tent Pitching,Flush Toilets
+5,Caravans + Tents + Toilets,362,Power Supply,0,Tent Pitching,Flush Toilets
+5,Caravans + Tents + Toilets,362,Drinking Water,0,Tent Pitching,Flush Toilets
+6,Powered Holiday Park,217,Tent Pitching,1,Tent Pitching,Power Supply
+6,Powered Holiday Park,217,Caravan Access,1,Tent Pitching,Power Supply
+6,Powered Holiday Park,217,Flush Toilets,1,Tent Pitching,Power Supply
+6,Powered Holiday Park,217,Hot Showers,1,Tent Pitching,Power Supply
+6,Powered Holiday Park,217,Power Supply,1,Tent Pitching,Power Supply
+6,Powered Holiday Park,217,Drinking Water,0,Tent Pitching,Power Supply
+7,Caravan Access + Power Supply,195,Tent Pitching,0,Caravan Access,Power Supply
+7,Caravan Access + Power Supply,195,Caravan Access,1,Caravan Access,Power Supply
+7,Caravan Access + Power Supply,195,Flush Toilets,0,Caravan Access,Power Supply
+7,Caravan Access + Power Supply,195,Hot Showers,0,Caravan Access,Power Supply
+7,Caravan Access + Power Supply,195,Power Supply,1,Caravan Access,Power Supply
+7,Caravan Access + Power Supply,195,Drinking Water,0,Caravan Access,Power Supply
+8,Basic Holiday Park,194,Tent Pitching,1,Tent Pitching,Hot Showers
+8,Basic Holiday Park,194,Caravan Access,1,Tent Pitching,Hot Showers
+8,Basic Holiday Park,194,Flush Toilets,1,Tent Pitching,Hot Showers
+8,Basic Holiday Park,194,Hot Showers,1,Tent Pitching,Hot Showers
+8,Basic Holiday Park,194,Power Supply,0,Tent Pitching,Hot Showers
+8,Basic Holiday Park,194,Drinking Water,0,Tent Pitching,Hot Showers
+9,Tent Pitching + Caravan Access + Power Supply,148,Tent Pitching,1,Tent Pitching,Power Supply
+9,Tent Pitching + Caravan Access + Power Supply,148,Caravan Access,1,Tent Pitching,Power Supply
+9,Tent Pitching + Caravan Access + Power Supply,148,Flush Toilets,0,Tent Pitching,Power Supply
+9,Tent Pitching + Caravan Access + Power Supply,148,Hot Showers,0,Tent Pitching,Power Supply
+9,Tent Pitching + Caravan Access + Power Supply,148,Power Supply,1,Tent Pitching,Power Supply
+9,Tent Pitching + Caravan Access + Power Supply,148,Drinking Water,0,Tent Pitching,Power Supply
+10,Tent Pitching + Flush Toilets + Hot Showers + Power Supply,89,Tent Pitching,1,Tent Pitching,Power Supply
+10,Tent Pitching + Flush Toilets + Hot Showers + Power Supply,89,Caravan Access,0,Tent Pitching,Power Supply
+10,Tent Pitching + Flush Toilets + Hot Showers + Power Supply,89,Flush Toilets,1,Tent Pitching,Power Supply
+10,Tent Pitching + Flush Toilets + Hot Showers + Power Supply,89,Hot Showers,1,Tent Pitching,Power Supply
+10,Tent Pitching + Flush Toilets + Hot Showers + Power Supply,89,Power Supply,1,Tent Pitching,Power Supply
+10,Tent Pitching + Flush Toilets + Hot Showers + Power Supply,89,Drinking Water,0,Tent Pitching,Power Supply
