@@ -4,9 +4,10 @@
     "text": "Camper type and how they choose to camp",
     "subtitle": "Flow of setup choices between solo travellers and family groups (% within cohort)",
     "anchor": "start",
-    "fontSize": 16,
+    "fontSize": 17,
+    "font": "Playfair Display",
     "fontWeight": "bold",
-    "subtitleFontSize": 12,
+    "subtitleFontSize": 13,
     "subtitleColor": "#64748b",
     "subtitleFontStyle": "italic"
   },

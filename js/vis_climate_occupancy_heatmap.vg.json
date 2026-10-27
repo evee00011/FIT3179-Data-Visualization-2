@@ -4,16 +4,17 @@
   "title": {
     "text": "Climate drives seasonal demand",
     "subtitle": [
-      "Cell colour encodes monthly campsite occupancy rate (%); text labels display mean daytime maximum temperature (°C).",
-      "Notice the diagonal X-crossover: Winter peaks in the Tropical North , while Summer peaks in the Temperate South ."
+      "Cell colour encodes monthly campsite occupancy rate (%);", 
+      "Text labels display mean daytime maximum temperature (°C).",
+      "Source: OpenStreetMap Australia (OSM), extracted via Overpass Turbo (N = 9,930)"
     ],
     "anchor": "start",
     "font": "Playfair Display",
-    "fontSize": 16,
+    "fontSize": 17,
     "fontWeight": 700,
     "color": "#1f2421",
     "subtitleFont": "Roboto",
-    "subtitleFontSize": 11,
+    "subtitleFontSize": 13,
     "subtitleColor": "#64748b",
     "subtitleFontStyle": "italic",
     "dy": -8

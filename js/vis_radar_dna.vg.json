@@ -2,16 +2,17 @@
   "$schema": "https://vega.github.io/schema/vega/v5.json",
   "background": "transparent",
   "title": {
-    "text": "The DNA of Australian Campgrounds: Facility Profiles",
+    "text": "How does ownership influence facility availability",
     "subtitle": [
       "Radar plot of facility provision rates (%) across the three custodian models (N = 9,930)",
       "Source: OpenStreetMap Australia (OSM) operator and amenity tags"
     ],
     "anchor": "start",
-    "fontSize": 16,
+    "fontSize": 17,
     "fontWeight": "bold",
+    "font": "Playfair Display",
     "color": "#1f2421",
-    "subtitleFontSize": 11,
+    "subtitleFontSize": 13,
     "subtitleColor": "#64748b",
     "subtitleFontStyle": "italic",
     "dy": -8
@@ -119,7 +120,7 @@
   "legends": [
     {
       "fill": "color",
-      "title": "Custodian Model",
+      "title": "Ownership",
       "orient": "bottom",
       "direction": "horizontal",
       "titleFontSize": 11,

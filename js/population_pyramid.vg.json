@@ -8,8 +8,9 @@
       "Source: DBCA WA Camping Experience Study (2025, Page 13)"
     ],
     "anchor": "start",
-    "fontSize": 15,
-    "subtitleFontSize": 11,
+    "fontSize": 17,
+    "font": "Playfair Display",
+    "subtitleFontSize": 13,
     "subtitleColor": "#64748b",
     "subtitleFontStyle": "italic"
   },

@@ -1,6 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "background":"transparent",
+  "background": "transparent",
   "title": {
     "text": "Australian Campsite Facility Provision",
     "subtitle": [
@@ -9,9 +9,10 @@
     ],
     "subtitleColor": "#868f9c",
     "subtitleFontStyle": "italic",
-    "subtitleFontSize": 10.5,
+    "subtitleFontSize": 13,
     "anchor": "start",
-    "fontSize": 15
+    "fontSize": 17,
+    "font": "Playfair Display"
   },
   "width": 600,
   "height": 440,
@@ -60,10 +61,24 @@
     {
       "mark": {
         "type": "circle",
-        "size": 160,
-        "color": "#056a42"
+        "size": 160
       },
       "encoding": {
+        "color": {
+          "datum": "Provision Rate (%)",
+          "type": "nominal",
+          "scale": {
+            "domain": ["Provision Rate (%)"],
+            "range": ["#056a42"]
+          },
+          "legend": {
+            "title": null,
+            "orient": "bottom-right",
+            "symbolSize": 120,
+            "labelFontSize": 11,
+            "labelFont": "Roboto"
+          }
+        },
         "tooltip": [
           {"field": "category", "type": "nominal", "title": "Facility"},
           {"field": "percentage", "type": "quantitative", "title": "Availability (%)", "format": ".1f"},

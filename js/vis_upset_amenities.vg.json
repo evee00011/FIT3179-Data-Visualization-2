@@ -5,15 +5,15 @@
     "text": "The Amenity Bundle: Campsite Facility Co-occurrence (UpSet Plot)",
     "subtitle": [
       "Top bar chart shows the count of campsites offering each specific bundle of amenities across Australia (N = 9,930).",
-      "Connected dots below reveal the exact combinations present (teal) or absent (grey)."
+      "Connected dots below reveal the exact combinations present (green) or absent (grey)."
     ],
     "anchor": "start",
     "font": "Playfair Display",
-    "fontSize": 15,
+    "fontSize": 17,
     "fontWeight": 700,
     "color": "#1f2421",
     "subtitleFont": "Roboto",
-    "subtitleFontSize": 11,
+    "subtitleFontSize": 13,
     "subtitleColor": "#64748b",
     "subtitleFontStyle": "italic",
     "dy": -8
@@ -29,73 +29,41 @@
       "transform": [
         {"filter": "datum.amenity === 'Tent Pitching'"}
       ],
-      "layer": [
-        {
-          "mark": {
-            "type": "bar",
-            "color": "#0f766e",
-            "cornerRadiusTopLeft": 3,
-            "cornerRadiusTopRight": 3
+      "mark": {
+        "type": "bar",
+        "color": "#084530",
+        "cornerRadiusTopLeft": 3,
+        "cornerRadiusTopRight": 3
+      },
+      "encoding": {
+        "x": {
+          "field": "bundle_name",
+          "type": "nominal",
+          "sort": {"field": "count", "op": "max", "order": "descending"},
+          "axis": null
+        },
+        "y": {
+          "field": "count",
+          "type": "quantitative",
+          "scale": {
+            "zero": true,
+            "nice": true
           },
-          "encoding": {
-            "x": {
-              "field": "bundle_name",
-              "type": "nominal",
-              "sort": {"field": "count", "op": "max", "order": "descending"},
-              "axis": null
-            },
-            "y": {
-              "field": "count",
-              "type": "quantitative",
-              "scale": {
-                "zero": true,
-                "nice": true
-              },
-              "axis": {
-                "title": "Campsites in Bundle",
-                "titleFont": "Roboto",
-                "titleFontSize": 11,
-                "labelFont": "Roboto",
-                "labelFontSize": 10,
-                "grid": true,
-                "gridColor": "#f1f5f9"
-              }
-            },
-            "tooltip": [
-              {"field": "bundle_name", "type": "nominal", "title": "Facility Bundle"},
-              {"field": "count", "type": "quantitative", "title": "Campsite Count", "format": ",d"}
-            ]
+          "axis": {
+            "title": "Campsites in Bundle",
+            "titleFont": "Roboto",
+            "titleFontSize": 11,
+            "labelFont": "Roboto",
+            "labelFontSize": 10,
+            "grid": true,
+            "gridColor": "#f1f5f9"
           }
         },
-        {
-          "mark": {
-            "type": "text",
-            "align": "center",
-            "baseline": "bottom",
-            "dy": -4,
-            "font": "Roboto",
-            "fontSize": 9.5,
-            "fontWeight": 600,
-            "color": "#0f766e"
-          },
-          "encoding": {
-            "x": {
-              "field": "bundle_name",
-              "type": "nominal",
-              "sort": {"field": "count", "op": "max", "order": "descending"}
-            },
-            "y": {
-              "field": "count",
-              "type": "quantitative"
-            },
-            "text": {
-              "field": "count",
-              "type": "quantitative",
-              "format": ",d"
-            }
-          }
-        }
-      ]
+        "tooltip": [
+          {"field": "bundle_name", "type": "nominal", "title": "Facility Bundle"},
+          {"field": "count", "type": "quantitative", "title": "Campsite Count", "format": ",d"}
+        ]
+      }
     },
     {
       "description": "Bottom View: Combination Dot Matrix Grid",

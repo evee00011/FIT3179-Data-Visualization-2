@@ -5,7 +5,9 @@
     "text": "Where to camp in each season?",
     "subtitle": [
       "Bubble size denotes camper preference share (%); colour indicates overall seasonal camping condition.",
-      "Scroll through the seasons to watch demand invert between the Tropical North and Temperate South."
+      "Scroll through the seasons to watch demand invert.",
+      "Source: OpenStreetMap Australia (OSM), extracted via Overpass Turbo (N = 9,930)"
+
     ],
     "anchor": "start",
     "font": "Playfair Display",
@@ -13,7 +15,7 @@
     "fontWeight": 700,
     "color": "#1f2421",
     "subtitleFont": "Roboto",
-    "subtitleFontSize": 11,
+    "subtitleFontSize": 13,
     "subtitleColor": "#5c6460",
     "subtitleFontStyle": "italic"
   },

@@ -1,15 +1,16 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "background": "transparent",
-    "title": {
+  "title": {
     "text": "Interstate Camper Flows into Western Australia",
     "subtitle": [
       "Origin-to-destination volume of interstate campers travelling to WA National & Conservation Parks (n = 886)",
       "Source: DBCA WA Camping Experience Study (2025, Page 14)"
     ],
     "anchor": "start",
-    "fontSize": 15,
-    "subtitleFontSize": 11,
+    "fontSize": 17,
+    "font": "Playfair Display",
+    "subtitleFontSize": 13,
     "subtitleColor": "#64748b",
     "subtitleFontStyle": "italic"
   },
@@ -71,13 +72,13 @@
       "description": "Directional Flow Arrowheads",
       "data": {
         "values": [
-          {"origin": "VICTORIA", "lon": 129.83, "lat": -34.76, "angle": 281.4, "people": 64, "camper_share": 7.2},
-          {"origin": "NEW SOUTH WALES", "lon": 132.83, "lat": -32.87, "angle": 273.1, "people": 38, "camper_share": 4.3},
-          {"origin": "QUEENSLAND", "lon": 133.70, "lat": -29.80, "angle": 263.1, "people": 34, "camper_share": 3.8},
-          {"origin": "SOUTH AUSTRALIA",  "lon": 126.78, "lat": -33.38, "angle": 277.5, "people": 24, "camper_share": 2.7},
-          {"origin": "TASMANIA", "lon": 130.97, "lat": -37.20, "angle": 289.2, "people": 8,  "camper_share": 0.9},
-          {"origin": "NORTHERN TERRITORY",  "lon": 123.05, "lat": -22.59, "angle": 217.5, "people": 8,  "camper_share": 0.9},
-          {"origin": "AUSTRALIAN CAPITAL TERRITORY", "lon": 131.83, "lat": -33.55, "angle": 275.7, "people": 2,  "camper_share": 0.2}
+          {"origin": "Victoria", "lon": 129.83, "lat": -34.76, "angle": 281.4, "people": 64, "camper_share": 7.2},
+          {"origin": "New South Wales", "lon": 132.83, "lat": -32.87, "angle": 273.1, "people": 38, "camper_share": 4.3},
+          {"origin": "Queensland", "lon": 133.70, "lat": -29.80, "angle": 263.1, "people": 34, "camper_share": 3.8},
+          {"origin": "South Australia",  "lon": 126.78, "lat": -33.38, "angle": 277.5, "people": 24, "camper_share": 2.7},
+          {"origin": "Tasmania", "lon": 130.97, "lat": -37.20, "angle": 289.2, "people": 8,  "camper_share": 0.9},
+          {"origin": "Northern Territory",  "lon": 123.05, "lat": -22.59, "angle": 217.5, "people": 8,  "camper_share": 0.9},
+          {"origin": "Australian Capital Territory", "lon": 131.83, "lat": -33.55, "angle": 275.7, "people": 2,  "camper_share": 0.2}
         ]
       },
       "mark": {
@@ -135,7 +136,7 @@
       "description": "Destination Node: Western Australia Parks Hub",
       "data": {
         "values": [
-          {"dest": "WA Parks Hub", "lon": 115.86, "lat": -31.95}
+          {"dest": "Western Australia (WA Parks Hub)", "lon": 115.86, "lat": -31.95}
         ]
       },
       "mark": {
@@ -155,21 +156,47 @@
       }
     },
     {
-      "description": "Origin Labels",
+      "description": "Destination Label",
       "data": {
-        "url": "data/campers_to_WA.csv"
+        "values": [
+          {"dest": "Western Australia", "lon": 115.86, "lat": -31.95}
+        ]
       },
       "mark": {
         "type": "text",
         "fontWeight": "bold",
-        "fontSize": 10,
+        "fontSize": 11,
+        "dy": -12,
+        "color": "#0f172a"
+      },
+      "encoding": {
+        "longitude": {"field": "lon", "type": "quantitative"},
+        "latitude": {"field": "lat", "type": "quantitative"},
+        "text": {"field": "dest", "type": "nominal"}
+      }
+    },
+    {
+      "description": "Origin Labels",
+      "data": {
+        "url": "data/campers_to_WA.csv"
+      },
+      "transform": [
+        {
+          "calculate": "upper(datum.origin) == 'VIC' ? 'Victoria' : upper(datum.origin) == 'NSW' ? 'New South Wales' : upper(datum.origin) == 'QLD' ? 'Queensland' : upper(datum.origin) == 'SA' ? 'South Australia' : upper(datum.origin) == 'TAS' ? 'Tasmania' : upper(datum.origin) == 'NT' ? 'Northern Territory' : upper(datum.origin) == 'ACT' ? 'Australian Capital Territory' : datum.origin",
+          "as": "full_state_name"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "fontWeight": "bold",
+        "fontSize": 10.5,
         "dy": -10,
         "color": "#1e293b"
       },
       "encoding": {
         "longitude": {"field": "o_lon", "type": "quantitative"},
         "latitude": {"field": "o_lat", "type": "quantitative"},
-        "text": {"field": "origin", "type": "nominal"}
+        "text": {"field": "full_state_name", "type": "nominal"}
       }
     }
   ],

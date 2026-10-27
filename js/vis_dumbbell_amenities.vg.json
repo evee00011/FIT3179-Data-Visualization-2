@@ -9,11 +9,11 @@
     ],
     "anchor": "start",
     "font": "Playfair Display",
-    "fontSize": 16,
+    "fontSize": 17,
     "fontWeight": 700,
     "color": "#1f2421",
     "subtitleFont": "Roboto",
-    "subtitleFontSize": 11,
+    "subtitleFontSize": 13,
     "subtitleColor": "#64748b",
     "subtitleFontStyle": "italic",
     "dy": -8
@@ -23,6 +23,16 @@
   "data": {
     "url": "data/amenities_remoteness_gap.csv"
   },
+  "transform": [
+    {
+      "calculate": "(datum.coastal_urban + datum.remote_outback) / 2",
+      "as": "midpoint_x"
+    },
+    {
+      "calculate": "'-' + datum.gap + '% deficit'",
+      "as": "gap_label"
+    }
+  ],
   "encoding": {
     "y": {
       "field": "amenity",
@@ -67,73 +77,59 @@
       }
     },
     {
-      "description": "Remote / Outback Bushcamp Dot (Teal)",
+      "description": "Rural / Outback Dot (Teal)",
       "mark": {
         "type": "point",
         "size": 180,
         "filled": true,
-        "color": "#0f766e",
         "opacity": 1
       },
       "encoding": {
         "x": {"field": "remote_outback", "type": "quantitative"},
+        "color": {
+          "datum": "Rural / Outback",
+          "type": "nominal",
+          "scale": {
+            "domain": ["City / Coastal", "Rural / Outback"],
+            "range": ["#d97706", "#0f766e"]
+          },
+          "legend": {
+            "title": "Location",
+            "orient": "bottom-right",
+            "symbolSize": 120,
+            "titleFont": "Roboto",
+            "titleFontSize": 11,
+            "labelFont": "Roboto",
+            "labelFontSize": 11,
+            "labelColor": "#1f2421"
+          }
+        },
         "tooltip": [
           {"field": "amenity", "type": "nominal", "title": "Facility"},
-          {"field": "remote_outback", "type": "quantitative", "title": "Remote / Outback Rate (%)", "format": ".1f"},
+          {"field": "remote_outback", "type": "quantitative", "title": "Rural / Outback Rate (%)", "format": ".1f"},
           {"field": "gap", "type": "quantitative", "title": "Remoteness Penalty (%)", "format": ".1f"}
         ]
       }
     },
     {
-      "description": "Coastal / Urban Holiday Park Dot (Amber)",
+      "description": "City / Coastal Dot (Orange)",
       "mark": {
         "type": "point",
         "size": 180,
         "filled": true,
-        "color": "#d97706",
         "opacity": 1
       },
       "encoding": {
         "x": {"field": "coastal_urban", "type": "quantitative"},
+        "color": {
+          "datum": "City / Coastal",
+          "type": "nominal"
+        },
         "tooltip": [
           {"field": "amenity", "type": "nominal", "title": "Facility"},
-          {"field": "coastal_urban", "type": "quantitative", "title": "Coastal / Urban Rate (%)", "format": ".1f"},
+          {"field": "coastal_urban", "type": "quantitative", "title": "City / Coastal Rate (%)", "format": ".1f"},
           {"field": "gap", "type": "quantitative", "title": "Remoteness Penalty (%)", "format": ".1f"}
         ]
-      }
-    },
-    {
-      "description": "Remote Value Label",
-      "mark": {
-        "type": "text",
-        "align": "right",
-        "baseline": "middle",
-        "dx": -10,
-        "font": "Roboto",
-        "fontSize": 10.5,
-        "fontWeight": 600,
-        "color": "#0f766e"
-      },
-      "encoding": {
-        "x": {"field": "remote_outback", "type": "quantitative"},
-        "text": {"field": "remote_outback", "type": "quantitative", "format": ".1f"}
-      }
-    },
-    {
-      "description": "Coastal Value Label",
-      "mark": {
-        "type": "text",
-        "align": "left",
-        "baseline": "middle",
-        "dx": 10,
-        "font": "Roboto",
-        "fontSize": 10.5,
-        "fontWeight": 600,
-        "color": "#d97706"
-      },
-      "encoding": {
-        "x": {"field": "coastal_urban", "type": "quantitative"},
-        "text": {"field": "coastal_urban", "type": "quantitative", "format": ".1f"}
       }
     },
     {
@@ -144,17 +140,18 @@
         "baseline": "bottom",
         "dy": -8,
         "font": "Roboto",
-        "fontSize": 9.5,
+        "fontSize": 10,
         "fontStyle": "italic",
         "color": "#64748b"
       },
       "encoding": {
         "x": {
-          "calculate": "(datum.coastal_urban + datum.remote_outback) / 2",
+          "field": "midpoint_x",
           "type": "quantitative"
         },
         "text": {
-          "calculate": "'-' + datum.gap + '% deficit'"
+          "field": "gap_label",
+          "type": "nominal"
         }
       }
     }

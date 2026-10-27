@@ -4,19 +4,20 @@
   "title": {
     "text": "Why People Camp: Activity Participation & Motivation",
     "subtitle": [
-      "Click any activity bar on the left to inspect its exact 100-dot participation matrix (n = 994).",
+      "Click any activity bar on the left to inspect its participation matrix.",
       "Source: WA Department of Biodiversity, Conservation and Attractions (DBCA)"
     ],
     "anchor": "start",
-    "fontSize": 18,
+    "fontSize": 17,
+    "font": "Playfair Display",
     "fontWeight": "bold",
     "color": "#1f2421",
-    "subtitleFontSize": 12,
+    "subtitleFontSize": 13,
     "subtitleColor": "#64748b",
     "subtitleFontStyle": "italic",
     "dy": -10
   },
-  "width": 860,
+  "width": 700,
   "height": 580,
   "padding": {"top": 10, "left": 10, "right": 20, "bottom": 10},
 

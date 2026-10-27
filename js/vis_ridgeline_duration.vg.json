@@ -9,11 +9,11 @@
     ],
     "anchor": "start",
     "font": "Playfair Display",
-    "fontSize": 16,
+    "fontSize": 17,
     "fontWeight": 700,
     "color": "#1f2421",
     "subtitleFont": "Roboto",
-    "subtitleFontSize": 11,
+    "subtitleFontSize": 13,
     "subtitleColor": "#64748b",
     "subtitleFontStyle": "italic",
     "dy": -8
@@ -27,7 +27,13 @@
       "type": "nominal",
       "sort": {"field": "cohort_order", "order": "ascending"},
       "header": {
-        "title": null,
+        "title": "Age Cohort",
+        "titleAngle": -90,
+        "titleFont": "Roboto",
+        "titleFontSize": 13,
+        "titleFontWeight": "bold",
+        "titleColor": "#1f2421",
+        "titlePadding": 20,
         "labels": false
       }
     }

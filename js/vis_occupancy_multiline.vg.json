@@ -4,14 +4,15 @@
   "title": {
     "text": "Monthly Campsite & Holiday Park Occupancy Rates (2019–2026)",
     "subtitle": [
-      "Comparison of New South Wales vs. Australian National Occupancy Rates across seasonal cycles and pandemic disruptions.",
+      "Campsite occupancy rates over time 2020-2026",
       "Source: Tourism Research Australia (TRA) / Caravan Industry Association of Australia (CIAA)"
     ],
     "anchor": "start",
-    "fontSize": 15,
+    "fontSize": 17,
     "fontWeight": 700,
+    "font":"Playfair Display",
     "color": "#1f2421",
-    "subtitleFontSize": 11,
+    "subtitleFontSize": 13,
     "subtitleColor": "#64748b",
     "subtitleFontStyle": "italic",
     "dy": -8
