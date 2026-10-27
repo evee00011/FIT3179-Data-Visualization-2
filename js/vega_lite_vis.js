@@ -132,3 +132,68 @@ document.addEventListener("DOMContentLoaded", () => {
     standaloneCharts[0].classList.add("is-focused-chart");
   }
 });
+
+// =============================================================
+// TABLE OF CONTENTS (TOC) SLIDE-OUT & ACTIVE SPY
+// =============================================================
+document.addEventListener("DOMContentLoaded", () => {
+  const toggleBtn = document.getElementById("toc-toggle-btn");
+  const closeBtn = document.getElementById("toc-close-btn");
+  const drawer = document.getElementById("toc-drawer");
+  const backdrop = document.getElementById("toc-backdrop");
+  const tocLinks = document.querySelectorAll(".toc-link");
+
+  function openTOC() {
+    drawer.classList.add("is-open");
+    backdrop.classList.add("is-visible");
+    drawer.setAttribute("aria-hidden", "false");
+  }
+
+  function closeTOC() {
+    drawer.classList.remove("is-open");
+    backdrop.classList.remove("is-visible");
+    drawer.setAttribute("aria-hidden", "true");
+  }
+
+  if (toggleBtn) toggleBtn.addEventListener("click", openTOC);
+  if (closeBtn) closeBtn.addEventListener("click", closeTOC);
+  if (backdrop) backdrop.addEventListener("click", closeTOC);
+
+  // Smooth scroll and auto-close when clicking any TOC link
+  tocLinks.forEach((link) => {
+    link.addEventListener("click", (e) => {
+      const targetId = link.getAttribute("href");
+      if (targetId && targetId.startsWith("#")) {
+        e.preventDefault();
+        const targetEl = document.querySelector(targetId);
+        if (targetEl) {
+          targetEl.scrollIntoView({ behavior: "smooth", block: "start" });
+          closeTOC();
+        }
+      }
+    });
+  });
+
+  // Highlight active TOC item based on scrolling position
+  const sections = Array.from(tocLinks)
+    .map((link) => document.querySelector(link.getAttribute("href")))
+    .filter(Boolean);
+
+  window.addEventListener("scroll", () => {
+    let current = "";
+    sections.forEach((sec) => {
+      const secTop = sec.offsetTop - 120;
+      if (window.scrollY >= secTop) {
+        current = "#" + sec.getAttribute("id");
+      }
+    });
+
+    tocLinks.forEach((link) => {
+      if (link.getAttribute("href") === current) {
+        link.classList.add("is-active-link");
+      } else {
+        link.classList.remove("is-active-link");
+      }
+    });
+  });
+});

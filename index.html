@@ -19,6 +19,61 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <!-- ==============================================
+       COLLAPSIBLE TABLE OF CONTENTS (TOC) DRAWER
+       ============================================== -->
+  <!-- 1. Floating Toggle Button -->
+  <button id="toc-toggle-btn" class="toc-toggle-btn" aria-label="Toggle Table of Contents" title="Table of Contents">
+    <span class="toc-icon">☰</span>
+    <span class="toc-btn-text">Contents</span>
+  </button>
+
+  <!-- 2. Slide-out Drawer Panel -->
+  <aside id="toc-drawer" class="toc-drawer" aria-hidden="true">
+    <div class="toc-header">
+      <span class="kicker-tag" style="margin: 0;">NAVIGATION</span>
+      <h3 class="toc-title">Table of Contents</h3>
+      <button id="toc-close-btn" class="toc-close-btn" aria-label="Close Table of Contents">✕</button>
+    </div>
+
+    <nav class="toc-nav">
+      <!-- Section 1 -->
+      <div class="toc-section-group">
+        <span class="toc-group-label">1. SPATIAL DISTRIBUTION</span>
+        <a href="#sec-coastal" class="toc-link">Coastal Density &amp; Cities</a>
+      </div>
+
+      <!-- Section 2 -->
+      <div class="toc-section-group">
+        <span class="toc-group-label">2. SEASONAL MOBILITY</span>
+        <a href="#sec-seasonal" class="toc-link">Seasonal Migration Map</a>
+        <a href="#sec-heatmap" class="toc-link">Climate Occupancy Heatmap</a>
+        <a href="#sec-occupancy" class="toc-link">Occupancy &amp; Pandemic Surge</a>
+      </div>
+
+      <!-- Section 3 -->
+      <div class="toc-section-group">
+        <span class="toc-group-label">3. DEMOGRAPHICS &amp; FLOWS</span>
+        <a href="#sec-pyramid" class="toc-link">Population Age Pyramid</a>
+        <a href="#sec-flow" class="toc-link">Nullarbor Flow Map (WA)</a>
+        <a href="#sec-sankey" class="toc-link">Accommodation Choices</a>
+        <a href="#sec-ridgeline" class="toc-link">Trip Duration (Ridgeline)</a>
+        <a href="#sec-activities" class="toc-link">Camper Motivations &amp; Matrix</a>
+      </div>
+
+      <!-- Section 4 -->
+      <div class="toc-section-group">
+        <span class="toc-group-label">4. AMENITIES &amp; SITES</span>
+        <a href="#sec-lollipop" class="toc-link">Essential Amenity Provision</a>
+        <a href="#sec-dumbbell" class="toc-link">The Remoteness Penalty (Gap)</a>
+        <a href="#sec-upset" class="toc-link">Amenity Co-occurrence (UpSet)</a>
+        <a href="#sec-radar" class="toc-link">The DNA of Campgrounds (Radar)</a>
+      </div>
+    </nav>
+  </aside>
+
+  <!-- 3. Dimming Backdrop -->
+  <div id="toc-backdrop" class="toc-backdrop"></div>
 
   <!-- 1. Full-Bleed Editorial Hero Header -->
   <header class="hero-header">
@@ -43,7 +98,7 @@
     </div>
 
     <!-- Scrolly Section 1: Coastal Map transitioning into City Proximity -->
-    <div class="vis-side-layout coastal-scrolly-layout">
+    <div id = "sec-coastal" class="vis-side-layout coastal-scrolly-layout">
       <!-- Left Column: The Pinned Vega-Lite Map Container -->
       <div class="map-column">
         <div id="vis-coastal" class="chart-container"></div>
@@ -87,7 +142,7 @@
         <p class="subtitle">An analysis of how weather affects camping location</p>
       </div>
 
-      <div class="vis-side-layout season-scrolly-layout">
+      <div id="sec-seasonal" class="vis-side-layout season-scrolly-layout">
         <!-- Left: Pinned Seasonal Map -->
         <div class="map-column">
           <div id="vis-seasonal-migration" class="chart-container"></div>
@@ -148,7 +203,7 @@
       </div>
 
       <!-- 2D Climate x State Occupancy Matrix Heatmap -->
-      <div class="vis-side-layout">
+      <div id="sec-heatmap" class="vis-side-layout">
         <div class="map-column">
           <div id="vis-climate-heatmap" class="chart-container"></div>
         </div>
@@ -174,9 +229,9 @@
       </div>
 
       <!-- Occupancy Dynamics & Pandemic Disruption -->
-      <div class="vis-side-layout">
+      <div  id="sec-occupancy"class="vis-side-layout">
         <div class="map-column">
-          <div id="vis-occupation" class="chart-container"></div>
+          <div  id="vis-occupation" class="chart-container"></div>
         </div>
 
         <div class="text-column">
@@ -204,7 +259,7 @@
       </div>
       
       <!-- Population Pyramid -->
-      <div class="vis-side-layout">
+      <div id="sec-pyramid" class="vis-side-layout">
         <div class="map-column">
           <div id="vis-pyramid" class="chart-container"></div>
         </div>
@@ -227,7 +282,7 @@
       </div>
 
       <!-- Flow Map -->
-      <div class="vis-side-layout">
+      <div id="sec-flow" class="vis-side-layout">
         <div class="map-column">
           <div id="vis-flow-map" class="chart-container"></div>
         </div>
@@ -247,7 +302,7 @@
       </div>
 
       <!-- Accommodations / Sankey -->
-      <div class="vis-side-layout">
+      <div id="sec-sankey" class="vis-side-layout">
         <div class="map-column">
           <div id="vis-sankey" class="chart-container"></div>
         </div>
@@ -270,7 +325,7 @@
       </div>
 
       <!-- Ridgeline Plot: Stay Duration by Cohort -->
-      <div class="vis-side-layout">
+      <div  id="sec-ridgeline" class="vis-side-layout">
         <div class="map-column">
           <div id="vis-ridgeline" class="chart-container"></div>
         </div>
@@ -296,7 +351,7 @@
       </div>
 
       <!-- 4. Camper Motivations (Overview + Detail Linked Views) -->
-      <div class="vis-side-layout">
+      <div id="sec-activities" class="vis-side-layout">
         <div class="map-column">
           <div id="vis-activities" class="chart-container"></div>
         </div>
@@ -329,7 +384,7 @@
       </div>
 
       <!-- Lollipop -->
-      <div class="vis-side-layout">
+      <div  id="sec-lollipop" class="vis-side-layout">
         <div class="map-column">
           <div id="vis-lollipop" class="chart-container"></div>
         </div>
@@ -352,7 +407,7 @@
       </div>
 
       <!-- Connected Dot Plot: Demand vs. Reality Gap -->
-      <div class="vis-side-layout">
+      <div  id="sec-dumbbell" class="vis-side-layout">
         <div class="map-column">
           <div id="vis-dumbbell" class="chart-container"></div>
         </div>
@@ -375,7 +430,7 @@
       </div>
 
       <!-- UpSet Plot: Amenity Bundle Co-occurrence -->
-      <div class="vis-side-layout">
+      <div id="sec-upset" class="vis-side-layout">
         <div class="map-column">
           <div id="vis-upset" class="chart-container"></div>
         </div>
@@ -398,7 +453,7 @@
       </div>
       
       <!-- Radar Plot -->
-      <div class="vis-side-layout">
+      <div  id="sec-radar" class="vis-side-layout">
         <div class="map-column">
           <div id="vis-radar" class="chart-container"></div>
         </div>

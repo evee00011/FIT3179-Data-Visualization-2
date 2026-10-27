@@ -337,3 +337,158 @@ p.subtitle {
     max-width: 100%;
   }
 }
+
+/* ==============================================================
+   COLLAPSIBLE TABLE OF CONTENTS (TOC) STYLES
+   ============================================================== */
+
+/* Floating trigger tab pinned to the left edge */
+.toc-toggle-btn {
+  position: fixed;
+  left: 0;
+  top: 140px;
+  z-index: 999;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(18, 14, 11, 0.88);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-left: none;
+  border-radius: 0 6px 6px 0;
+  padding: 10px 14px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 2px 4px 14px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(4px);
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.toc-toggle-btn:hover {
+  background: #7b2e01;
+  transform: translateX(3px);
+}
+
+.toc-toggle-btn .toc-icon {
+  font-size: 1rem;
+  line-height: 1;
+}
+
+/* Slide-out drawer */
+.toc-drawer {
+  position: fixed;
+  top: 0;
+  left: -330px; /* Off-screen by default */
+  width: 310px;
+  height: 100vh;
+  background: #ffffff;
+  border-right: 1px solid var(--border-subtle, #e7e2d9);
+  box-shadow: 6px 0 28px rgba(0, 0, 0, 0.18);
+  z-index: 1001;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  transition: transform 0.32s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.toc-drawer.is-open {
+  transform: translateX(330px);
+}
+
+/* Header inside drawer */
+.toc-header {
+  padding: 24px 20px 16px;
+  border-bottom: 1px solid var(--border-subtle, #e7e2d9);
+  position: relative;
+  background: #fbf9f4;
+}
+
+.toc-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.3rem;
+  color: #1f2421;
+  margin: 6px 0 0 0;
+}
+
+.toc-close-btn {
+  position: absolute;
+  top: 20px;
+  right: 18px;
+  background: transparent;
+  border: none;
+  font-size: 1.2rem;
+  color: #64748b;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.toc-close-btn:hover {
+  color: #7b2e01;
+}
+
+/* Scrollable nav list */
+.toc-nav {
+  padding: 16px 20px;
+  overflow-y: auto;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.toc-section-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.toc-group-label {
+  font-size: 0.68rem;
+  letter-spacing: 1.2px;
+  font-weight: 700;
+  color: #7b2e01;
+  text-transform: uppercase;
+  margin-bottom: 2px;
+}
+
+.toc-link {
+  font-size: 0.88rem;
+  color: #475569;
+  text-decoration: none;
+  padding: 6px 8px;
+  border-radius: 4px;
+  transition: all 0.15s ease;
+  line-height: 1.35;
+}
+
+.toc-link:hover {
+  background: #f4e2d4;
+  color: #7b2e01;
+  padding-left: 12px;
+}
+
+.toc-link.is-active-link {
+  background: #f4e2d4;
+  color: #7b2e01;
+  font-weight: 700;
+  border-left: 3px solid #7b2e01;
+}
+
+/* Backdrop overlay */
+.toc-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(2px);
+  z-index: 1000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.28s ease;
+}
+
+.toc-backdrop.is-visible {
+  opacity: 1;
+  pointer-events: auto;
+}
