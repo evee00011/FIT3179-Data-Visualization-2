@@ -17,12 +17,14 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* 1. SMALLER PAGE MARGINS ON LEFT AND RIGHT */
+/* 1. FLUID RESPONSIVE CONTAINER WITH CLAMPED PADDING */
 .dashboard-container {
-  max-width: 1400px;
+  width: 100%;
+  max-width: 1360px;
   margin: 0 auto;
-  padding-left: 20px;
-  padding-right: 20px;
+  /* Scales smoothly from 20px padding on small screens to 48px on large desktops */
+  padding-left: clamp(16px, 3.5vw, 48px);
+  padding-right: clamp(16px, 3.5vw, 48px);
   box-sizing: border-box;
 }
 
@@ -30,13 +32,13 @@ body {
 .hero-header {
   position: relative;
   width: 100%;
-  min-height: 480px;
+  min-height: clamp(380px, 45vh, 520px);
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 60px 20px;
+  padding: 40px 20px;
   box-sizing: border-box;
-  margin-bottom: 40px;
+  margin-bottom: 30px;
   background: 
     linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.35)),
     url('https://i.natgeofe.com/n/b8604459-e40a-41bb-89e5-dfd033675f90/AusOutbackaerial1300683277_3x4.jpg') center/cover no-repeat;
@@ -48,7 +50,7 @@ body {
   background: rgba(18, 14, 11, 0.82);
   backdrop-filter: blur(4px);
   border-radius: 4px;
-  padding: 42px 36px;
+  padding: clamp(24px, 4vw, 42px) clamp(20px, 3vw, 36px);
   text-align: center;
   color: #ffffff;
   box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
@@ -56,19 +58,19 @@ body {
 
 .hero-title {
   font-family: 'Playfair Display', Georgia, serif;
-  font-size: 2.6rem;
+  font-size: clamp(1.8rem, 3.2vw, 2.6rem);
   font-weight: 700;
   line-height: 1.18;
-  margin: 0 0 16px 0;
+  margin: 0 0 14px 0;
   color: #ffffff;
 }
 
 .hero-desc {
-  font-size: 0.98rem;
+  font-size: clamp(0.88rem, 1.2vw, 0.98rem);
   line-height: 1.6;
   color: #e5e7eb;
   font-weight: 300;
-  margin: 0 auto 20px;
+  margin: 0 auto 16px;
   max-width: 620px;
 }
 
@@ -76,7 +78,7 @@ body {
   font-size: 0.85rem;
   color: #d1d5db;
   border-top: 1px solid rgba(255, 255, 255, 0.15);
-  padding-top: 14px;
+  padding-top: 12px;
 }
 
 .hero-author .divider {
@@ -84,14 +86,14 @@ body {
   opacity: 0.6;
 }
 
-/* Headings */
+/* Fluid Headings */
 .theme-header {
-  margin-top: 40px;
-  margin-bottom: 25px;
+  margin-top: clamp(24px, 4vw, 44px);
+  margin-bottom: 20px;
 }
 
 h2 {
-  font-size: 3.2rem;
+  font-size: clamp(2rem, 3.4vw, 3rem);
   font-family: 'Playfair Display', Georgia, serif;
   color: #7b2e01;
   line-height: 1.15;
@@ -100,7 +102,7 @@ h2 {
 }
 
 p.subtitle {
-  font-size: 1.25rem;
+  font-size: clamp(1rem, 1.4vw, 1.25rem);
   color: #4b5563;
   margin: 4px 0 0 0;
 }
@@ -111,69 +113,75 @@ p.subtitle {
 }
 
 /* ==============================================================
-   2. UNIFIED SIGHTLINE: ALL TEXT BOXES START & END AT SAME POINT
+   2. FLUID DUAL-COLUMN GRID: AUTO-SCALES WITH VIEWPORT
    ============================================================== */
 .vis-side-layout {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 390px;
-  gap: 36px;
+  /* Left column expands flexibly; right column stays between 320px and 380px */
+  grid-template-columns: minmax(0, 1.5fr) minmax(320px, 380px);
+  gap: clamp(20px, 2.8vw, 36px);
   align-items: start;
   position: relative;
-  margin: 30px 0 70px 0;
+  margin: 24px 0 clamp(40px, 6vw, 70px) 0;
   box-sizing: border-box;
 }
-/* ==============================================================
-   UNIFIED SIGHTLINE & FIXED CHART CANVAS SIZE
-   ============================================================== */
 
-/* Left column anchors charts to the EXACT same left edge */
+/* Map/Chart Column */
 .map-column {
   width: 100%;
-  max-width: 700px;
-  display: flex;
-  justify-content: flex-start; /* Crucial: Aligns all charts to the exact same left line */
-  align-items: flex-start;
-  box-sizing: border-box;
-}
-
-/* Forces every Vega container to start and occupy the exact same footprint */
-.map-column .chart-container {
-  width: 680px;
-  min-height: 520px;
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
-  overflow: visible;
   box-sizing: border-box;
 }
 
-/* Ensure SVG outputs render cleanly without unexpected offsets */
+/* FLUID CHART CONTAINER: Scales SVG smoothly to available space */
+.map-column .chart-container {
+  width: 100%;
+  max-width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+/* Force Vega/Vega-Lite SVGs to scale proportionally */
 .map-column .chart-container svg {
   display: block;
+  max-width: 100% !important;
+  height: auto !important;
+}
+
+/* Text Container Column */
+.text-column {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
 }
 
 /* ==============================================================
-   SCROLLYTELLING: ISOLATED STICKY CONTAINERS (PREVENTS MAP OVERLAP)
+   SCROLLYTELLING: PRESERVED STICKY SECTIONS
    ============================================================== */
 .coastal-scrolly-layout,
 .season-scrolly-layout {
   position: relative;
-  /* Containment boundary forces sticky map to UNPIN when section ends */
   contain: paint;
-  margin-bottom: 80px;
+  margin-bottom: clamp(40px, 6vw, 80px);
 }
 
 .coastal-scrolly-layout .map-column,
 .season-scrolly-layout .map-column {
   position: sticky;
-  top: 60px;
+  top: 50px;
   height: fit-content;
   z-index: 1;
 }
 
 /* Scrolly Step Cards for Section 1 */
 .coastal-scrolly-layout .step {
-  min-height: 85vh;          /* Ample scroll distance to trigger Step 1 then Step 2 */
+  min-height: 80vh;
   display: flex;
   align-items: center;
   opacity: 0.2;
@@ -188,7 +196,7 @@ p.subtitle {
 
 /* Scrolly Step Cards for Section 2 */
 .step-season {
-  min-height: 80vh;
+  min-height: 75vh;
   display: flex;
   align-items: center;
   opacity: 0.2;
@@ -201,11 +209,9 @@ p.subtitle {
   transform: translateY(0);
 }
 
-/* ==============================================================
-   FOCUSED VIEW FOR STANDALONE CHARTS (SECTIONS 3 & 4)
-   ============================================================== */
+/* Standalone chart section transitions */
 .standalone-chart-section {
-  min-height: 80vh;
+  min-height: 75vh;
   opacity: 0.15;
   transition: opacity 0.45s ease-in-out, transform 0.45s ease-in-out;
   transform: scale(0.98);
@@ -223,7 +229,7 @@ p.subtitle {
   background: #ffffff;
   border: 1px solid var(--border-subtle);
   border-radius: 6px;
-  padding: 24px;
+  padding: clamp(16px, 2.2vw, 24px);
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
 }
 
@@ -244,22 +250,22 @@ p.subtitle {
 
 .insight-card h3 {
   font-family: 'Playfair Display', Georgia, serif;
-  font-size: 1.35rem;
+  font-size: clamp(1.15rem, 1.6vw, 1.35rem);
   font-weight: 700;
   color: #1f2421;
   margin: 0 0 10px 0;
   line-height: 1.25;
 }
 
-/* 3. STRICT LINE LENGTH: NO LINE HAS MORE THAN 10 WORDS */
+/* Course guideline: 7–10 words per line (~36-38ch) */
 .insight-card p {
   font-family: 'Roboto', sans-serif;
-  font-size: 0.94rem;
+  font-size: clamp(0.88rem, 1.1vw, 0.94rem);
   line-height: 1.6;
   color: #4b5563;
   margin: 0 0 12px 0;
   text-align: left;
-  max-width: 36ch;           /* Exactly 7-9 words per line */
+  max-width: 38ch;
   word-wrap: break-word;
 }
 
@@ -267,35 +273,18 @@ p.subtitle {
   margin-bottom: 0;
 }
 
-/* Section dividers clear sticky layers cleanly */
+/* Section dividers */
 .section-divider {
   position: relative;
   z-index: 2;
   background-color: var(--bg-sand);
   border-top: 1px solid var(--border-subtle);
-  padding-top: 40px;
-  margin-top: 60px;
+  padding-top: 30px;
+  margin-top: clamp(40px, 5vw, 60px);
   clear: both;
 }
 
-@media (max-width: 960px) {
-  .vis-side-layout {
-    grid-template-columns: 1fr;
-    min-height: auto;
-  }
-  .coastal-scrolly-layout .map-column,
-  .season-scrolly-layout .map-column {
-    position: static;
-  }
-  .text-column {
-    max-width: 100%;
-  }
-}
-/* ==============================================================
-   FLOW MAP PULSE STREAMLINE ANIMATION (ONLY TRAJECTORY LINES)
-   ============================================================== */
-
-/* Strictly target trajectory flow lines and exclude base map geographic paths */
+/* Trajectory pulse animation */
 #vis-flow-map svg g.mark-rule path,
 #vis-flow-map svg g.mark-rule line,
 #vis-flow-map svg g.mark-line path {
@@ -303,7 +292,6 @@ p.subtitle {
   animation: flow-stream-pulse 1.4s linear infinite !important;
 }
 
-/* Explicitly protect the base map and state borders from being animated */
 #vis-flow-map svg g.mark-geoshape path {
   stroke-dasharray: none !important;
   animation: none !important;
@@ -315,5 +303,37 @@ p.subtitle {
   }
   to {
     stroke-dashoffset: 0;
+  }
+}
+
+/* ==============================================================
+   RESPONSIVE BREAKPOINT FOR TABLETS & LAPTOPS (< 992px)
+   ============================================================== */
+@media (max-width: 992px) {
+  .vis-side-layout {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  /* Unpin maps on tablets/mobile so charts scroll naturally */
+  .coastal-scrolly-layout .map-column,
+  .season-scrolly-layout .map-column {
+    position: static;
+  }
+
+  .coastal-scrolly-layout .step,
+  .step-season {
+    min-height: auto;
+    opacity: 1;
+    margin-bottom: 16px;
+    transform: none;
+  }
+
+  .text-column {
+    max-width: 100%;
+  }
+
+  .insight-card p {
+    max-width: 100%;
   }
 }
